@@ -1,5 +1,3 @@
-
-
 #MaxThreadsPerHotkey 2
 
 ;LOOP r (spamea recarga)
@@ -294,7 +292,7 @@ Return
 
 
 ;Recarga el script
-del::Reload
+pgdn::Reload
 Sleep, 200
 Return
 
