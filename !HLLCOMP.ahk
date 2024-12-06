@@ -65,7 +65,7 @@ Sendinput {r Down}
 Sendinput {r Down}
 Sendinput {r Up}
 Sendinput {r Up}
-Sleep, 3200
+Sleep, 3500
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
@@ -85,7 +85,7 @@ Sendinput {r Down}
 Sendinput {r Down}
 Sendinput {r Up}
 Sendinput {r Up}
-Sleep, 3200
+Sleep, 3500
 SendInput {f1 Down}
 Sleep, 1500
 SendInput {f1 Up}
@@ -110,7 +110,7 @@ Sendinput {r Down}
 Sendinput {r Down}
 Sendinput {r Up}
 Sendinput {r Up}
-Sleep, 3200
+Sleep, 3500
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
@@ -128,7 +128,7 @@ Sendinput {r Down}
 Sendinput {r Down}
 Sendinput {r Up}
 Sendinput {r Up}
-Sleep, 3200
+Sleep, 3500
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
@@ -146,7 +146,7 @@ Sendinput {r Down}
 Sendinput {r Down}
 Sendinput {r Up}
 Sendinput {r Up}
-Sleep, 3200
+Sleep, 3500
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
@@ -164,7 +164,7 @@ Sendinput {r Down}
 Sendinput {r Down}
 Sendinput {r Up}
 Sendinput {r Up}
-Sleep, 3200
+Sleep, 3500
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
@@ -190,7 +190,7 @@ Sendinput {r Down}
 Sendinput {r Down}
 Sendinput {r Up}
 Sendinput {r Up}
-Sleep, 3200
+Sleep, 3500
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
@@ -218,7 +218,7 @@ Sendinput {r Down}
 Sendinput {r Down}
 Sendinput {r Up}
 Sendinput {r Up}
-Sleep, 3200
+Sleep, 3500
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
@@ -236,7 +236,7 @@ Sendinput {r Down}
 Sendinput {r Down}
 Sendinput {r Up}
 Sendinput {r Up}
-Sleep, 3200
+Sleep, 3500
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
@@ -254,7 +254,7 @@ Sendinput {r Down}
 Sendinput {r Down}
 Sendinput {r Up}
 Sendinput {r Up}
-Sleep, 3200
+Sleep, 3500
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
@@ -272,7 +272,7 @@ Sendinput {r Down}
 Sendinput {r Down}
 Sendinput {r Up}
 Sendinput {r Up}
-Sleep, 3200
+Sleep, 3500
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
