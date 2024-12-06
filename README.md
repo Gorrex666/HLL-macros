@@ -1,8 +1,6 @@
-﻿/*  
-
 PgDn recarga el script
 
-Del cierra el script
+F12 cierra el script
 
 J presiona "f" por 6 segundos para curarse/revivir
 
@@ -13,17 +11,12 @@ capslock mantiene presionado "w" on/off
 ctrl capslock mantiene presionado "s" on/off
 
  
-F5 Recarga y dispara
+F5 Recarga
 
-F6 Recarga
+F6 Recarga Recarga y dispara
 
 F7 4 tiros(DISPERSION 15 MTS A 800 MTS)
 
+F8 LOOP Recarga y dispara
 
-F9 LOOP Recarga y dispara
-
-F10 LOOP 4 tiros
-
-
-
-*/
+F9 LOOP 4 tiros
