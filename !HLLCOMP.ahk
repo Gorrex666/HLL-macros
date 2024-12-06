@@ -1,4 +1,5 @@
 
+
 #MaxThreadsPerHotkey 2
 
 ;LOOP r (spamea recarga)
@@ -52,8 +53,30 @@ Return
 
 
 
+
+
+;Recarga
+f5::
+{
+Sleep, 100
+SendInput, {f2 Down}
+Sleep, 1400
+SendInput, {f2 Up}
+Sleep, 40
+Sendinput {r Down}
+Sendinput {r Down}
+Sleep, 200
+Sendinput {r Up}
+Sendinput {r Up}
+Sleep, 3200
+SendInput, {f1 Down}
+Sleep, 1400
+SendInput, {f1 Up}
+}
+Return
+
 ;Recarga y dispara
-~f5::
+~f6::
 {
 Sleep, 100
 SendInput {f2 Down}
@@ -71,26 +94,6 @@ SendInput {f1 Up}
 Sleep, 40
 SendInput {Click down}
 SendInput {Click up}
-}
-Return
-
-;Recarga
-f6::
-{
-Sleep, 100
-SendInput, {f2 Down}
-Sleep, 1400
-SendInput, {f2 Up}
-Sleep, 40
-Sendinput {r Down}
-Sendinput {r Down}
-Sleep, 200
-Sendinput {r Up}
-Sendinput {r Up}
-Sleep, 3200
-SendInput, {f1 Down}
-Sleep, 1400
-SendInput, {f1 Up}
 }
 Return
 
@@ -174,7 +177,7 @@ Return
 
 
 ;LOOP Recarga y dispara
-f9::
+f8::
 Toggle := !Toggle
 Loop
 {
@@ -203,7 +206,7 @@ SendInput {Click up}
 Return
 
 ;4 TIROS LOOP (DISPERSION 15 MTS A 800 MTS)
-f10::
+f9::
 Toggle := !Toggle
 Loop
 {
@@ -291,9 +294,9 @@ Return
 
 
 ;Recarga el script
-PgDn::Reload
+del::Reload
 Sleep, 200
 Return
 
 ;Cierra
-Del::ExitApp 
+f12::ExitApp 
