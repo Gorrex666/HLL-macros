@@ -17,12 +17,12 @@ F5 Recarga y dispara
 
 F6 Recarga
 
-F7 3 tiros(DISPERSION 15 MTS A 800 MTS)
+F7 4 tiros(DISPERSION 15 MTS A 800 MTS)
 
 
 F9 LOOP Recarga y dispara
 
-F10 LOOP 3 tiros
+F10 LOOP 4 tiros
 
 
 
