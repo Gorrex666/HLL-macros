@@ -1,4 +1,4 @@
-PgDn recarga el script
+ ➡ (flecha derecha)  recarga el script
 
 F12 cierra el script
 
