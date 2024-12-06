@@ -56,19 +56,18 @@ Return
 ;Recarga
 f5::
 {
-Sleep, 100
-SendInput, {f2 Down}
-Sleep, 1400
-SendInput, {f2 Up}
-Sleep, 40
-Sendinput {r Down}
-Sendinput {r Down}
 Sleep, 200
+SendInput, {f2 Down}
+Sleep, 1500
+SendInput, {f2 Up}
+Sleep, Random, rand, 40, 80
+Sendinput {r Down}
+Sendinput {r Down}
 Sendinput {r Up}
 Sendinput {r Up}
 Sleep, 3200
 SendInput, {f1 Down}
-Sleep, 1400
+Sleep, 1500
 SendInput, {f1 Up}
 }
 Return
@@ -76,20 +75,21 @@ Return
 ;Recarga y dispara
 ~f6::
 {
-Sleep, 100
+Sleep, 200
+SendInput {Click down}
+SendInput {Click up}
 SendInput {f2 Down}
-Sleep, 1400
+Sleep, 1500
 SendInput {f2 Up}
 Sendinput {r Down}
 Sendinput {r Down}
-Sleep, 200
 Sendinput {r Up}
 Sendinput {r Up}
 Sleep, 3200
 SendInput {f1 Down}
-Sleep, 1400
+Sleep, 1500
 SendInput {f1 Up}
-Sleep, 40
+Sleep, Random, rand, 40, 80
 SendInput {Click down}
 SendInput {Click up}
 }
@@ -99,76 +99,74 @@ Return
 ;4 tiros(DISPERSION 15 MTS A 800 MTS)
 f7::
 {
-Sleep, 100
+Sleep, 200
 SendInput {Click down}
 SendInput {Click up}
 SendInput, {f2 Down}
-Sleep, 1400
+Sleep, 1500
 SendInput, {f2 Up}
-Sleep, 40
+Sleep, Random, rand, 40, 80
 Sendinput {r Down}
 Sendinput {r Down}
-Sleep, 200
 Sendinput {r Up}
 Sendinput {r Up}
 Sleep, 3200
 SendInput, {f1 Down}
-Sleep, 1400
+Sleep, 1500
 SendInput, {f1 Up}
 SendInput, {a Down}
-Sleep, 100
+Sleep, 200
 SendInput, {f2 Down}
-Sleep, 900
+Sleep, 800
 SendInput, {a Up}
 SendInput {Click down}
 SendInput {Click up}
 Sleep, 500
 SendInput, {f2 Up}
-Sleep, 40
+Sleep, Random, rand, 40, 80
 Sendinput {r Down}
 Sendinput {r Down}
-Sleep, 200
 Sendinput {r Up}
 Sendinput {r Up}
 Sleep, 3200
 SendInput, {f1 Down}
-Sleep, 1400
+Sleep, 1500
 SendInput, {f1 Up}
 SendInput, {d Down}
-Sleep, 100
+Sleep, 200
 SendInput, {f2 Down}
-Sleep, 900
+Sleep, 800
 SendInput, {d Up}
 SendInput {Click down}
 SendInput {Click up}
 Sleep, 500
 SendInput, {f2 Up}
-Sleep, 40
+Sleep, Random, rand, 40, 80
 Sendinput {r Down}
 Sendinput {r Down}
-Sleep, 200
 Sendinput {r Up}
 Sendinput {r Up}
 Sleep, 3200
 SendInput, {f1 Down}
-Sleep, 1400
+Sleep, 1500
 SendInput, {f1 Up}
 SendInput, {d Down}
-Sleep, 100
+Sleep, 200
 SendInput, {f2 Down}
-Sleep, 900
+Sleep, 800
 SendInput, {d Up}
 SendInput {Click down}
 SendInput {Click up}
 Sleep, 500
 SendInput, {f2 Up}
-Sleep, Random, rand, 40, 60
+Sleep, Random, rand, 40, 80
 Sendinput {r Down}
-Sleep, 200
+Sendinput {r Down}
+Sendinput {r Up}
 Sendinput {r Up}
 Sleep, 3200
 SendInput, {f1 Down}
-Sleep, 1400
+Sleep, 1500
 SendInput, {f1 Up}
 }
 Return
@@ -185,22 +183,21 @@ SendInput {Click down}
 SendInput {Click up}
 Sleep, 100
 SendInput, {f2 Down}
-Sleep, 1400
+Sleep, 1500
 SendInput, {f2 Up}
-Sleep, Random, rand, 40, 60
+Sleep, Random, rand, 40, 80
 Sendinput {r Down}
 Sendinput {r Down}
-Sleep, 200
 Sendinput {r Up}
 Sendinput {r Up}
 Sleep, 3200
 SendInput, {f1 Down}
-Sleep, 1400
+Sleep, 1500
 SendInput, {f1 Up}
-Sleep, Random, rand, 40, 60
+Sleep, Random, rand, 40, 80
 SendInput {Click down}
 SendInput {Click up}
-}
+}                                                                                                      
 Return
 
 ;4 TIROS LOOP (DISPERSION 15 MTS A 800 MTS)
@@ -210,89 +207,85 @@ Loop
 {
 If (!Toggle)
 Break
-Sleep, 100
+Sleep, 200
 SendInput {Click down}
 SendInput {Click up}
 SendInput, {f2 Down}
-Sleep, 1400
+Sleep, 1500
 SendInput, {f2 Up}
-Sleep, 40
+Sleep, Random, rand, 40, 80
 Sendinput {r Down}
 Sendinput {r Down}
-Sleep, 200
 Sendinput {r Up}
 Sendinput {r Up}
 Sleep, 3200
 SendInput, {f1 Down}
-Sleep, 1400
+Sleep, 1500
 SendInput, {f1 Up}
 SendInput, {a Down}
-Sleep, 100
+Sleep, 200
 SendInput, {f2 Down}
-Sleep, 900
+Sleep, 800
 SendInput, {a Up}
 SendInput {Click down}
 SendInput {Click up}
 Sleep, 500
 SendInput, {f2 Up}
-Sleep, 40
+Sleep, Random, rand, 40, 80
 Sendinput {r Down}
 Sendinput {r Down}
-Sleep, 200
 Sendinput {r Up}
 Sendinput {r Up}
 Sleep, 3200
 SendInput, {f1 Down}
-Sleep, 1400
+Sleep, 1500
 SendInput, {f1 Up}
 SendInput, {d Down}
-Sleep, 100
+Sleep, 200
 SendInput, {f2 Down}
-Sleep, 900
+Sleep, 800
 SendInput, {d Up}
 SendInput {Click down}
 SendInput {Click up}
 Sleep, 500
 SendInput, {f2 Up}
-Sleep, 40
+Sleep, Random, rand, 40, 80
 Sendinput {r Down}
 Sendinput {r Down}
-Sleep, 200
 Sendinput {r Up}
 Sendinput {r Up}
 Sleep, 3200
 SendInput, {f1 Down}
-Sleep, 1400
+Sleep, 1500
 SendInput, {f1 Up}
 SendInput, {d Down}
-Sleep, 100
+Sleep, 200
 SendInput, {f2 Down}
-Sleep, 900
+Sleep, 800
 SendInput, {d Up}
 SendInput {Click down}
 SendInput {Click up}
 Sleep, 500
 SendInput, {f2 Up}
-Sleep, 40
+Sleep, Random, rand, 40, 80
 Sendinput {r Down}
 Sendinput {r Down}
-Sleep, 200
 Sendinput {r Up}
 Sendinput {r Up}
 Sleep, 3200
 SendInput, {f1 Down}
-Sleep, 1400
+Sleep, 1500
 SendInput, {f1 Up}
 SendInput, {a Down}
-Sleep, 100
-Sleep, 900
+Sleep, 200
+Sleep, 800
 SendInput, {a Up}
 }
 Return
 
 
 ;Recarga el script
-pgdn::Reload
+Right::Reload
 Sleep, 200
 Return
 
