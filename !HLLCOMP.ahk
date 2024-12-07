@@ -61,50 +61,23 @@ Return
 ~f5::
 {
 Sleep, 200
-SendInput, {f2 Down}
-Sleep, 1500
-SendInput, {f2 Up}
-Sleep, Random, rand, 10, 40
-Sendinput {r Down}
-Sendinput {r Down}
-Sendinput {r Up}
-Sleep, 3400
-SendInput, {f1 Down}
-Sleep, 1500
-SendInput, {f1 Up}
+Goto RELOAD
 }
 Return
 
 ;Recarga y dispara
 ~f6::
 {
-Sleep, 200
-SendInput {Click down}
-SendInput {Click up}
-SendInput {f2 Down}
-Sleep, 1500
-SendInput {f2 Up}
-Sleep, Random, rand, 10, 40
-Sendinput {r Down}
-Sendinput {r Down}
-Sendinput {r Up}
-Sleep, 3400
-SendInput {f1 Down}
-Sleep, 1500
-SendInput {f1 Up}
-Sleep, Random, rand, 10, 40
-SendInput {Click down}
-SendInput {Click down}
-SendInput {Click up}
+Goto DELAY
+Goto RELOAD
+Goto SHOOT
 }
 Return
 
 ;4 tiros(DISPERSION 15 MTS A 800 MTS)
 ~f7::
 {
-Sleep, 200
-SendInput {Click down}
-SendInput {Click up}
+Goto DELAY
 SendInput, {f2 Down}
 Sleep, 1500
 SendInput, {f2 Up}
@@ -121,10 +94,7 @@ Sleep, 200
 SendInput, {f2 Down}
 Sleep, 800
 SendInput, {a Up}
-Sleep, Random, rand, 10, 40
-SendInput {Click down}
-SendInput {Click down}
-SendInput {Click up}
+Goto SHOOT
 Sleep, 500
 SendInput, {f2 Up}
 Sleep, Random, rand, 10, 40
@@ -140,10 +110,7 @@ Sleep, 200
 SendInput, {f2 Down}
 Sleep, 800
 SendInput, {d Up}
-Sleep, Random, rand, 10, 40
-SendInput {Click down}
-SendInput {Click down}
-SendInput {Click up}
+Goto SHOOT
 Sleep, 500
 SendInput, {f2 Up}
 Sleep, Random, rand, 10, 40
@@ -160,10 +127,7 @@ Sleep, 200
 SendInput, {f2 Down}
 Sleep, 800
 SendInput, {d Up}
-Sleep, Random, rand, 10, 40
-SendInput {Click down}
-SendInput {Click down}
-SendInput {Click up}
+Goto SHOOT
 Sleep, 500
 SendInput, {f2 Up}
 Sleep, Random, rand, 10, 40
@@ -180,62 +144,14 @@ Return
 ;3 tiros (fire mission)
 ~f8::
 {
-Sleep, 200
-SendInput {Click down}
-SendInput {Click up}
-SendInput {f2 Down}
-Sleep, 1500
-SendInput {f2 Up}
-Sleep, Random, rand, 10, 40
-Sendinput {r Down}
-Sendinput {r Down}
-Sendinput {r Up}
-Sleep, 3400
-SendInput {f1 Down}
-Sleep, 1500
-SendInput {f1 Up}
-Sleep, Random, rand, 10, 40
-SendInput {Click down}
-SendInput {Click down}
-SendInput {Click up}
-SendInput {f2 Down}
-Sleep, 1500
-SendInput {f2 Up}
-Sleep, Random, rand, 10, 40
-Sendinput {r Down}
-Sendinput {r Down}
-Sendinput {r Up}
-Sleep, 3400
-SendInput {f1 Down}
-Sleep, 1500
-SendInput {f1 Up}
-Sleep, Random, rand, 10, 40
-SendInput {Click down}
-SendInput {Click down}
-SendInput {Click up}
-SendInput {f2 Down}
-Sleep, 1500
-SendInput {f2 Up}
-Sleep, Random, rand, 10, 40
-Sendinput {r Down}
-Sendinput {r Down}
-Sendinput {r Up}
-Sleep, 3400
-SendInput {f1 Down}
-Sleep, 1500
-SendInput {f1 Up}
-Sleep, Random, rand, 10, 40
-SendInput {Click down}
-SendInput {Click down}
-SendInput {Click up}
-Random, rand, 21, 23
-SendInput {k Down}
-SendInput {k Up}
-SendInput, >fire stop, approx{space}
-SendInput, %rand%
-SendInput, {space}secs.
-SendInput {enter Down}
-SendInput {enter Up}
+Goto DELAY
+Goto RELOAD
+Goto SHOOT
+Goto RELOAD
+Goto SHOOT
+Goto RELOAD
+Goto SHOOT
+Goto CHAT
 }
 Return
 
@@ -246,24 +162,9 @@ Loop
 {
 If (!Toggle)
 Break
-Sleep, 200
-SendInput {Click down}
-SendInput {Click up}
-SendInput, {f2 Down}
-Sleep, 1500
-SendInput, {f2 Up}
-Sleep, Random, rand, 10, 40
-Sendinput {r Down}
-Sendinput {r Down}
-Sendinput {r Up}
-Sleep, 3400
-SendInput, {f1 Down}
-Sleep, 1500
-SendInput, {f1 Up}
-Sleep, Random, rand, 10, 40
-SendInput {Click down}
-SendInput {Click down}
-SendInput {Click up}
+Goto DELAY
+Goto RELOAD
+Goto SHOOT
 }
 Return
 
@@ -274,9 +175,7 @@ Loop
 {
 If (!Toggle)
 Break
-Sleep, 200
-SendInput {Click down}
-SendInput {Click up}
+Goto DELAY
 SendInput, {f2 Down}
 Sleep, 1500
 SendInput, {f2 Up}
@@ -293,10 +192,7 @@ Sleep, 200
 SendInput, {f2 Down}
 Sleep, 800
 SendInput, {a Up}
-Sleep, Random, rand, 10, 40
-SendInput {Click down}
-SendInput {Click down}
-SendInput {Click up}
+Goto SHOOT
 Sleep, 500
 SendInput, {f2 Up}
 Sleep, Random, rand, 10, 40
@@ -312,10 +208,7 @@ Sleep, 200
 SendInput, {f2 Down}
 Sleep, 800
 SendInput, {d Up}
-Sleep, Random, rand, 10, 40
-SendInput {Click down}
-SendInput {Click down}
-SendInput {Click up}
+Goto SHOOT
 Sleep, 500
 SendInput, {f2 Up}
 Sleep, Random, rand, 10, 40
@@ -331,10 +224,7 @@ Sleep, 200
 SendInput, {f2 Down}
 Sleep, 800
 SendInput, {d Up}
-Sleep, Random, rand, 10, 40
-SendInput {Click down}
-SendInput {Click down}
-SendInput {Click up}
+Goto SHOOT
 Sleep, 500
 SendInput, {f2 Up}
 Sleep, Random, rand, 10, 40
@@ -353,8 +243,39 @@ SendInput, {a Up}
 Return
 
 ~f11::
-Random, rand, 21, 23
 {
+Goto CHAT
+}
+Return
+
+;LABELS
+
+RELOAD:
+SendInput, {f2 Down}
+Sleep, 1500
+SendInput, {f2 Up}
+Sleep, Random, rand, 10, 40
+Sendinput {r Down}
+Sendinput {r Down}
+Sendinput {r Up}
+Sleep, 3400
+SendInput, {f1 Down}
+Sleep, 1500
+SendInput, {f1 Up}
+
+SHOOT:
+Sleep, Random, rand, 10, 40
+SendInput {Click down}
+SendInput {Click down}
+SendInput {Click up}
+
+DELAY:
+Sleep, 200
+SendInput {Click down}
+SendInput {Click up}
+
+CHAT:
+Random, rand, 21, 23
 SendInput {k Down}
 SendInput {k Up}
 SendInput, >fire stop, approx{space}
@@ -362,5 +283,3 @@ SendInput, %rand%
 SendInput, {space}secs.
 SendInput {enter Down}
 SendInput {enter Up}
-}
-Return
