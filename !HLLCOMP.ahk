@@ -1,4 +1,5 @@
 #MaxThreadsPerHotkey 2
+SetKeyDelay, 0
 
 ;Recarga el script
 ~Right::Reload
@@ -225,7 +226,7 @@ SendInput {Click up}
 Sleep, Random, rand, 40, 80
 SendInput {k Down}
 SendInput {k Up}
-Send, >fire stop, 20 secs.
+SendInput, >fire stop, approx 20 secs.
 SendInput {enter Down}
 SendInput {enter Up}
 }
@@ -339,5 +340,16 @@ SendInput, {a Down}
 Sleep, 200
 Sleep, 800
 SendInput, {a Up}
+}
+Return
+
+~f11::
+{
+Sleep, 200
+SendInput {k Down}
+SendInput {k Up}
+SendInput, >fire stop, approx 20 secs.
+SendInput {enter Down}
+SendInput {enter Up}
 }
 Return
