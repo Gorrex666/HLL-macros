@@ -60,7 +60,7 @@ Return
 ;Recarga
 ~f5::
 {
-Sleep, 200
+Goto DELAY
 Goto AMMO
 }
 Return
