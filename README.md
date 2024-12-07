@@ -13,7 +13,7 @@ ctrl capslock mantiene presionado "s" on/off
  
 F5 Recarga
 
-F6 Recarga Recarga y dispara
+F6  Recarga y dispara
 
 F7 4 tiros(DISPERSION 15 MTS A 800 MTS)
 
