@@ -1,5 +1,4 @@
 #MaxThreadsPerHotkey 2
-SetKeyDelay, 0
 
 ;Recarga el script
 ~Right::Reload
