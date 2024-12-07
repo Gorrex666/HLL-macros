@@ -60,24 +60,24 @@ Return
 ;Recarga
 ~f5::
 {
-Goto DELAY
-Goto AMMO
+Gosub DELAY
+Gosub AMMO
 }
 Return
 
 ;Recarga y dispara
 ~f6::
 {
-Goto DELAY
-Goto AMMO
-Goto SHOOT
+Gosub DELAY
+Gosub AMMO
+Gosub SHOOT
 }
 Return
 
 ;4 tiros(DISPERSION 15 MTS A 800 MTS)
 ~f7::
 {
-Goto DELAY
+Gosub DELAY
 SendInput, {f2 Down}
 Sleep, 1500
 SendInput, {f2 Up}
@@ -94,7 +94,7 @@ Sleep, 200
 SendInput, {f2 Down}
 Sleep, 800
 SendInput, {a Up}
-Goto SHOOT
+Gosub SHOOT
 Sleep, 500
 SendInput, {f2 Up}
 Sleep, Random, rand, 10, 40
@@ -110,7 +110,7 @@ Sleep, 200
 SendInput, {f2 Down}
 Sleep, 800
 SendInput, {d Up}
-Goto SHOOT
+Gosub SHOOT
 Sleep, 500
 SendInput, {f2 Up}
 Sleep, Random, rand, 10, 40
@@ -127,7 +127,7 @@ Sleep, 200
 SendInput, {f2 Down}
 Sleep, 800
 SendInput, {d Up}
-Goto SHOOT
+Gosub SHOOT
 Sleep, 500
 SendInput, {f2 Up}
 Sleep, Random, rand, 10, 40
@@ -144,14 +144,14 @@ Return
 ;3 tiros (fire mission)
 ~f8::
 {
-Goto DELAY
-Goto AMMO
-Goto SHOOT
-Goto AMMO
-Goto SHOOT
-Goto AMMO
-Goto SHOOT
-Goto CHATY
+Gosub DELAY
+Gosub AMMO
+Gosub SHOOT
+Gosub AMMO
+Gosub SHOOT
+Gosub AMMO
+Gosub SHOOT
+Gosub CHATY
 }
 Return
 
@@ -162,9 +162,9 @@ Loop
 {
 If (!Toggle)
 Break
-Goto DELAY
-Goto AMMO
-Goto SHOOT
+Gosub DELAY
+Gosub AMMO
+Gosub SHOOT
 }
 Return
 
@@ -175,7 +175,7 @@ Loop
 {
 If (!Toggle)
 Break
-Goto DELAY
+Gosub DELAY
 SendInput, {f2 Down}
 Sleep, 1500
 SendInput, {f2 Up}
@@ -192,7 +192,7 @@ Sleep, 200
 SendInput, {f2 Down}
 Sleep, 800
 SendInput, {a Up}
-Goto SHOOT
+Gosub SHOOT
 Sleep, 500
 SendInput, {f2 Up}
 Sleep, Random, rand, 10, 40
@@ -208,7 +208,7 @@ Sleep, 200
 SendInput, {f2 Down}
 Sleep, 800
 SendInput, {d Up}
-Goto SHOOT
+Gosub SHOOT
 Sleep, 500
 SendInput, {f2 Up}
 Sleep, Random, rand, 10, 40
@@ -224,7 +224,7 @@ Sleep, 200
 SendInput, {f2 Down}
 Sleep, 800
 SendInput, {d Up}
-Goto SHOOT
+Gosub SHOOT
 Sleep, 500
 SendInput, {f2 Up}
 Sleep, Random, rand, 10, 40
@@ -261,17 +261,20 @@ Sleep, 3400
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
+return
 
 SHOOT:
 Sleep, Random, rand, 10, 40
 SendInput {Click down}
 SendInput {Click down}
 SendInput {Click up}
+return
 
 DELAY:
 Sleep, 200
 SendInput {Click down}
 SendInput {Click up}
+return
 
 CHATY:
 Random, rand, 21, 23
@@ -282,3 +285,4 @@ SendInput, %rand%
 SendInput, {space}secs.
 SendInput {enter Down}
 SendInput {enter Up}
+return
