@@ -64,10 +64,9 @@ Sleep, 200
 SendInput, {f2 Down}
 Sleep, 1500
 SendInput, {f2 Up}
-Sleep, Random, rand, 40, 80
+Sleep, Random, rand, 10, 40
 Sendinput {r Down}
 Sendinput {r Down}
-Sendinput {r Up}
 Sendinput {r Up}
 Sleep, 3400
 SendInput, {f1 Down}
@@ -85,15 +84,16 @@ SendInput {Click up}
 SendInput {f2 Down}
 Sleep, 1500
 SendInput {f2 Up}
+Sleep, Random, rand, 10, 40
 Sendinput {r Down}
 Sendinput {r Down}
-Sendinput {r Up}
 Sendinput {r Up}
 Sleep, 3400
 SendInput {f1 Down}
 Sleep, 1500
 SendInput {f1 Up}
-Sleep, Random, rand, 40, 80
+Sleep, Random, rand, 10, 40
+SendInput {Click down}
 SendInput {Click down}
 SendInput {Click up}
 }
@@ -108,10 +108,9 @@ SendInput {Click up}
 SendInput, {f2 Down}
 Sleep, 1500
 SendInput, {f2 Up}
-Sleep, Random, rand, 40, 80
+Sleep, Random, rand, 10, 40
 Sendinput {r Down}
 Sendinput {r Down}
-Sendinput {r Up}
 Sendinput {r Up}
 Sleep, 3400
 SendInput, {f1 Down}
@@ -122,11 +121,32 @@ Sleep, 200
 SendInput, {f2 Down}
 Sleep, 800
 SendInput, {a Up}
+Sleep, Random, rand, 10, 40
+SendInput {Click down}
 SendInput {Click down}
 SendInput {Click up}
 Sleep, 500
 SendInput, {f2 Up}
-Sleep, Random, rand, 40, 80
+Sleep, Random, rand, 10, 40
+Sendinput {r Down}
+Sendinput {r Down}
+Sendinput {r Up}
+Sleep, 3400
+SendInput, {f1 Down}
+Sleep, 1500
+SendInput, {f1 Up}
+SendInput, {d Down}
+Sleep, 200
+SendInput, {f2 Down}
+Sleep, 800
+SendInput, {d Up}
+Sleep, Random, rand, 10, 40
+SendInput {Click down}
+SendInput {Click down}
+SendInput {Click up}
+Sleep, 500
+SendInput, {f2 Up}
+Sleep, Random, rand, 10, 40
 Sendinput {r Down}
 Sendinput {r Down}
 Sendinput {r Up}
@@ -140,32 +160,15 @@ Sleep, 200
 SendInput, {f2 Down}
 Sleep, 800
 SendInput, {d Up}
+Sleep, Random, rand, 10, 40
+SendInput {Click down}
 SendInput {Click down}
 SendInput {Click up}
 Sleep, 500
 SendInput, {f2 Up}
-Sleep, Random, rand, 40, 80
+Sleep, Random, rand, 10, 40
 Sendinput {r Down}
 Sendinput {r Down}
-Sendinput {r Up}
-Sendinput {r Up}
-Sleep, 3400
-SendInput, {f1 Down}
-Sleep, 1500
-SendInput, {f1 Up}
-SendInput, {d Down}
-Sleep, 200
-SendInput, {f2 Down}
-Sleep, 800
-SendInput, {d Up}
-SendInput {Click down}
-SendInput {Click up}
-Sleep, 500
-SendInput, {f2 Up}
-Sleep, Random, rand, 40, 80
-Sendinput {r Down}
-Sendinput {r Down}
-Sendinput {r Up}
 Sendinput {r Up}
 Sleep, 3400
 SendInput, {f1 Down}
@@ -183,49 +186,54 @@ SendInput {Click up}
 SendInput {f2 Down}
 Sleep, 1500
 SendInput {f2 Up}
+Sleep, Random, rand, 10, 40
 Sendinput {r Down}
 Sendinput {r Down}
-Sendinput {r Up}
 Sendinput {r Up}
 Sleep, 3400
 SendInput {f1 Down}
 Sleep, 1500
 SendInput {f1 Up}
-Sleep, Random, rand, 40, 80
+Sleep, Random, rand, 10, 40
+SendInput {Click down}
 SendInput {Click down}
 SendInput {Click up}
 SendInput {f2 Down}
 Sleep, 1500
 SendInput {f2 Up}
+Sleep, Random, rand, 10, 40
 Sendinput {r Down}
 Sendinput {r Down}
-Sendinput {r Up}
 Sendinput {r Up}
 Sleep, 3400
 SendInput {f1 Down}
 Sleep, 1500
 SendInput {f1 Up}
-Sleep, Random, rand, 40, 80
+Sleep, Random, rand, 10, 40
+SendInput {Click down}
 SendInput {Click down}
 SendInput {Click up}
 SendInput {f2 Down}
 Sleep, 1500
 SendInput {f2 Up}
+Sleep, Random, rand, 10, 40
 Sendinput {r Down}
 Sendinput {r Down}
-Sendinput {r Up}
 Sendinput {r Up}
 Sleep, 3400
 SendInput {f1 Down}
 Sleep, 1500
 SendInput {f1 Up}
-Sleep, Random, rand, 40, 80
+Sleep, Random, rand, 10, 40
+SendInput {Click down}
 SendInput {Click down}
 SendInput {Click up}
-Sleep, Random, rand, 40, 80
+Random, rand, 20, 22
 SendInput {k Down}
 SendInput {k Up}
-SendInput, >fire stop, approx 20 secs.
+SendInput, >fire stop, approx{space}
+SendInput, %rand%
+SendInput, {space}secs.
 SendInput {enter Down}
 SendInput {enter Up}
 }
@@ -244,16 +252,16 @@ SendInput {Click up}
 SendInput, {f2 Down}
 Sleep, 1500
 SendInput, {f2 Up}
-Sleep, Random, rand, 40, 80
+Sleep, Random, rand, 10, 40
 Sendinput {r Down}
 Sendinput {r Down}
-Sendinput {r Up}
 Sendinput {r Up}
 Sleep, 3400
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
-Sleep, Random, rand, 40, 80
+Sleep, Random, rand, 10, 40
+SendInput {Click down}
 SendInput {Click down}
 SendInput {Click up}
 }
@@ -272,10 +280,9 @@ SendInput {Click up}
 SendInput, {f2 Down}
 Sleep, 1500
 SendInput, {f2 Up}
-Sleep, Random, rand, 40, 80
+Sleep, Random, rand, 10, 40
 Sendinput {r Down}
 Sendinput {r Down}
-Sendinput {r Up}
 Sendinput {r Up}
 Sleep, 3400
 SendInput, {f1 Down}
@@ -286,14 +293,15 @@ Sleep, 200
 SendInput, {f2 Down}
 Sleep, 800
 SendInput, {a Up}
+Sleep, Random, rand, 10, 40
+SendInput {Click down}
 SendInput {Click down}
 SendInput {Click up}
 Sleep, 500
 SendInput, {f2 Up}
-Sleep, Random, rand, 40, 80
+Sleep, Random, rand, 10, 40
 Sendinput {r Down}
 Sendinput {r Down}
-Sendinput {r Up}
 Sendinput {r Up}
 Sleep, 3400
 SendInput, {f1 Down}
@@ -304,14 +312,15 @@ Sleep, 200
 SendInput, {f2 Down}
 Sleep, 800
 SendInput, {d Up}
+Sleep, Random, rand, 10, 40
+SendInput {Click down}
 SendInput {Click down}
 SendInput {Click up}
 Sleep, 500
 SendInput, {f2 Up}
-Sleep, Random, rand, 40, 80
+Sleep, Random, rand, 10, 40
 Sendinput {r Down}
 Sendinput {r Down}
-Sendinput {r Up}
 Sendinput {r Up}
 Sleep, 3400
 SendInput, {f1 Down}
@@ -322,14 +331,15 @@ Sleep, 200
 SendInput, {f2 Down}
 Sleep, 800
 SendInput, {d Up}
+Sleep, Random, rand, 10, 40
+SendInput {Click down}
 SendInput {Click down}
 SendInput {Click up}
 Sleep, 500
 SendInput, {f2 Up}
-Sleep, Random, rand, 40, 80
+Sleep, Random, rand, 10, 40
 Sendinput {r Down}
 Sendinput {r Down}
-Sendinput {r Up}
 Sendinput {r Up}
 Sleep, 3400
 SendInput, {f1 Down}
@@ -343,10 +353,13 @@ SendInput, {a Up}
 Return
 
 ~f11::
+Random, rand, 20, 22
 {
 SendInput {k Down}
 SendInput {k Up}
-SendInput, >fire stop, approx 20 secs.
+SendInput, >fire stop, approx{space}
+SendInput, %rand%
+SendInput, {space}secs.
 SendInput {enter Down}
 SendInput {enter Up}
 }
