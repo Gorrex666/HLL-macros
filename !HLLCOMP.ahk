@@ -69,7 +69,7 @@ Sendinput {r Down}
 Sendinput {r Down}
 Sendinput {r Up}
 Sendinput {r Up}
-Sleep, 3300
+Sleep, 3400
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
@@ -89,7 +89,7 @@ Sendinput {r Down}
 Sendinput {r Down}
 Sendinput {r Up}
 Sendinput {r Up}
-Sleep, 3300
+Sleep, 3400
 SendInput {f1 Down}
 Sleep, 1500
 SendInput {f1 Up}
@@ -113,7 +113,7 @@ Sendinput {r Down}
 Sendinput {r Down}
 Sendinput {r Up}
 Sendinput {r Up}
-Sleep, 3300
+Sleep, 3400
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
@@ -131,7 +131,7 @@ Sendinput {r Down}
 Sendinput {r Down}
 Sendinput {r Up}
 Sendinput {r Up}
-Sleep, 3300
+Sleep, 3400
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
@@ -149,7 +149,7 @@ Sendinput {r Down}
 Sendinput {r Down}
 Sendinput {r Up}
 Sendinput {r Up}
-Sleep, 3300
+Sleep, 3400
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
@@ -167,7 +167,7 @@ Sendinput {r Down}
 Sendinput {r Down}
 Sendinput {r Up}
 Sendinput {r Up}
-Sleep, 3300
+Sleep, 3400
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
@@ -187,7 +187,7 @@ Sendinput {r Down}
 Sendinput {r Down}
 Sendinput {r Up}
 Sendinput {r Up}
-Sleep, 3300
+Sleep, 3400
 SendInput {f1 Down}
 Sleep, 1500
 SendInput {f1 Up}
@@ -201,7 +201,7 @@ Sendinput {r Down}
 Sendinput {r Down}
 Sendinput {r Up}
 Sendinput {r Up}
-Sleep, 3300
+Sleep, 3400
 SendInput {f1 Down}
 Sleep, 1500
 SendInput {f1 Up}
@@ -215,7 +215,7 @@ Sendinput {r Down}
 Sendinput {r Down}
 Sendinput {r Up}
 Sendinput {r Up}
-Sleep, 3300
+Sleep, 3400
 SendInput {f1 Down}
 Sleep, 1500
 SendInput {f1 Up}
@@ -249,7 +249,7 @@ Sendinput {r Down}
 Sendinput {r Down}
 Sendinput {r Up}
 Sendinput {r Up}
-Sleep, 3300
+Sleep, 3400
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
@@ -277,7 +277,7 @@ Sendinput {r Down}
 Sendinput {r Down}
 Sendinput {r Up}
 Sendinput {r Up}
-Sleep, 3300
+Sleep, 3400
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
@@ -295,7 +295,7 @@ Sendinput {r Down}
 Sendinput {r Down}
 Sendinput {r Up}
 Sendinput {r Up}
-Sleep, 3300
+Sleep, 3400
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
@@ -313,7 +313,7 @@ Sendinput {r Down}
 Sendinput {r Down}
 Sendinput {r Up}
 Sendinput {r Up}
-Sleep, 3300
+Sleep, 3400
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
@@ -331,7 +331,7 @@ Sendinput {r Down}
 Sendinput {r Down}
 Sendinput {r Up}
 Sendinput {r Up}
-Sleep, 3300
+Sleep, 3400
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
