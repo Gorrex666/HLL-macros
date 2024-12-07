@@ -54,7 +54,7 @@ Return
 
 
 ;Recarga
-f5::
+~f5::
 {
 Sleep, 200
 SendInput, {f2 Down}
@@ -65,7 +65,7 @@ Sendinput {r Down}
 Sendinput {r Down}
 Sendinput {r Up}
 Sendinput {r Up}
-Sleep, 3500
+Sleep, 3300
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
@@ -85,7 +85,7 @@ Sendinput {r Down}
 Sendinput {r Down}
 Sendinput {r Up}
 Sendinput {r Up}
-Sleep, 3500
+Sleep, 3300
 SendInput {f1 Down}
 Sleep, 1500
 SendInput {f1 Up}
@@ -97,7 +97,7 @@ Return
 
 
 ;4 tiros(DISPERSION 15 MTS A 800 MTS)
-f7::
+~f7::
 {
 Sleep, 200
 SendInput {Click down}
@@ -110,7 +110,7 @@ Sendinput {r Down}
 Sendinput {r Down}
 Sendinput {r Up}
 Sendinput {r Up}
-Sleep, 3500
+Sleep, 3300
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
@@ -128,7 +128,7 @@ Sendinput {r Down}
 Sendinput {r Down}
 Sendinput {r Up}
 Sendinput {r Up}
-Sleep, 3500
+Sleep, 3300
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
@@ -146,7 +146,7 @@ Sendinput {r Down}
 Sendinput {r Down}
 Sendinput {r Up}
 Sendinput {r Up}
-Sleep, 3500
+Sleep, 3300
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
@@ -164,7 +164,7 @@ Sendinput {r Down}
 Sendinput {r Down}
 Sendinput {r Up}
 Sendinput {r Up}
-Sleep, 3500
+Sleep, 3300
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
@@ -173,7 +173,7 @@ Return
 
 
 ;LOOP Recarga y dispara
-f8::
+~f8::
 Toggle := !Toggle
 Loop
 {
@@ -181,7 +181,7 @@ If (!Toggle)
 Break
 SendInput {Click down}
 SendInput {Click up}
-Sleep, 100
+Sleep, Random, rand, 40, 80
 SendInput, {f2 Down}
 Sleep, 1500
 SendInput, {f2 Up}
@@ -190,7 +190,7 @@ Sendinput {r Down}
 Sendinput {r Down}
 Sendinput {r Up}
 Sendinput {r Up}
-Sleep, 3500
+Sleep, 3300
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
@@ -201,7 +201,7 @@ SendInput {Click up}
 Return
 
 ;4 TIROS LOOP (DISPERSION 15 MTS A 800 MTS)
-f9::
+~f9::
 Toggle := !Toggle
 Loop
 {
@@ -218,7 +218,7 @@ Sendinput {r Down}
 Sendinput {r Down}
 Sendinput {r Up}
 Sendinput {r Up}
-Sleep, 3500
+Sleep, 3300
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
@@ -236,7 +236,7 @@ Sendinput {r Down}
 Sendinput {r Down}
 Sendinput {r Up}
 Sendinput {r Up}
-Sleep, 3500
+Sleep, 3300
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
@@ -254,7 +254,7 @@ Sendinput {r Down}
 Sendinput {r Down}
 Sendinput {r Up}
 Sendinput {r Up}
-Sleep, 3500
+Sleep, 3300
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
@@ -272,7 +272,7 @@ Sendinput {r Down}
 Sendinput {r Down}
 Sendinput {r Up}
 Sendinput {r Up}
-Sleep, 3500
+Sleep, 3300
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
@@ -285,7 +285,7 @@ Return
 
 
 ;Recarga el script
-Right::Reload
+~Right::Reload
 Sleep, 200
 Return
 
