@@ -225,7 +225,7 @@ SendInput {Click up}
 Sleep, Random, rand, 40, 80
 SendInput {k Down}
 SendInput {k Up}
-Send, > fire stop.
+Send, >fire stop, 20 secs.
 SendInput {enter Down}
 SendInput {enter Up}
 }
