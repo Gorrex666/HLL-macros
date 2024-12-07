@@ -10,7 +10,8 @@ capslock mantiene presionado "w" on/off
 
 ctrl capslock mantiene presionado "s" on/off
 
- 
+F4 "R" spam
+
 F5 Recarga
 
 F6  Recarga y dispara
