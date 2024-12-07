@@ -1,5 +1,4 @@
 #MaxThreadsPerHotkey 2
-
 ;Recarga el script
 ~Right::Reload
 Sleep, 200
@@ -57,10 +56,6 @@ Else
 SendInput {Click up}
 Return
 
-
-
-
-
 ;Recarga
 ~f5::
 {
@@ -103,65 +98,8 @@ SendInput {Click up}
 }
 Return
 
-;3 tiros (fire mission)
-~f7::
-{
-Sleep, 200
-SendInput {Click down}
-SendInput {Click up}
-SendInput {f2 Down}
-Sleep, 1500
-SendInput {f2 Up}
-Sendinput {r Down}
-Sendinput {r Down}
-Sendinput {r Up}
-Sendinput {r Up}
-Sleep, 3300
-SendInput {f1 Down}
-Sleep, 1500
-SendInput {f1 Up}
-Sleep, Random, rand, 40, 80
-SendInput {Click down}
-SendInput {Click up}
-SendInput {f2 Down}
-Sleep, 1500
-SendInput {f2 Up}
-Sendinput {r Down}
-Sendinput {r Down}
-Sendinput {r Up}
-Sendinput {r Up}
-Sleep, 3300
-SendInput {f1 Down}
-Sleep, 1500
-SendInput {f1 Up}
-Sleep, Random, rand, 40, 80
-SendInput {Click down}
-SendInput {Click up}
-SendInput {f2 Down}
-Sleep, 1500
-SendInput {f2 Up}
-Sendinput {r Down}
-Sendinput {r Down}
-Sendinput {r Up}
-Sendinput {r Up}
-Sleep, 3300
-SendInput {f1 Down}
-Sleep, 1500
-SendInput {f1 Up}
-Sleep, Random, rand, 40, 80
-SendInput {Click down}
-SendInput {Click up}
-Sleep, Random, rand, 40, 80
-Sendinput {k Down}
-Sendinput {k Up}
-Send, fire mission stop, last show in approximately 20 seconds.
-Sendinput {enter Down}
-Sendinput {enter Up}
-}
-Return
-
 ;4 tiros(DISPERSION 15 MTS A 800 MTS)
-~f8::
+~f7::
 {
 Sleep, 200
 SendInput {Click down}
@@ -235,6 +173,63 @@ SendInput, {f1 Up}
 }
 Return
 
+;3 tiros (fire mission)
+~f8::
+{
+Sleep, 200
+SendInput {Click down}
+SendInput {Click up}
+SendInput {f2 Down}
+Sleep, 1500
+SendInput {f2 Up}
+Sendinput {r Down}
+Sendinput {r Down}
+Sendinput {r Up}
+Sendinput {r Up}
+Sleep, 3300
+SendInput {f1 Down}
+Sleep, 1500
+SendInput {f1 Up}
+Sleep, Random, rand, 40, 80
+SendInput {Click down}
+SendInput {Click up}
+SendInput {f2 Down}
+Sleep, 1500
+SendInput {f2 Up}
+Sendinput {r Down}
+Sendinput {r Down}
+Sendinput {r Up}
+Sendinput {r Up}
+Sleep, 3300
+SendInput {f1 Down}
+Sleep, 1500
+SendInput {f1 Up}
+Sleep, Random, rand, 40, 80
+SendInput {Click down}
+SendInput {Click up}
+SendInput {f2 Down}
+Sleep, 1500
+SendInput {f2 Up}
+Sendinput {r Down}
+Sendinput {r Down}
+Sendinput {r Up}
+Sendinput {r Up}
+Sleep, 3300
+SendInput {f1 Down}
+Sleep, 1500
+SendInput {f1 Up}
+Sleep, Random, rand, 40, 80
+SendInput {Click down}
+SendInput {Click up}
+Sleep, Random, rand, 40, 80
+Send {k Down}
+Send {k Up}
+Send, fire mission stop, last show in approx 20 seconds.
+Send {enter Down}
+Send {enter Up}
+}
+Return
+
 ;LOOP Recarga y dispara
 ~f9::
 Toggle := !Toggle
@@ -242,9 +237,9 @@ Loop
 {
 If (!Toggle)
 Break
+Sleep, 200
 SendInput {Click down}
 SendInput {Click up}
-Sleep, Random, rand, 40, 80
 SendInput, {f2 Down}
 Sleep, 1500
 SendInput, {f2 Up}
@@ -260,7 +255,7 @@ SendInput, {f1 Up}
 Sleep, Random, rand, 40, 80
 SendInput {Click down}
 SendInput {Click up}
-}                                                                                                      
+}
 Return
 
 ;4 TIROS LOOP (DISPERSION 15 MTS A 800 MTS)
