@@ -228,7 +228,7 @@ Sleep, Random, rand, 10, 40
 SendInput {Click down}
 SendInput {Click down}
 SendInput {Click up}
-Random, rand, 20, 22
+Random, rand, 21, 23
 SendInput {k Down}
 SendInput {k Up}
 SendInput, >fire stop, approx{space}
@@ -353,7 +353,7 @@ SendInput, {a Up}
 Return
 
 ~f11::
-Random, rand, 20, 22
+Random, rand, 21, 23
 {
 SendInput {k Down}
 SendInput {k Up}
