@@ -26,4 +26,4 @@ F9 LOOP Recarga y dispara
 
 F10 LOOP 4 tiros (DISPERSION 15 MTS A 800 MTS)
 
-F11 manda mensaje ">fire mission stop, approx 20 sec"
+F11 mensaje ">fire mission stop, approx 20 sec"
