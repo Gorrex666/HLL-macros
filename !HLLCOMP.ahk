@@ -103,9 +103,65 @@ SendInput {Click up}
 }
 Return
 
+;3 tiros (fire mission)
+~f7::
+{
+Sleep, 200
+SendInput {Click down}
+SendInput {Click up}
+SendInput {f2 Down}
+Sleep, 1500
+SendInput {f2 Up}
+Sendinput {r Down}
+Sendinput {r Down}
+Sendinput {r Up}
+Sendinput {r Up}
+Sleep, 3300
+SendInput {f1 Down}
+Sleep, 1500
+SendInput {f1 Up}
+Sleep, Random, rand, 40, 80
+SendInput {Click down}
+SendInput {Click up}
+SendInput {f2 Down}
+Sleep, 1500
+SendInput {f2 Up}
+Sendinput {r Down}
+Sendinput {r Down}
+Sendinput {r Up}
+Sendinput {r Up}
+Sleep, 3300
+SendInput {f1 Down}
+Sleep, 1500
+SendInput {f1 Up}
+Sleep, Random, rand, 40, 80
+SendInput {Click down}
+SendInput {Click up}
+SendInput {f2 Down}
+Sleep, 1500
+SendInput {f2 Up}
+Sendinput {r Down}
+Sendinput {r Down}
+Sendinput {r Up}
+Sendinput {r Up}
+Sleep, 3300
+SendInput {f1 Down}
+Sleep, 1500
+SendInput {f1 Up}
+Sleep, Random, rand, 40, 80
+SendInput {Click down}
+SendInput {Click up}
+Sleep, Random, rand, 40, 80
+Sendinput {k Down}
+Sendinput {k Up}
+Send, fire mission stop, last show in approximately 20 seconds.
+Sendinput {enter Down}
+Sendinput {enter Up}
+}
+Return
 
 ;4 tiros(DISPERSION 15 MTS A 800 MTS)
-~f7::
+~f8::
 {
 Sleep, 200
 SendInput {Click down}
@@ -176,64 +232,6 @@ Sleep, 3300
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
-}
-Return
-
-
-;3 tiros (fire mission)
-~f8::
-{
-Sleep, 200
-SendInput {Click down}
-SendInput {Click up}
-SendInput {f2 Down}
-Sleep, 1500
-SendInput {f2 Up}
-Sendinput {r Down}
-Sendinput {r Down}
-Sendinput {r Up}
-Sendinput {r Up}
-Sleep, 3300
-SendInput {f1 Down}
-Sleep, 1500
-SendInput {f1 Up}
-Sleep, Random, rand, 40, 80
-SendInput {Click down}
-SendInput {Click up}
-SendInput {f2 Down}
-Sleep, 1500
-SendInput {f2 Up}
-Sendinput {r Down}
-Sendinput {r Down}
-Sendinput {r Up}
-Sendinput {r Up}
-Sleep, 3300
-SendInput {f1 Down}
-Sleep, 1500
-SendInput {f1 Up}
-Sleep, Random, rand, 40, 80
-SendInput {Click down}
-SendInput {Click up}
-SendInput {f2 Down}
-Sleep, 1500
-SendInput {f2 Up}
-Sendinput {r Down}
-Sendinput {r Down}
-Sendinput {r Up}
-Sendinput {r Up}
-Sleep, 3300
-SendInput {f1 Down}
-Sleep, 1500
-SendInput {f1 Up}
-Sleep, Random, rand, 40, 80
-SendInput {Click down}
-SendInput {Click up}
-Sleep, Random, rand, 40, 80
-Sendinput {k Down}
-Sendinput {k Up}
-Send, fire mission stop, last show in approximately 20 seconds.
-Sendinput {enter Down}
-Sendinput {enter Up}
 }
 Return
 
