@@ -1,5 +1,13 @@
 #MaxThreadsPerHotkey 2
 
+;Recarga el script
+~Right::Reload
+Sleep, 200
+Return
+
+;Cierra
+f12::ExitApp 
+
 ;LOOP r (spamea recarga)
 f4::
 Toggle := !Toggle
@@ -31,7 +39,7 @@ SendInput {s up}
 Return
 
 ;Mantiene apretado F por 5 segundos con J.
-j::
+~j::
 {
 Sleep, 200
 SendInput, {f Down}
@@ -172,8 +180,65 @@ SendInput, {f1 Up}
 Return
 
 
-;LOOP Recarga y dispara
+;3 tiros (fire mission)
 ~f8::
+{
+Sleep, 200
+SendInput {Click down}
+SendInput {Click up}
+SendInput {f2 Down}
+Sleep, 1500
+SendInput {f2 Up}
+Sendinput {r Down}
+Sendinput {r Down}
+Sendinput {r Up}
+Sendinput {r Up}
+Sleep, 3300
+SendInput {f1 Down}
+Sleep, 1500
+SendInput {f1 Up}
+Sleep, Random, rand, 40, 80
+SendInput {Click down}
+SendInput {Click up}
+SendInput {f2 Down}
+Sleep, 1500
+SendInput {f2 Up}
+Sendinput {r Down}
+Sendinput {r Down}
+Sendinput {r Up}
+Sendinput {r Up}
+Sleep, 3300
+SendInput {f1 Down}
+Sleep, 1500
+SendInput {f1 Up}
+Sleep, Random, rand, 40, 80
+SendInput {Click down}
+SendInput {Click up}
+SendInput {f2 Down}
+Sleep, 1500
+SendInput {f2 Up}
+Sendinput {r Down}
+Sendinput {r Down}
+Sendinput {r Up}
+Sendinput {r Up}
+Sleep, 3300
+SendInput {f1 Down}
+Sleep, 1500
+SendInput {f1 Up}
+Sleep, Random, rand, 40, 80
+SendInput {Click down}
+SendInput {Click up}
+Sleep, Random, rand, 40, 80
+Sendinput {k Down}
+Sendinput {k Up}
+Send, fire mission stop, last show in approximately 20 seconds.
+Sendinput {enter Down}
+Sendinput {enter Up}
+}
+Return
+
+;LOOP Recarga y dispara
+~f9::
 Toggle := !Toggle
 Loop
 {
@@ -201,7 +266,7 @@ SendInput {Click up}
 Return
 
 ;4 TIROS LOOP (DISPERSION 15 MTS A 800 MTS)
-~f9::
+~f10::
 Toggle := !Toggle
 Loop
 {
@@ -282,12 +347,3 @@ Sleep, 800
 SendInput, {a Up}
 }
 Return
-
-
-;Recarga el script
-~Right::Reload
-Sleep, 200
-Return
-
-;Cierra
-f12::ExitApp 
