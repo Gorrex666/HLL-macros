@@ -1,4 +1,5 @@
 #MaxThreadsPerHotkey 2
+
 ;Recarga el script
 ~Right::Reload
 Sleep, 200
@@ -222,11 +223,11 @@ Sleep, Random, rand, 40, 80
 SendInput {Click down}
 SendInput {Click up}
 Sleep, Random, rand, 40, 80
-Send {k Down}
-Send {k Up}
-Send, fire mission stop, last show in approx 20 seconds.
-Send {enter Down}
-Send {enter Up}
+SendInput {k Down}
+SendInput {k Up}
+Send, > fire stop.
+SendInput {enter Down}
+SendInput {enter Up}
 }
 Return
 
