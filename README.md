@@ -12,6 +12,8 @@ ctrl capslock mantiene presionado "s" on/off
 
 F4 "R" spam
 
+/ MACROS ARTILLERIA /
+
 F5 Recarga
 
 F6  Recarga y dispara
