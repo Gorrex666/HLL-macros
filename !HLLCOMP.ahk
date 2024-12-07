@@ -249,7 +249,6 @@ Goto CHATY
 Return
 
 ;LABELS
-
 AMMO:
 SendInput, {f2 Down}
 Sleep, 1500
