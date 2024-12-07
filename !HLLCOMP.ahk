@@ -61,7 +61,7 @@ Return
 ~f5::
 {
 Sleep, 200
-Goto RELOAD
+Goto AMMO
 }
 Return
 
@@ -69,7 +69,7 @@ Return
 ~f6::
 {
 Goto DELAY
-Goto RELOAD
+Goto AMMO
 Goto SHOOT
 }
 Return
@@ -145,13 +145,13 @@ Return
 ~f8::
 {
 Goto DELAY
-Goto RELOAD
+Goto AMMO
 Goto SHOOT
-Goto RELOAD
+Goto AMMO
 Goto SHOOT
-Goto RELOAD
+Goto AMMO
 Goto SHOOT
-Goto CHAT
+Goto CHATY
 }
 Return
 
@@ -163,7 +163,7 @@ Loop
 If (!Toggle)
 Break
 Goto DELAY
-Goto RELOAD
+Goto AMMO
 Goto SHOOT
 }
 Return
@@ -244,13 +244,13 @@ Return
 
 ~f11::
 {
-Goto CHAT
+Goto CHATY
 }
 Return
 
 ;LABELS
 
-RELOAD:
+AMMO:
 SendInput, {f2 Down}
 Sleep, 1500
 SendInput, {f2 Up}
@@ -274,7 +274,7 @@ Sleep, 200
 SendInput {Click down}
 SendInput {Click up}
 
-CHAT:
+CHATY:
 Random, rand, 21, 23
 SendInput {k Down}
 SendInput {k Up}
