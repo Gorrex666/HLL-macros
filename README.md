@@ -17,6 +17,8 @@ F6  Recarga y dispara
 
 F7 4 tiros(DISPERSION 15 MTS A 800 MTS)
 
-F8 LOOP Recarga y dispara
+F8 3 tiros (fire mission)
 
-F9 LOOP 4 tiros
+F9 LOOP Recarga y dispara
+
+F10 LOOP 4 tiros (DISPERSION 15 MTS A 800 MTS)
