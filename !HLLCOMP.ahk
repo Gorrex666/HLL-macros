@@ -77,7 +77,7 @@ Sleep, 80
 Sendinput {r Up}
 Sleep, 40
 Send {r Down}
-Sleep, 80
+Sleep, 40
 Send {r Up}
 Sleep, 3400
 SendInput, {f1 Down}
@@ -102,7 +102,7 @@ Sleep, 80
 Sendinput {r Up}
 Sleep, 40
 Send {r Down}
-Sleep, 80
+Sleep, 40
 Send {r Up}
 Sleep, 3400
 SendInput, {f1 Down}
@@ -153,7 +153,7 @@ Sleep, 80
 Sendinput {r Up}
 Sleep, 40
 Send {r Down}
-Sleep, 80
+Sleep, 40
 Send {r Up}
 Sleep, 3400
 SendInput, {f1 Down}
@@ -178,7 +178,7 @@ Sleep, 80
 Sendinput {r Up}
 Sleep, 40
 Send {r Down}
-Sleep, 80
+Sleep, 40
 Send {r Up}
 Sleep, 3400
 SendInput, {f1 Down}
@@ -210,7 +210,7 @@ Sleep, 80
 Sendinput {r Up}
 Sleep, 40
 Send {r Down}
-Sleep, 80
+Sleep, 40
 Send {r Up}
 Sleep, 3400
 SendInput, {f1 Down}
@@ -254,7 +254,7 @@ Sleep, 80
 Sendinput {r Up}
 Sleep, 40
 Send {r Down}
-Sleep, 80
+Sleep, 40
 Send {r Up}
 Sleep, 3400
 SendInput, {f1 Down}
