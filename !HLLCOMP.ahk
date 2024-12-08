@@ -33,7 +33,7 @@ return
 #IfWinActive
 
 ; Hotkey to toggle Always on Top functionality
-^Backspace:: ; Ctrl + T
++Backspace:: ; shift + backspace
     ; Toggle Always on Top for the window
     WinSet, AlwaysOnTop, Toggle, Calculation
 return
