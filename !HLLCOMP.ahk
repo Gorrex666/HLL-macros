@@ -2,8 +2,6 @@
 ;control + enter = focus on window
 ;shift + enter = gib result
 
-
-
 xMin := 100
 xMax := 1600
 
@@ -14,7 +12,7 @@ options["us"] := { "m": -0.237035714285714, "b": 1001.46547619048 }
 options["bri"] := { "m": -0.1773, "b": 550.69 }
 
 ; Set a larger font size for the GUI
-Gui, Font, s14, Bold
+Gui, Font, s14, Bold, 
 
 ; Create the GUI window
 Gui, Add, Text, x10 y20 w150 h30,
@@ -23,16 +21,16 @@ Gui, Add, Text, x10 y70 w150 h30,
 Gui, Add, DropDownList, vNationSelect x10 y70 w45 h25, ru|us|bri
 
 ; Set even larger font for the result text
-Gui, Font, s22, Bold
+Gui, Font, s26, Bold, 
 Gui, Add, Text, vResultText x60 y70 w220 h40,
 
-Gui, Show, w160 h160, Distance Calculation
+Gui, Show, w160 h160, Calculation
 
 ; Make window always on top by default (optional, remove if not needed immediately)
-WinSet, AlwaysOnTop, On, Distance Calculation
+WinSet, AlwaysOnTop, On, Calculation
 
 ; Assign the hotkey to trigger the calculation
-#IfWinActive Distance Calculation
+#IfWinActive Calculation
 +Enter:: ; Shift + Enter
     Gosub, Calculate
 return
@@ -41,15 +39,15 @@ return
 ; Hotkey to toggle Always on Top functionality
 ^Backspace:: ; Ctrl + T
     ; Toggle Always on Top for the window
-    WinSet, AlwaysOnTop, Toggle, Distance Calculation
+    WinSet, AlwaysOnTop, Toggle, Calculation
 return
 
 ; Hotkey to focus on the Distance Input text box (Ctrl + I)
 ^Enter:: ; Ctrl + I
     ; Bring the GUI window to the foreground
-    WinActivate, Distance Calculation
+    WinActivate, Calculation
     ; Focus on the input control (DistanceInput)
-    ControlFocus, DistanceInput, Distance Calculation
+    ControlFocus, DistanceInput, Calculation
 return
 
 Calculate:
