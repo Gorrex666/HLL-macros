@@ -1,7 +1,7 @@
 ;control + backspace = always on top on/off
 ;control + enter = focus on window
 ;shift + enter = gib result
-
+SetBatchLines -1
 xMin := 100
 xMax := 1600
 
@@ -31,7 +31,7 @@ WinSet, AlwaysOnTop, On, Calculation
 
 ; Assign the hotkey to trigger the calculation
 #IfWinActive Calculation
-+Enter:: ; Shift + Enter
+~Enter:: ; Shift + Enter
     Gosub, Calculate
 return
 #IfWinActive
@@ -43,7 +43,7 @@ return
 return
 
 ; Hotkey to focus on the Distance Input text box (Ctrl + I)
-^Enter:: ; Ctrl + I
++Enter:: ; Ctrl + I
     ; Bring the GUI window to the foreground
     WinActivate, Calculation
     ; Focus on the input control (DistanceInput)
@@ -164,26 +164,24 @@ Gosub DELAY
 Gosub AMMO
 Gosub SHOOT
 }
-Return
-
-~f7:: ;4 tiros(DISPERSION 15 MTS A 800 MTS)
+Returnrra
 {
 Gosub DELAY
 SendInput, {f2 Down}
-Sleep, 1500
+Sleep, 1400
 SendInput, {f2 Up}
 Sendinput {r Down}
-Sleep, 80
+Sleep, 40
 Sendinput {r Up}
-Sleep, 40
+Sleep, 20
 Send {r Down}
-Sleep, 40
+Sleep, 20
 Send {r Up}
-Sleep, 3400
+Sleep, 3200
 SendInput, {f1 Down}
-Sleep, 40
+Sleep, 20
 SendInput, {f1 Down}
-Sleep, 1500
+Sleep, 1400
 SendInput, {f1 Up}
 SendInput, {a Down}
 Sleep, 200
@@ -195,18 +193,18 @@ Gosub SRCONT
 Gosub SHOOT
 Gosub SRCONT
 Gosub SHOOT
-Sleep, 500
+Sleep, 400
 SendInput, {f2 Up}
 Sendinput {r Down}
-Sleep, 80
+Sleep, 20
 Sendinput {r Up}
-Sleep, 40
+Sleep, 20
 Send {r Down}
-Sleep, 40
+Sleep, 20
 Send {r Up}
 Sleep, 3400
 SendInput, {f1 Down}
-Sleep, 40
+Sleep, 20
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
@@ -246,20 +244,20 @@ If (!Toggle)
 Break
 Gosub DELAY
 SendInput, {f2 Down}
-Sleep, 1500
+Sleep, 1400
 SendInput, {f2 Up}
 Sendinput {r Down}
-Sleep, 80
+Sleep, 20
 Sendinput {r Up}
-Sleep, 40
+Sleep, 20
 Send {r Down}
-Sleep, 40
+Sleep, 20
 Send {r Up}
-Sleep, 3400
+Sleep, 3200
 SendInput, {f1 Down}
-Sleep, 40
+Sleep, 20
 SendInput, {f1 Down}
-Sleep, 1500
+Sleep, 1400
 SendInput, {f1 Up}
 SendInput, {a Down}
 Sleep, 200
@@ -271,20 +269,20 @@ Gosub SRCONT
 Gosub SHOOT
 Gosub SRCONT
 Gosub SHOOT
-Sleep, 500
+Sleep, 400
 SendInput, {f2 Up}
 Sendinput {r Down}
-Sleep, 80
+Sleep, 40
 Sendinput {r Up}
-Sleep, 40
+Sleep, 20
 Send {r Down}
-Sleep, 40
+Sleep, 20
 Send {r Up}
-Sleep, 3400
+Sleep, 3200
 SendInput, {f1 Down}
-Sleep, 40
+Sleep, 20
 SendInput, {f1 Down}
-Sleep, 1500
+Sleep, 1400
 SendInput, {f1 Up}
 SendInput, {a Down}
 Sleep, 200
@@ -295,7 +293,7 @@ Return
 
 f11:: ;"FIRE MISSION OVER" por chat
 {
-Sleep, 200
+Sleep, 20
 Goto CHATY
 }
 Return
@@ -303,34 +301,33 @@ Return
 ;LABELS
 AMMO:
 SendInput, {f2 Down}
-Sleep, 1500
+Sleep, 1400
 SendInput, {f2 Up}
 Sendinput {r Down}
-Sleep, 80
+Sleep, 20
 Sendinput {r Up}
-Sleep, 40
+Sleep, 20
 Send {r Down}
-Sleep, 40
+Sleep, 20
 Send {r Up}
-Sleep, 3400
+Sleep, 3200
 SendInput, {f1 Down}
-Sleep, 40
+Sleep, 20
 SendInput, {f1 Down}
-Sleep, 1500
+Sleep, 1400
 SendInput, {f1 Up}
 return
 
 SHOOT:
 SendInput {Click down}
-Sleep, 40
+Sleep, 20
 SendInput {Click down}
 SendInput {Click up}
 return
 
 DELAY:
-Sleep, 200
 SendInput {Click down}
-Sleep, 40
+Sleep, 20
 SendInput {Click down}
 SendInput {Click up}
 return
@@ -347,20 +344,20 @@ SendInput {enter Up}
 return
 
 SRCONT: ;Shoot right continuous, (saves a second by pressing f2 before the shooting take place)
-Sleep, 500
+Sleep, 400
 SendInput, {f2 Up}
 Sendinput {r Down}
-Sleep, 80
+Sleep, 20
 Sendinput {r Up}
-Sleep, 40
+Sleep, 20
 Send {r Down}
-Sleep, 40
+Sleep, 20
 Send {r Up}
-Sleep, 3400
+Sleep, 3200
 SendInput, {f1 Down}
-Sleep, 40
+Sleep, 20
 SendInput, {f1 Down}
-Sleep, 1500
+Sleep, 1400
 SendInput, {f1 Up}
 SendInput, {d Down}
 Sleep, 200
