@@ -30,9 +30,9 @@ return
 {
 WinActivate, Calculation
 Sleep, 20
-Send ^a
+Sendinput ^a
 Sleep, 20
-Send {Backspace}
+Sendinput {Backspace}
 }
 return
 
