@@ -1,3 +1,105 @@
+;control + backspace = always on top on/off
+;control + enter = focus on window
+;shift + enter = gib result
+
+
+
+xMin := 100
+xMax := 1600
+
+; Options object for different nations
+options := {}
+options["ru"] := { "m": -0.2136691176, "b": 1141.7215 }
+options["us"] := { "m": -0.237035714285714, "b": 1001.46547619048 }
+options["bri"] := { "m": -0.1773, "b": 550.69 }
+
+; Set a larger font size for the GUI
+Gui, Font, s14, Bold
+
+; Create the GUI window
+Gui, Add, Text, x10 y20 w150 h30,
+Gui, Add, Edit, vDistanceInput x10 y20 w100 h30, 0
+Gui, Add, Text, x10 y70 w150 h30,
+Gui, Add, DropDownList, vNationSelect x10 y70 w45 h25, ru|us|bri
+
+; Set even larger font for the result text
+Gui, Font, s22, Bold
+Gui, Add, Text, vResultText x60 y70 w220 h40,
+
+Gui, Show, w160 h160, Distance Calculation
+
+; Make window always on top by default (optional, remove if not needed immediately)
+WinSet, AlwaysOnTop, On, Distance Calculation
+
+; Assign the hotkey to trigger the calculation
+#IfWinActive Distance Calculation
++Enter:: ; Shift + Enter
+    Gosub, Calculate
+return
+#IfWinActive
+
+; Hotkey to toggle Always on Top functionality
+^Backspace:: ; Ctrl + T
+    ; Toggle Always on Top for the window
+    WinSet, AlwaysOnTop, Toggle, Distance Calculation
+return
+
+; Hotkey to focus on the Distance Input text box (Ctrl + I)
+^Enter:: ; Ctrl + I
+    ; Bring the GUI window to the foreground
+    WinActivate, Distance Calculation
+    ; Focus on the input control (DistanceInput)
+    ControlFocus, DistanceInput, Distance Calculation
+return
+
+Calculate:
+    ; Get the input values
+    Gui, Submit, NoHide ; Get the values from the GUI
+
+    ; Check if the input is a valid number
+    if (DistanceInput == "" || !IsNumber(DistanceInput)) {
+        MsgBox, 16, Input Error, Please enter a valid distance.
+        return
+    }
+
+    ; Check if a nation is selected
+    if (NationSelect = "") {
+        MsgBox, 16, Selection Error, Please select a nation.
+        return
+    }
+
+    ; Perform the calculation
+    result := calculate(DistanceInput, NationSelect)
+
+    ; Display the result in the GUI
+    GuiControl, , ResultText, %result%
+Return
+
+calculate(x, nation) {
+    global options, xMin, xMax
+    if (x >= xMin && x <= xMax) {
+        m := options[nation]["m"]
+        b := options[nation]["b"]
+        return Round(m * x + b)
+    } else {
+        ; Throwing error if the distance is out of range
+        DistanceError()
+    }
+}
+
+DistanceError() {
+    global xMin, xMax
+    MsgBox, 16, Distance Error, Enter a distance between %xMin% and %xMax% meters
+}
+
+IsNumber(val) {
+    ; Simple function to check if a string is a valid number
+    return val is number
+}
+
+GuiClose:
+ExitApp
+
 #MaxThreadsPerHotkey 2
 
 ~Right::Reload ;Recarga el script
