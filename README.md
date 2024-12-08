@@ -1,8 +1,8 @@
 Mini Artillery calculator: 
 
-control + backspace = always on top on/off
+shift + backspace = always on top on/off
 
-control + enter = focus on window
+shift + enter = focus on window
 
 enter = give result.
  
