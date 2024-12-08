@@ -1,5 +1,6 @@
 ;control + backspace = always on top on/off // control + enter = focus on window // shift + enter = gib result
 
+
 xMin := 100
 xMax := 1600
 
@@ -10,15 +11,15 @@ options["us"] := { "m": -0.237035714285714, "b": 1001.46547619048 }
 options["bri"] := { "m": -0.1773, "b": 550.69 }
 
 ;font for the GUI
-Gui, Font, s14, Bold, 
-
+Gui, Font, s14, Bold,
 ;GUI window
-Gui, Add, Edit, vDistanceInput x5 y0 w100 h30,
-Gui, Add, DropDownList, vNationSelect x5 y30 w45 h25, ru|us|bri
+Gui -sysmenu
+Gui, Add, Edit, vDistanceInput x0 y0 w55 h30,
+Gui, Add, DropDownList, vNationSelect x0 y30 w45 h25, ru|us|bri
 ;result text
 Gui, Font, s26, Bold, 
-Gui, Add, Text, vResultText x60 y25 w220 h40,
-Gui, Show, w150 h60, Calculation
+Gui, Add, Text, vResultText x45 y25 w220 h40,
+Gui, Show, w125 h60, Calculation
 
 ;hotkey to trigger the calculation
 #IfWinActive Calculation
@@ -58,7 +59,6 @@ ExitApp
 #MaxThreadsPerHotkey 2
 
 ~Home::Reload ;Recarga el script
-
 
 Sleep, 200
 Return
