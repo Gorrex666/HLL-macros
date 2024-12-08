@@ -4,7 +4,6 @@ shift + backspace = always on top on/off
 
 shift + enter = focus on window
 
-enter = give result.
 
 //MISC
  
