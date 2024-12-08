@@ -96,7 +96,7 @@ ExitApp
 
 #MaxThreadsPerHotkey 2
 
-~pgup::Reload ;Recarga el script
+~Home::Reload ;Recarga el script
 Sleep, 200
 Return
 
