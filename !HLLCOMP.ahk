@@ -1,39 +1,28 @@
 ;control + backspace = always on top on/off // control + enter = focus on window // shift + enter = gib result
 
-
 xMin := 100
 xMax := 1600
 
 ; Options object for different nations
 options := {}
-options["ru"] := { "m": -0.2136691176, "b": 1141.7215 }
 options["us"] := { "m": -0.237035714285714, "b": 1001.46547619048 }
+options["ru"] := { "m": -0.2136691176, "b": 1141.7215 }
 options["bri"] := { "m": -0.1773, "b": 550.69 }
 
-;font for the GUI
-Gui, Font, s14, Bold,
-;GUI window
+; Font for the GUI
+Gui, Font, s14, Bold
+; GUI window
 Gui -sysmenu
-Gui, Add, Edit, vDistanceInput x0 y0 w55 h30,
-Gui, Add, DropDownList, vNationSelect x0 y30 w45 h25, ru|us|bri
-;result text
-Gui, Font, s26, Bold, 
-Gui, Add, Text, vResultText x45 y25 w220 h40,
+Gui, Add, Edit, vDistanceInput gCalculate x0 y0 w55 h30 ; Use gLabel to trigger calculation
+Gui, Add, DropDownList, vNationSelect gCalculate x0 y30 w45 h110, us|ru|bri
+; Result text
+Gui, Font, s26, Bold
+Gui, Add, Text, vResultText x45 y25 w220 h40
 Gui, Show, w125 h60, Calculation
-
-;hotkey to trigger the calculation
-#IfWinActive Calculation
-~Enter::Gosub, Calculate
-return
-#IfWinActive
 
 ; Hotkey to toggle Always on Top functionality
 +Backspace::WinSet, AlwaysOnTop, Toggle, Calculation
 return
-
-; Hotkey to focus on the Distance Input text box (Ctrl + I
-+Enter::WinActivate, Calculation
-ControlFocus, DistanceInput, Calculation
 
 Calculate:
 ; Get the input values
@@ -50,7 +39,7 @@ calculate(x, nation) {
         m := options[nation]["m"]
         b := options[nation]["b"]
         return Round(m * x + b)
-    } 
+    }
 }
 
 GuiClose:
