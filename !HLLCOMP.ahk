@@ -18,7 +18,7 @@ Sendinput {r Up}
 }
 Return
 
-~CapsLock:: ;Mantiene "W" con capslock "S" con ctrl+capslock
+~CapsLock:: ;Mantiene "W" con capslock "S" con ctrl+capslock (on/off)
 KeyDown := !KeyDown
 If KeyDown
 SendInput {w down}
@@ -42,7 +42,7 @@ SendInput, {f Up}
 }
 Return
 
-`:: ;Mantiene apretado el click izq con `
+`:: ;Mantiene apretado el click izq con ` (on/off)
 KeyDown := !KeyDown
 If KeyDown
 SendInput {Click down}
