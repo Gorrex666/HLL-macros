@@ -6,7 +6,7 @@ control + enter = focus on window
 
 shift + enter = gib result.
  
- ➡ (flecha derecha)  recarga el script
+PGUP  recarga el script
 
 F12 cierra el script
 
