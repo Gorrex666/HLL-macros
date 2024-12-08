@@ -16,7 +16,7 @@ Gui, Font, s14, Bold,
 
 ; Create the GUI window
 Gui, Add, Text, x10 y20 w150 h30,
-Gui, Add, Edit, vDistanceInput x10 y20 w100 h30, 0
+Gui, Add, Edit, vDistanceInput x10 y20 w100 h30,
 Gui, Add, Text, x10 y70 w150 h30,
 Gui, Add, DropDownList, vNationSelect x10 y70 w45 h25, ru|us|bri
 
