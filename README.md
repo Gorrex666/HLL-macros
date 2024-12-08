@@ -1,14 +1,14 @@
-Mini calculadora artilleria: 
+Mini Artillery calculator: 
 
 control + backspace = always on top on/off
 
 control + enter = focus on window
 
-shift + enter = gib result.
+shift + enter = give result.
  
-PGUP  recarga el script
+PGUP  reload script
 
-F12 cierra el script
+F12 close
 
 J presiona "f" por 6 segundos para curarse/revivir
 
