@@ -1,9 +1,10 @@
-Mini calculadora artilleria 
+Mini calculadora artilleria: 
+
 control + backspace = always on top on/off
 
 control + enter = focus on window
 
-shift + enter = gib result
+shift + enter = gib result.
  
  ➡ (flecha derecha)  recarga el script
 
