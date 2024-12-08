@@ -16,7 +16,7 @@ Loop
 If (!Toggle)
 Break
 Sendinput {r Down}
-Sleep, 100
+Sleep, 200
 Sendinput {r Up}
 }
 Return
@@ -81,11 +81,16 @@ Gosub DELAY
 SendInput, {f2 Down}
 Sleep, 1500
 SendInput, {f2 Up}
+Sendinput {r Down}
+Sleep, 40
+Sendinput {r Down}
 Sleep, Random, rand, 10, 40
 Sendinput {r Down}
-Sendinput {r Down}
 Sendinput {r Up}
+Sleep, Random, rand, 10, 40
 Sleep, 3400
+SendInput, {f1 Down}
+Sleep, 40
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
@@ -95,46 +100,21 @@ SendInput, {f2 Down}
 Sleep, 800
 SendInput, {a Up}
 Gosub SHOOT
-Sleep, 500
-SendInput, {f2 Up}
-Sleep, Random, rand, 10, 40
-Sendinput {r Down}
-Sendinput {r Down}
-Sendinput {r Up}
-Sleep, 3400
-SendInput, {f1 Down}
-Sleep, 1500
-SendInput, {f1 Up}
-SendInput, {d Down}
-Sleep, 200
-SendInput, {f2 Down}
-Sleep, 800
-SendInput, {d Up}
+Gosub SRCONT
+Gosub SHOOT
+Gosub SRCONT
 Gosub SHOOT
 Sleep, 500
 SendInput, {f2 Up}
+Sleep, 100
+Sendinput {r Down}
 Sleep, Random, rand, 10, 40
 Sendinput {r Down}
-Sendinput {r Down}
 Sendinput {r Up}
-Sendinput {r Up}
+Sleep, Random, rand, 10, 40
 Sleep, 3400
 SendInput, {f1 Down}
-Sleep, 1500
-SendInput, {f1 Up}
-SendInput, {d Down}
-Sleep, 200
-SendInput, {f2 Down}
-Sleep, 800
-SendInput, {d Up}
-Gosub SHOOT
-Sleep, 500
-SendInput, {f2 Up}
-Sleep, Random, rand, 10, 40
-Sendinput {r Down}
-Sendinput {r Down}
-Sendinput {r Up}
-Sleep, 3400
+Sleep, 40
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
@@ -179,11 +159,16 @@ Gosub DELAY
 SendInput, {f2 Down}
 Sleep, 1500
 SendInput, {f2 Up}
+Sendinput {r Down}
+Sleep, 40
+Sendinput {r Down}
 Sleep, Random, rand, 10, 40
 Sendinput {r Down}
-Sendinput {r Down}
 Sendinput {r Up}
+Sleep, Random, rand, 10, 40
 Sleep, 3400
+SendInput, {f1 Down}
+Sleep, 40
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
@@ -193,45 +178,21 @@ SendInput, {f2 Down}
 Sleep, 800
 SendInput, {a Up}
 Gosub SHOOT
-Sleep, 500
-SendInput, {f2 Up}
-Sleep, Random, rand, 10, 40
-Sendinput {r Down}
-Sendinput {r Down}
-Sendinput {r Up}
-Sleep, 3400
-SendInput, {f1 Down}
-Sleep, 1500
-SendInput, {f1 Up}
-SendInput, {d Down}
-Sleep, 200
-SendInput, {f2 Down}
-Sleep, 800
-SendInput, {d Up}
+Gosub SRCONT
+Gosub SHOOT
+Gosub SRCONT
 Gosub SHOOT
 Sleep, 500
 SendInput, {f2 Up}
+Sleep, 100
+Sendinput {r Down}
 Sleep, Random, rand, 10, 40
 Sendinput {r Down}
-Sendinput {r Down}
 Sendinput {r Up}
+Sleep, Random, rand, 10, 40
 Sleep, 3400
 SendInput, {f1 Down}
-Sleep, 1500
-SendInput, {f1 Up}
-SendInput, {d Down}
-Sleep, 200
-SendInput, {f2 Down}
-Sleep, 800
-SendInput, {d Up}
-Gosub SHOOT
-Sleep, 500
-SendInput, {f2 Up}
-Sleep, Random, rand, 10, 40
-Sendinput {r Down}
-Sendinput {r Down}
-Sendinput {r Up}
-Sleep, 3400
+Sleep, 40
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
@@ -242,8 +203,9 @@ SendInput, {a Up}
 }
 Return
 
-~f11::
+f11::
 {
+Sleep, 200
 Goto CHATY
 }
 Return
@@ -253,11 +215,15 @@ AMMO:
 SendInput, {f2 Down}
 Sleep, 1500
 SendInput, {f2 Up}
-Sleep, Random, rand, 10, 40
 Sendinput {r Down}
+Sleep, 40
+Sendinput {r Down}
+Sleep, Random, rand, 10, 40
 Sendinput {r Down}
 Sendinput {r Up}
 Sleep, 3400
+SendInput, {f1 Down}
+Sleep, 40
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
@@ -266,12 +232,15 @@ return
 SHOOT:
 Sleep, Random, rand, 10, 40
 SendInput {Click down}
+Sleep, Random, rand, 10, 40
 SendInput {Click down}
 SendInput {Click up}
 return
 
 DELAY:
 Sleep, 200
+SendInput {Click down}
+Sleep, Random, rand, 10, 40
 SendInput {Click down}
 SendInput {Click up}
 return
@@ -280,9 +249,30 @@ CHATY:
 Random, rand, 21, 23
 SendInput {k Down}
 SendInput {k Up}
-SendInput, >fire stop, approx{space}
-SendInput, %rand%
-SendInput, {space}secs.
+Send, >fire stop, approx{space}
+Send, %rand%
+Send, {space}secs.
 SendInput {enter Down}
 SendInput {enter Up}
+return
+
+SRCONT: ;Shoot right continuous, (saves a second by pressing f2 before the shooting take place)
+Sleep, 500
+SendInput, {f2 Up}
+Sendinput {r Down}
+Sleep, 100
+Sendinput {r Down}
+Sleep, Random, rand, 10, 40
+Sendinput {r Up}
+Sleep, 3400
+SendInput, {f1 Down}
+Sleep, 40
+SendInput, {f1 Down}
+Sleep, 1500
+SendInput, {f1 Up}
+SendInput, {d Down}
+Sleep, 200
+SendInput, {f2 Down}
+Sleep, 800
+SendInput, {d Up}
 return
