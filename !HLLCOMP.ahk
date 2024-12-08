@@ -1,7 +1,6 @@
 ;control + backspace = always on top on/off
 ;control + enter = focus on window
 ;shift + enter = gib result
-SetBatchLines -1
 xMin := 100
 xMax := 1600
 
