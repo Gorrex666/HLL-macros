@@ -1,10 +1,12 @@
-Mini Artillery calculator: 
+//Mini Artillery calculator: 
 
 shift + backspace = always on top on/off
 
 shift + enter = focus on window
 
 enter = give result.
+
+//MISC
  
 Home  reload script
 
@@ -20,7 +22,7 @@ ctrl capslock holds down "s" on/off
 
 F4 "R" spam
 
-/ARTY MACROS/
+//ARTY MACROS
 
 F5 reload arty
 
