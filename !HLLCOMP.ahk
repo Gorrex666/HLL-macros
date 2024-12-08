@@ -1,15 +1,12 @@
 #MaxThreadsPerHotkey 2
 
-;Recarga el script
-~Right::Reload
+~Right::Reload ;Recarga el script
 Sleep, 200
 Return
 
-;Cierra
-f12::ExitApp 
+f12::ExitApp ;Cierra
 
-;LOOP r (spamea recarga)
-f4::
+f4:: ;LOOP r (spamea recarga)
 Toggle := !Toggle
 Loop
 {
@@ -21,15 +18,13 @@ Sendinput {r Up}
 }
 Return
 
-;corre automaticamente con capslock
-~CapsLock::
+~CapsLock:: ;Mantiene "W" con capslock "S" con ctrl+capslock
 KeyDown := !KeyDown
 If KeyDown
 SendInput {w down}
 Else
 SendInput {w up}
 Return
-
 ^CapsLock::
 KeyDown := !KeyDown
 If KeyDown
@@ -38,8 +33,7 @@ Else
 SendInput {s up}
 Return
 
-;Mantiene apretado F por 5 segundos con J.
-~j::
+~j:: ;Mantiene apretado F por 5 segundos con J.
 {
 Sleep, 200
 SendInput, {f Down}
@@ -48,8 +42,7 @@ SendInput, {f Up}
 }
 Return
 
-;Mantiene apretado el click izq con `
-`::
+`:: ;Mantiene apretado el click izq con `
 KeyDown := !KeyDown
 If KeyDown
 SendInput {Click down}
@@ -57,16 +50,15 @@ Else
 SendInput {Click up}
 Return
 
-;Recarga
-~f5::
+;SCRIPTS ARTILLERIA
+~f5:: ;Recarga
 {
 Gosub DELAY
 Gosub AMMO
 }
 Return
 
-;Recarga y dispara
-~f6::
+~f6:: ;Recarga y dispara
 {
 Gosub DELAY
 Gosub AMMO
@@ -74,8 +66,7 @@ Gosub SHOOT
 }
 Return
 
-;4 tiros(DISPERSION 15 MTS A 800 MTS)
-~f7::
+~f7:: ;4 tiros(DISPERSION 15 MTS A 800 MTS)
 {
 Gosub DELAY
 SendInput, {f2 Down}
@@ -120,8 +111,7 @@ SendInput, {f1 Up}
 }
 Return
 
-;3 tiros (fire mission)
-~f8::
+~f8:: ;3 tiros (fire mission)
 {
 Gosub DELAY
 Gosub AMMO
@@ -134,8 +124,7 @@ Gosub CHATY
 }
 Return
 
-;LOOP Recarga y dispara
-~f9::
+~f9:: ;LOOP Recarga y dispar
 Toggle := !Toggle
 Loop
 {
@@ -147,8 +136,7 @@ Gosub SHOOT
 }
 Return
 
-;4 TIROS LOOP (DISPERSION 15 MTS A 800 MTS)
-~f10::
+~f10:: ;4 TIROS LOOP (DISPERSION 15 MTS A 800 MTS)
 Toggle := !Toggle
 Loop
 {
@@ -201,7 +189,7 @@ SendInput, {a Up}
 }
 Return
 
-f11::
+f11:: ;"FIRE MISSION OVER" por chat
 {
 Sleep, 200
 Goto CHATY
