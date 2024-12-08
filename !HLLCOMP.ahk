@@ -1,4 +1,4 @@
-;control + backspace = always on top on/off // control + enter = focus on window // shift + enter = gib result
+;control + backspace = always on top on/off // shift + enter = focus on window //
 
 xMin := 100
 xMax := 1600
@@ -23,6 +23,7 @@ Gui, Show, w125 h60, Calculation
 ; Hotkey to toggle Always on Top functionality
 +Backspace::WinSet, AlwaysOnTop, Toggle, Calculation
 return
++Enter::WinActivate, Calculation
 
 Calculate:
 ; Get the input values
