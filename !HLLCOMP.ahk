@@ -82,12 +82,11 @@ SendInput, {f2 Down}
 Sleep, 1500
 SendInput, {f2 Up}
 Sendinput {r Down}
-Sleep, 40
-Sendinput {r Down}
-Sleep, Random, rand, 10, 40
-Sendinput {r Down}
+Sleep, 100
 Sendinput {r Up}
+Sendinput {r Down}
 Sleep, Random, rand, 10, 40
+Sendinput {r Up}
 Sleep, 3400
 SendInput, {f1 Down}
 Sleep, 40
@@ -106,12 +105,12 @@ Gosub SRCONT
 Gosub SHOOT
 Sleep, 500
 SendInput, {f2 Up}
+Sendinput {r Down}
 Sleep, 100
-Sendinput {r Down}
-Sleep, Random, rand, 10, 40
-Sendinput {r Down}
 Sendinput {r Up}
+Sendinput {r Down}
 Sleep, Random, rand, 10, 40
+Sendinput {r Up}
 Sleep, 3400
 SendInput, {f1 Down}
 Sleep, 40
@@ -160,12 +159,11 @@ SendInput, {f2 Down}
 Sleep, 1500
 SendInput, {f2 Up}
 Sendinput {r Down}
-Sleep, 40
-Sendinput {r Down}
-Sleep, Random, rand, 10, 40
-Sendinput {r Down}
+Sleep, 100
 Sendinput {r Up}
+Sendinput {r Down}
 Sleep, Random, rand, 10, 40
+Sendinput {r Up}
 Sleep, 3400
 SendInput, {f1 Down}
 Sleep, 40
@@ -184,12 +182,12 @@ Gosub SRCONT
 Gosub SHOOT
 Sleep, 500
 SendInput, {f2 Up}
+Sendinput {r Down}
 Sleep, 100
-Sendinput {r Down}
-Sleep, Random, rand, 10, 40
-Sendinput {r Down}
 Sendinput {r Up}
+Sendinput {r Down}
 Sleep, Random, rand, 10, 40
+Sendinput {r Up}
 Sleep, 3400
 SendInput, {f1 Down}
 Sleep, 40
@@ -216,10 +214,10 @@ SendInput, {f2 Down}
 Sleep, 1500
 SendInput, {f2 Up}
 Sendinput {r Down}
-Sleep, 40
+Sleep, 100
+Sendinput {r Up}
 Sendinput {r Down}
 Sleep, Random, rand, 10, 40
-Sendinput {r Down}
 Sendinput {r Up}
 Sleep, 3400
 SendInput, {f1 Down}
@@ -261,6 +259,7 @@ Sleep, 500
 SendInput, {f2 Up}
 Sendinput {r Down}
 Sleep, 100
+Sendinput {r Up}
 Sendinput {r Down}
 Sleep, Random, rand, 10, 40
 Sendinput {r Up}
