@@ -95,9 +95,38 @@ SendInput, {f2 Down}
 Sleep, 800
 SendInput, {a Up}
 Gosub SHOOT
-Gosub SRCONT
+Sleep, 500
+SendInput, {f2 Up}
+Sleep, Random, rand, 10, 40
+Sendinput {r Down}
+Sendinput {r Down}
+Sendinput {r Up}
+Sleep, 3400
+SendInput, {f1 Down}
+Sleep, 1500
+SendInput, {f1 Up}
+SendInput, {d Down}
+Sleep, 200
+SendInput, {f2 Down}
+Sleep, 800
+SendInput, {d Up}
 Gosub SHOOT
-Gosub SRCONT
+Sleep, 500
+SendInput, {f2 Up}
+Sleep, Random, rand, 10, 40
+Sendinput {r Down}
+Sendinput {r Down}
+Sendinput {r Up}
+Sendinput {r Up}
+Sleep, 3400
+SendInput, {f1 Down}
+Sleep, 1500
+SendInput, {f1 Up}
+SendInput, {d Down}
+Sleep, 200
+SendInput, {f2 Down}
+Sleep, 800
+SendInput, {d Up}
 Gosub SHOOT
 Sleep, 500
 SendInput, {f2 Up}
@@ -164,9 +193,37 @@ SendInput, {f2 Down}
 Sleep, 800
 SendInput, {a Up}
 Gosub SHOOT
-Gosub SRCONT
+Sleep, 500
+SendInput, {f2 Up}
+Sleep, Random, rand, 10, 40
+Sendinput {r Down}
+Sendinput {r Down}
+Sendinput {r Up}
+Sleep, 3400
+SendInput, {f1 Down}
+Sleep, 1500
+SendInput, {f1 Up}
+SendInput, {d Down}
+Sleep, 200
+SendInput, {f2 Down}
+Sleep, 800
+SendInput, {d Up}
 Gosub SHOOT
-Gosub SRCONT
+Sleep, 500
+SendInput, {f2 Up}
+Sleep, Random, rand, 10, 40
+Sendinput {r Down}
+Sendinput {r Down}
+Sendinput {r Up}
+Sleep, 3400
+SendInput, {f1 Down}
+Sleep, 1500
+SendInput, {f1 Up}
+SendInput, {d Down}
+Sleep, 200
+SendInput, {f2 Down}
+Sleep, 800
+SendInput, {d Up}
 Gosub SHOOT
 Sleep, 500
 SendInput, {f2 Up}
@@ -228,22 +285,4 @@ SendInput, %rand%
 SendInput, {space}secs.
 SendInput {enter Down}
 SendInput {enter Up}
-return
-
-SRCONT: ;Shoot right continuous, (saves a second by pressing f2 before the shooting take place)
-Sleep, 500
-SendInput, {f2 Up}
-Sleep, Random, rand, 10, 40
-Sendinput {r Down}
-Sendinput {r Down}
-Sendinput {r Up}
-Sleep, 3400
-SendInput, {f1 Down}
-Sleep, 1500
-SendInput, {f1 Up}
-SendInput, {d Down}
-Sleep, 200
-SendInput, {f2 Down}
-Sleep, 800
-SendInput, {d Up}
 return
