@@ -6,7 +6,7 @@ shift + enter = focus on window
 
 enter = give result.
  
-PGUP  reload script
+Home  reload script
 
 F12 close
 
