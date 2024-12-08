@@ -73,11 +73,12 @@ SendInput, {f2 Down}
 Sleep, 1500
 SendInput, {f2 Up}
 Sendinput {r Down}
-Sleep, 100
+Sleep, 80
 Sendinput {r Up}
-Sendinput {r Down}
-Sleep, Random, rand, 10, 40
-Sendinput {r Up}
+Sleep, 40
+Send {r Down}
+Sleep, 80
+Send {r Up}
 Sleep, 3400
 SendInput, {f1 Down}
 Sleep, 40
@@ -97,11 +98,12 @@ Gosub SHOOT
 Sleep, 500
 SendInput, {f2 Up}
 Sendinput {r Down}
-Sleep, 100
+Sleep, 80
 Sendinput {r Up}
-Sendinput {r Down}
-Sleep, Random, rand, 10, 40
-Sendinput {r Up}
+Sleep, 40
+Send {r Down}
+Sleep, 80
+Send {r Up}
 Sleep, 3400
 SendInput, {f1 Down}
 Sleep, 40
@@ -147,11 +149,12 @@ SendInput, {f2 Down}
 Sleep, 1500
 SendInput, {f2 Up}
 Sendinput {r Down}
-Sleep, 100
+Sleep, 80
 Sendinput {r Up}
-Sendinput {r Down}
-Sleep, Random, rand, 10, 40
-Sendinput {r Up}
+Sleep, 40
+Send {r Down}
+Sleep, 80
+Send {r Up}
 Sleep, 3400
 SendInput, {f1 Down}
 Sleep, 40
@@ -171,11 +174,12 @@ Gosub SHOOT
 Sleep, 500
 SendInput, {f2 Up}
 Sendinput {r Down}
-Sleep, 100
+Sleep, 80
 Sendinput {r Up}
-Sendinput {r Down}
-Sleep, Random, rand, 10, 40
-Sendinput {r Up}
+Sleep, 40
+Send {r Down}
+Sleep, 80
+Send {r Up}
 Sleep, 3400
 SendInput, {f1 Down}
 Sleep, 40
@@ -202,11 +206,12 @@ SendInput, {f2 Down}
 Sleep, 1500
 SendInput, {f2 Up}
 Sendinput {r Down}
-Sleep, 100
+Sleep, 80
 Sendinput {r Up}
-Sendinput {r Down}
-Sleep, Random, rand, 10, 40
-Sendinput {r Up}
+Sleep, 40
+Send {r Down}
+Sleep, 80
+Send {r Up}
 Sleep, 3400
 SendInput, {f1 Down}
 Sleep, 40
@@ -216,9 +221,8 @@ SendInput, {f1 Up}
 return
 
 SHOOT:
-Sleep, Random, rand, 10, 40
 SendInput {Click down}
-Sleep, Random, rand, 10, 40
+Sleep, 40
 SendInput {Click down}
 SendInput {Click up}
 return
@@ -226,7 +230,7 @@ return
 DELAY:
 Sleep, 200
 SendInput {Click down}
-Sleep, Random, rand, 10, 40
+Sleep, 40
 SendInput {Click down}
 SendInput {Click up}
 return
@@ -246,11 +250,12 @@ SRCONT: ;Shoot right continuous, (saves a second by pressing f2 before the shoot
 Sleep, 500
 SendInput, {f2 Up}
 Sendinput {r Down}
-Sleep, 100
+Sleep, 80
 Sendinput {r Up}
-Sendinput {r Down}
-Sleep, Random, rand, 10, 40
-Sendinput {r Up}
+Sleep, 40
+Send {r Down}
+Sleep, 80
+Send {r Up}
 Sleep, 3400
 SendInput, {f1 Down}
 Sleep, 40
