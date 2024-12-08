@@ -4,7 +4,7 @@ control + backspace = always on top on/off
 
 control + enter = focus on window
 
-shift + enter = give result.
+enter = give result.
  
 PGUP  reload script
 
