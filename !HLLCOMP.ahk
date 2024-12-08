@@ -20,10 +20,21 @@ Gui, Font, s26, Bold
 Gui, Add, Text, vResultText x45 y25 w220 h40
 Gui, Show, w125 h60, Calculation
 
+
+
 ; Hotkey to toggle Always on Top functionality
 +Backspace::WinSet, AlwaysOnTop, Toggle, Calculation
 return
-+Enter::WinActivate, Calculation
+
++Enter::
+{
+WinActivate, Calculation
+Sleep, 20
+Send ^a
+Sleep, 20
+Send {Backspace}
+}
+return
 
 Calculate:
 ; Get the input values
