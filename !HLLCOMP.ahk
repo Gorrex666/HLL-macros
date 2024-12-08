@@ -26,9 +26,6 @@ Gui, Add, Text, vResultText x60 y70 w220 h40,
 
 Gui, Show, w150 h110, Calculation
 
-; Make window always on top by default (optional, remove if not needed immediately)
-WinSet, AlwaysOnTop, On, Calculation
-
 ; Assign the hotkey to trigger the calculation
 #IfWinActive Calculation
 ~Enter:: ; Shift + Enter
