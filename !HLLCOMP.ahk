@@ -24,7 +24,7 @@ Gui, Add, DropDownList, vNationSelect x10 y70 w45 h25, ru|us|bri
 Gui, Font, s26, Bold, 
 Gui, Add, Text, vResultText x60 y70 w220 h40,
 
-Gui, Show, w160 h160, Calculation
+Gui, Show, w150 h110, Calculation
 
 ; Make window always on top by default (optional, remove if not needed immediately)
 WinSet, AlwaysOnTop, On, Calculation
