@@ -100,6 +100,9 @@ ExitApp
 Sleep, 200
 Return
 
+Sleep, 200
+Return
+
 f12::ExitApp ;Cierra
 
 f4:: ;LOOP r (spamea recarga)
@@ -160,26 +163,26 @@ Gosub DELAY
 Gosub AMMO
 Gosub SHOOT
 }
-return
+Return
 
 ~f7:: ;4 tiros(DISPERSION 15 MTS A 800 MTS)
 {
 Gosub DELAY
 SendInput, {f2 Down}
-Sleep, 1400
+Sleep, 1500
 SendInput, {f2 Up}
 Sendinput {r Down}
-Sleep, 40
+Sleep, 80
 Sendinput {r Up}
-Sleep, 20
+Sleep, 40
 Send {r Down}
-Sleep, 20
+Sleep, 40
 Send {r Up}
-Sleep, 3200
+Sleep, 3400
 SendInput, {f1 Down}
-Sleep, 20
+Sleep, 40
 SendInput, {f1 Down}
-Sleep, 1400
+Sleep, 1500
 SendInput, {f1 Up}
 SendInput, {a Down}
 Sleep, 200
@@ -191,18 +194,18 @@ Gosub SRCONT
 Gosub SHOOT
 Gosub SRCONT
 Gosub SHOOT
-Sleep, 400
+Sleep, 500
 SendInput, {f2 Up}
 Sendinput {r Down}
-Sleep, 20
+Sleep, 80
 Sendinput {r Up}
-Sleep, 20
+Sleep, 40
 Send {r Down}
-Sleep, 20
+Sleep, 40
 Send {r Up}
 Sleep, 3400
 SendInput, {f1 Down}
-Sleep, 20
+Sleep, 40
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
@@ -242,20 +245,20 @@ If (!Toggle)
 Break
 Gosub DELAY
 SendInput, {f2 Down}
-Sleep, 1400
+Sleep, 1500
 SendInput, {f2 Up}
 Sendinput {r Down}
-Sleep, 20
+Sleep, 80
 Sendinput {r Up}
-Sleep, 20
+Sleep, 40
 Send {r Down}
-Sleep, 20
+Sleep, 40
 Send {r Up}
-Sleep, 3200
+Sleep, 3400
 SendInput, {f1 Down}
-Sleep, 20
+Sleep, 40
 SendInput, {f1 Down}
-Sleep, 1400
+Sleep, 1500
 SendInput, {f1 Up}
 SendInput, {a Down}
 Sleep, 200
@@ -267,20 +270,20 @@ Gosub SRCONT
 Gosub SHOOT
 Gosub SRCONT
 Gosub SHOOT
-Sleep, 400
+Sleep, 500
 SendInput, {f2 Up}
 Sendinput {r Down}
-Sleep, 40
+Sleep, 80
 Sendinput {r Up}
-Sleep, 20
+Sleep, 40
 Send {r Down}
-Sleep, 20
+Sleep, 40
 Send {r Up}
-Sleep, 3200
+Sleep, 3400
 SendInput, {f1 Down}
-Sleep, 20
+Sleep, 40
 SendInput, {f1 Down}
-Sleep, 1400
+Sleep, 1500
 SendInput, {f1 Up}
 SendInput, {a Down}
 Sleep, 200
@@ -291,7 +294,7 @@ Return
 
 f11:: ;"FIRE MISSION OVER" por chat
 {
-Sleep, 20
+Sleep, 200
 Goto CHATY
 }
 Return
@@ -299,33 +302,34 @@ Return
 ;LABELS
 AMMO:
 SendInput, {f2 Down}
-Sleep, 1400
+Sleep, 1500
 SendInput, {f2 Up}
 Sendinput {r Down}
-Sleep, 20
+Sleep, 80
 Sendinput {r Up}
-Sleep, 20
+Sleep, 40
 Send {r Down}
-Sleep, 20
+Sleep, 40
 Send {r Up}
-Sleep, 3200
+Sleep, 3400
 SendInput, {f1 Down}
-Sleep, 20
+Sleep, 40
 SendInput, {f1 Down}
-Sleep, 1400
+Sleep, 1500
 SendInput, {f1 Up}
 return
 
 SHOOT:
 SendInput {Click down}
-Sleep, 20
+Sleep, 40
 SendInput {Click down}
 SendInput {Click up}
 return
 
 DELAY:
+Sleep, 200
 SendInput {Click down}
-Sleep, 20
+Sleep, 40
 SendInput {Click down}
 SendInput {Click up}
 return
@@ -342,20 +346,20 @@ SendInput {enter Up}
 return
 
 SRCONT: ;Shoot right continuous, (saves a second by pressing f2 before the shooting take place)
-Sleep, 400
+Sleep, 500
 SendInput, {f2 Up}
 Sendinput {r Down}
-Sleep, 20
+Sleep, 80
 Sendinput {r Up}
-Sleep, 20
+Sleep, 40
 Send {r Down}
-Sleep, 20
+Sleep, 40
 Send {r Up}
-Sleep, 3200
+Sleep, 3400
 SendInput, {f1 Down}
-Sleep, 20
+Sleep, 40
 SendInput, {f1 Down}
-Sleep, 1400
+Sleep, 1500
 SendInput, {f1 Up}
 SendInput, {d Down}
 Sleep, 200
