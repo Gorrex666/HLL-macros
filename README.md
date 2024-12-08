@@ -10,28 +10,28 @@ PGUP  reload script
 
 F12 close
 
-J presiona "f" por 6 segundos para curarse/revivir
+J press "f" for 6 secs bandage/respawn
 
-~ (tecla consola) mantiene presionado el click derecho on/off
+~ (console key) right click on/off
 
-capslock mantiene presionado "w" on/off
+capslock holds down "w" on/off
 
-ctrl capslock mantiene presionado "s" on/off
+ctrl capslock holds down "s" on/off
 
 F4 "R" spam
 
-/ MACROS ARTILLERIA /
+/ARTY MACROS/
 
-F5 Recarga
+F5 reload arty
 
-F6  Recarga y dispara
+F6  reload and shoot
 
-F7 4 tiros(DISPERSION 15 MTS A 800 MTS)
+F7 4 shots(spread 15 MTS At 800 MTS)
 
-F8 3 tiros (fire mission)
+F8 3 shots (fire mission)
 
-F9 LOOP Recarga y dispara
+F9 LOOP reload and soot
 
-F10 LOOP 4 tiros (DISPERSION 15 MTS A 800 MTS)
+F10 LOOP 4 shots (spread 15 MTS At 800 MTS)
 
-F11 mensaje ">fire mission stop, approx 20 sec"
+F11 chat message ">fire mission stop, approx 20 sec"
