@@ -18,7 +18,7 @@ Gui, Add, DropDownList, vNationSelect gCalculate x50 y0 w45 h110, us/ger|ru|uk
 ; Result text
 Gui, Font, s26, Bold
 Gui, Add, Text, vResultText x18 y25 w220 h40
-Gui, Show, w95 h60, Calculation
+Gui, Show, w95 h60 minimize, Calculation
 
 
 
