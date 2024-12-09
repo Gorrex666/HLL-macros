@@ -103,14 +103,14 @@ SendInput {Click up}
 Return
 
 ;SCRIPTS ARTILLERIA
-~f5:: ;Recarga
+^1:: ;Recarga
 {
 Gosub DELAY
 Gosub AMMO
 }
 Return
 
-~f6:: ;Recarga y dispara
+^2:: ;Recarga y dispara
 {
 Gosub DELAY
 Gosub AMMO
@@ -118,22 +118,22 @@ Gosub SHOOT
 }
 Return
 
-~f7:: ;4 tiros(DISPERSION 15 MTS A 800 MTS)
+^3:: ;4 tiros(DISPERSION 15 MTS A 800 MTS)
 {
 Gosub DELAY
 SendInput, {f2 Down}
 Sleep, 1500
 SendInput, {f2 Up}
 Sendinput {r Down}
-Sleep, 80
+Sleep, 50
 Sendinput {r Up}
-Sleep, 40
+Sleep, 50
 Send {r Down}
-Sleep, 40
+Sleep, 50
 Send {r Up}
 Sleep, 3400
 SendInput, {f1 Down}
-Sleep, 40
+Sleep, 50
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
@@ -150,22 +150,22 @@ Gosub SHOOT
 Sleep, 500
 SendInput, {f2 Up}
 Sendinput {r Down}
-Sleep, 80
+Sleep, 50
 Sendinput {r Up}
-Sleep, 40
+Sleep, 50
 Send {r Down}
-Sleep, 40
+Sleep, 50
 Send {r Up}
 Sleep, 3400
 SendInput, {f1 Down}
-Sleep, 40
+Sleep, 50
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
 }
 Return
 
-~f8:: ;3 tiros (fire mission)
+^4:: ;3 tiros (fire mission)
 {
 Gosub DELAY
 Gosub AMMO
@@ -178,7 +178,7 @@ Gosub CHATY
 }
 Return
 
-~f9:: ;LOOP Recarga y dispar
+F5:: ;LOOP Recarga y dispar
 Toggle := !Toggle
 Loop
 {
@@ -190,7 +190,7 @@ Gosub SHOOT
 }
 Return
 
-~f10:: ;4 TIROS LOOP (DISPERSION 15 MTS A 800 MTS)
+F6:: ;4 TIROS LOOP (DISPERSION 15 MTS A 800 MTS)
 Toggle := !Toggle
 Loop
 {
@@ -201,15 +201,15 @@ SendInput, {f2 Down}
 Sleep, 1500
 SendInput, {f2 Up}
 Sendinput {r Down}
-Sleep, 80
+Sleep, 50
 Sendinput {r Up}
-Sleep, 40
+Sleep, 50
 Send {r Down}
-Sleep, 40
+Sleep, 50
 Send {r Up}
 Sleep, 3400
 SendInput, {f1 Down}
-Sleep, 40
+Sleep, 50
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
@@ -226,15 +226,15 @@ Gosub SHOOT
 Sleep, 500
 SendInput, {f2 Up}
 Sendinput {r Down}
-Sleep, 80
+Sleep, 50
 Sendinput {r Up}
-Sleep, 40
+Sleep, 50
 Send {r Down}
-Sleep, 40
+Sleep, 50
 Send {r Up}
 Sleep, 3400
 SendInput, {f1 Down}
-Sleep, 40
+Sleep, 50
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
@@ -258,15 +258,15 @@ SendInput, {f2 Down}
 Sleep, 1500
 SendInput, {f2 Up}
 Sendinput {r Down}
-Sleep, 80
+Sleep, 50
 Sendinput {r Up}
-Sleep, 40
+Sleep, 50
 Send {r Down}
-Sleep, 40
+Sleep, 50
 Send {r Up}
 Sleep, 3400
 SendInput, {f1 Down}
-Sleep, 40
+Sleep, 50
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
@@ -274,7 +274,7 @@ return
 
 SHOOT:
 SendInput {Click down}
-Sleep, 40
+Sleep, 50
 SendInput {Click down}
 SendInput {Click up}
 return
@@ -282,7 +282,7 @@ return
 DELAY:
 Sleep, 200
 SendInput {Click down}
-Sleep, 40
+Sleep, 50
 SendInput {Click down}
 SendInput {Click up}
 return
@@ -302,15 +302,15 @@ SRCONT: ;Shoot right continuous, (saves a second by pressing f2 before the shoot
 Sleep, 500
 SendInput, {f2 Up}
 Sendinput {r Down}
-Sleep, 80
+Sleep, 50
 Sendinput {r Up}
-Sleep, 40
+Sleep, 50
 Send {r Down}
-Sleep, 40
+Sleep, 50
 Send {r Up}
 Sleep, 3400
 SendInput, {f1 Down}
-Sleep, 40
+Sleep, 50
 SendInput, {f1 Down}
 Sleep, 1500
 SendInput, {f1 Up}
