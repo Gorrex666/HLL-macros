@@ -2,7 +2,7 @@
 
 ctrl + backspace = always on top on/off
 
-"-" = focus on window
+"`"(console key) = focus on window
 
 //MISC
 
@@ -12,7 +12,7 @@ F12 close
 
 J press "f" for 6 secs bandage/respawn
 
-~ (console key) right click on/off
+= = right click on/off
 
 capslock holds down "w" on/off
 
