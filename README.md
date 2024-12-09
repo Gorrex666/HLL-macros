@@ -22,16 +22,16 @@ F4 "R" spam
 
 //ARTY MACROS
 
-F5 reload arty
+Ctrl + 1 reload arty
 
-F6 reload and shoot
+Ctrl + 2 reload and shoot
 
-F7 4 shots(spread 15 MTS At 800 MTS)
+Ctrl + 3 shots(spread 15 MTS At 800 MTS)
 
-F8 3 shots (fire mission)
+Ctrl + 4 shots (fire mission)
 
-F9 LOOP reload and soot
+F5 LOOP reload and soot
 
-F10 LOOP 4 shots (spread 15 MTS At 800 MTS)
+F6 LOOP 4 shots (spread 15 MTS At 800 MTS)
 
 F11 chat message ">fire mission stop, approx 20 sec"
