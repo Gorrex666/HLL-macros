@@ -26,7 +26,7 @@ Ctrl + 1 reload arty
 
 Ctrl + 2 reload and shoot
 
-Ctrl + 3 shots(spread 15 MTS At 800 MTS)
+Ctrl + 3 3shots(spread 15 MTS At 800 MTS)
 
 Ctrl + 4 shots (fire mission)
 
