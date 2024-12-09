@@ -2,7 +2,7 @@
 
 shift + backspace = always on top on/off
 
-shift + enter = focus on window
+"-" = focus on window
 
 //MISC
 
