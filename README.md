@@ -28,7 +28,7 @@ Ctrl + 2 reload and shoot
 
 Ctrl + 3 3shots(spread 15 MTS At 800 MTS)
 
-Ctrl + 4 shots (fire mission)
+Ctrl + 4 3shots (fire mission)
 
 F5 LOOP reload and soot
 
