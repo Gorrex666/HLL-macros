@@ -1,24 +1,24 @@
-;control + backspace = always on top on/off // shift + enter = focus on window //
+;control + backspace = always on top on/off // "-" = focus on window //
 
 xMin := 100
 xMax := 1600
 
 ; Options object for different nations
 options := {}
-options["us"] := { "m": -0.237035714285714, "b": 1001.46547619048 }
+options["us/ger"] := { "m": -0.237035714285714, "b": 1001.46547619048 }
 options["ru"] := { "m": -0.2136691176, "b": 1141.7215 }
-options["bri"] := { "m": -0.1773, "b": 550.69 }
+options["uk"] := { "m": -0.1773, "b": 550.69 }
 
 ; Font for the GUI
 Gui, Font, s14, Bold
 ; GUI window
 Gui -sysmenu
-Gui, Add, Edit, vDistanceInput gCalculate x0 y0 w55 h30 ; Use gLabel to trigger calculation
-Gui, Add, DropDownList, vNationSelect gCalculate x0 y30 w45 h110, us|ru|bri
+Gui, Add, Edit, vDistanceInput gCalculate x0 y0 w50 h30 ; us/gere gLabel to trigger calculation
+Gui, Add, DropDownList, vNationSelect gCalculate x50 y0 w45 h110, us/ger|ru|uk
 ; Result text
 Gui, Font, s26, Bold
-Gui, Add, Text, vResultText x45 y25 w220 h40
-Gui, Show, w125 h60, Calculation
+Gui, Add, Text, vResultText x18 y25 w220 h40
+Gui, Show, w95 h60, Calculation
 
 
 
@@ -26,13 +26,11 @@ Gui, Show, w125 h60, Calculation
 ^Backspace::WinSet, AlwaysOnTop, Toggle, Calculation
 return
 
--::
+~-::
 {
 WinActivate, Calculation
-Sleep, 20
-Sendinput ^a
-Sleep, 20
-Sendinput {Backspace}
+Send ^a
+Send {Backspace}
 }
 return
 
@@ -53,7 +51,6 @@ calculate(x, nation) {
         return Round(m * x + b)
     }
 }
-
 GuiClose:
 ExitApp
 
