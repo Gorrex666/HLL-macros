@@ -13,8 +13,8 @@ options["uk"] := { "m": -0.1773, "b": 550.69 }
 Gui, Font, s14, Bold
 ; GUI window
 Gui -sysmenu
-Gui, Add, Edit, vDistanceInput gCalculate x0 y0 w50 h30 ; us/gere gLabel to trigger calculation
-Gui, Add, DropDownList, vNationSelect gCalculate x50 y0 w45 h110, us/ger|ru|uk
+Gui, Add, Edit, vDistanceInput gCalculate x45 y0 w50 h30 ; us/gere gLabel to trigger calculation
+Gui, Add, DropDownList, vNationSelect gCalculate x0 y0 w45 h110, us/ger|ru|uk
 ; Result text
 Gui, Font, s26, Bold
 Gui, Add, Text, vResultText x18 y25 w220 h40
@@ -53,8 +53,6 @@ calculate(x, nation) {
 }
 GuiClose:
 ExitApp
-
-#MaxThreadsPerHotkey 2
 
 ~pgdn::Reload ;Recarga el script
 
