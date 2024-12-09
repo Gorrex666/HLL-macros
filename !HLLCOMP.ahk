@@ -26,7 +26,7 @@ Gui, Show, w95 h60 minimize, Calculation
 ^Backspace::WinSet, AlwaysOnTop, Toggle, Calculation
 return
 
-~-::
+~`::
 {
 WinActivate, Calculation
 Send ^a
@@ -55,9 +55,6 @@ GuiClose:
 ExitApp
 #MaxThreadsPerHotkey 2
 ~pgdn::Reload ;Recarga el script
-
-Sleep, 200
-Return
 
 f12::ExitApp ;Cierra
 
@@ -97,7 +94,7 @@ SendInput, {f Up}
 }
 Return
 
-`:: ;Mantiene apretado el click izq con ` (on/off)
+~=:: ;Mantiene apretado el click izq con ` (on/off)
 KeyDown := !KeyDown
 If KeyDown
 SendInput {Click down}
