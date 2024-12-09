@@ -53,7 +53,7 @@ calculate(x, nation) {
 }
 GuiClose:
 ExitApp
-
+#MaxThreadsPerHotkey 2
 ~pgdn::Reload ;Recarga el script
 
 Sleep, 200
