@@ -32,6 +32,6 @@ Ctrl + 4 shots (fire mission)
 
 F5 LOOP reload and soot
 
-F6 LOOP 4 shots (spread 15 MTS At 800 MTS)
+F6 LOOP 4 3shots (spread 15 MTS At 800 MTS)
 
 F11 chat message ">fire mission stop, approx 20 sec"
