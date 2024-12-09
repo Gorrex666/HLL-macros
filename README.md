@@ -6,7 +6,7 @@ ctrl + backspace = always on top on/off
 
 //MISC
 
-Home reload script
+PgDn reload script
 
 F12 close
 
