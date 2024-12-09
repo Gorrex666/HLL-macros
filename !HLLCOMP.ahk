@@ -23,10 +23,10 @@ Gui, Show, w125 h60, Calculation
 
 
 ; Hotkey to toggle Always on Top functionality
-+Backspace::WinSet, AlwaysOnTop, Toggle, Calculation
+^Backspace::WinSet, AlwaysOnTop, Toggle, Calculation
 return
 
-+Enter::
+-::
 {
 WinActivate, Calculation
 Sleep, 20
