@@ -2,7 +2,7 @@
 
 ctrl + backspace = always on top on/off
 
-"`"(console key) = focus on window
+"`"(console key) = focus on window (input distance)
 
 //MISC
 
