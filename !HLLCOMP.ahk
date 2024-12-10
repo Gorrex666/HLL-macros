@@ -15,12 +15,12 @@ lastResults := []
 historyWindowVisible := false ; Tracks if the history GUI is visible
 
 ; Main GUI window
-Gui, Color, d3d3d3
+Gui, Color, afaca9
 Gui, Font, s11, Bold
 Gui -sysmenu
 Gui -caption
 Gui, Add, DropDownList, vNationSelect gSubmitInput x0 y-9 w39 h110, us/ge|ru|uk 
-Gui, color,, d3d3d3
+Gui, color,, afaca9
 Gui, Add, Edit, vDistanceInput x39 y-5 w35 h20 gSubmitInput
 Gui, Font, s26, Bold
 Gui, Add, Text, vResultText x0 y13 w75 h35 center
@@ -102,7 +102,7 @@ if (historyWindowVisible) {
 } else {
     ; Create and show the history GUI
     Gui, 2:New, , History
-	Gui, Color, d3d3d3
+	Gui, Color, afaca9
     Gui -sysmenu
 	Gui -caption
     Gui, 2:Font, s11
