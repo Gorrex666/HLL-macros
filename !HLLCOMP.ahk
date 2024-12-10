@@ -15,16 +15,18 @@ lastResults := []
 historyWindowVisible := false ; Tracks if the history GUI is visible
 
 ; Main GUI window
-Gui, Color, f3f3f3
+Gui, Color, d3d3d3
 Gui, Font, s11, Bold
 Gui -sysmenu
-Gui, Add, DropDownList, vNationSelect gSubmitInput x0 y-9 w39 h110, us/ge|ru|uk
+Gui -caption
+Gui, Add, DropDownList, vNationSelect gSubmitInput x0 y-9 w39 h110, us/ge|ru|uk 
+Gui, color,, d3d3d3
 Gui, Add, Edit, vDistanceInput x39 y-5 w35 h20 gSubmitInput
 Gui, Font, s26, Bold
 Gui, Add, Text, vResultText x0 y13 w75 h35 center
 Gui, Font, s11
 Gui, Add, Button, x0 y0 w0 h0 gToggleHistory, Show History ; Button to toggle history
-Gui, Show, x1838 y860 w76 h50, Comp
+Gui, Show, x1842 y917 w76 h50, Comp
 
 ; Set a timer to update the history every 10 seconds (reduced frequency)
 SetTimer, UpdateHistoryInBackground, 10000
@@ -63,7 +65,7 @@ updateHistory(input, result) {
     ; Check if input and result are numbers
     if (IsNumber(input) && IsNumber(result)) {
         ; Limit history size to avoid unnecessary resource usage
-        if (lastInputs.MaxIndex() > 8) {
+        if (lastInputs.MaxIndex() > 7) {
             lastInputs.RemoveAt(1) ; Remove the oldest input
             lastResults.RemoveAt(1) ; Remove the oldest result
         }
@@ -100,11 +102,12 @@ if (historyWindowVisible) {
 } else {
     ; Create and show the history GUI
     Gui, 2:New, , History
+	Gui, Color, d3d3d3
     Gui -sysmenu
 	Gui -caption
     Gui, 2:Font, s11
-    Gui, 2:Add, Text, x4 y2 w90 h130 vHistoryList, % formatHistory()
-    Gui, 2:Show, x1839 y937 w80 h130, History 
+    Gui, 2:Add, Text, x4 y2 w90 h110 vHistoryList, % formatHistory()
+    Gui, 2:Show, x1839 y968 w80 h110, History 
 	-Caption
     WinSet, AlwaysOnTop, On, History ; Ensure the history window is always on top
     historyWindowVisible := true
