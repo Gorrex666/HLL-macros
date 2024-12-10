@@ -106,7 +106,7 @@ if (historyWindowVisible) {
     Gui -sysmenu
 	Gui -caption
     Gui, 2:Font, s11
-    Gui, 2:Add, Text, x4 y2 w90 h110 vHistoryList, % formatHistory()
+    Gui, 2:Add, Text, x0 y0 w80 h110 center vHistoryList, % formatHistory()
     Gui, 2:Show, x1839 y968 w80 h110, History 
 	-Caption
     WinSet, AlwaysOnTop, On, History ; Ensure the history window is always on top
