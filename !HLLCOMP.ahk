@@ -22,11 +22,11 @@ Gui -caption
 Gui, Add, DropDownList, vNationSelect gSubmitInput x0 y-9 w39 h110, us/ge|ru|uk 
 Gui, color,, afaca9
 Gui, Add, Edit, vDistanceInput x39 y-5 w35 h20 gSubmitInput
-Gui, Font, s26, Bold
-Gui, Add, Text, vResultText x0 y13 w75 h35 center
+Gui, Font, s20, Bold
+Gui, Add, Text, vResultText x0 y11 w75 h30 center
 Gui, Font, s11
 Gui, Add, Button, x0 y0 w0 h0 gToggleHistory, Show History ; Button to toggle history
-Gui, Show, x1842 y917 w76 h50, Comp
+Gui, Show, x1842 y923 w76 h44, Comp
 
 ; Set a timer to update the history every 10 seconds (reduced frequency)
 SetTimer, UpdateHistoryInBackground, 10000
