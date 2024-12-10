@@ -9,7 +9,7 @@ options["us/ge"] := { "m": -0.237035714285714, "b": 1001.46547619048 }
 options["ru"] := { "m": -0.2136691176, "b": 1141.7215 }
 options["uk"] := { "m": -0.1773, "b": 550.69 }
 
-; Arrays to store the last five inputs and results
+; Arrays to store last inputs and results
 lastInputs := []
 lastResults := []
 historyWindowVisible := false ; Tracks if the history GUI is visible
