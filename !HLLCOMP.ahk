@@ -26,12 +26,12 @@ Gui, Font, s11
 Gui, Add, Button, x0 y0 w0 h0 gToggleHistory, Show History ; Button to toggle history
 Gui, Show, x1838 y860 w76 h50, Comp
 
-; Set a timer to update the history every 10 seconds
+; Set a timer to update the history every 10 seconds (reduced frequency)
 SetTimer, UpdateHistoryInBackground, 10000
 
 ; Modify SubmitInput to reset the timer on each keypress
 SubmitInput:
-SetTimer, DelayedUpdate, -200 ; Set a 200ms delay after last key press before calling the update
+SetTimer, DelayedUpdate, -300 ; Increased delay to 300ms to reduce CPU usage
 Return
 
 DelayedUpdate:
@@ -62,12 +62,13 @@ updateHistory(input, result) {
     global lastInputs, lastResults
     ; Check if input and result are numbers
     if (IsNumber(input) && IsNumber(result)) {
-        lastInputs.Insert(input) ; Add new entry at the end
-        lastResults.Insert(result) ; Add new result at the end
+        ; Limit history size to avoid unnecessary resource usage
         if (lastInputs.MaxIndex() > 8) {
             lastInputs.RemoveAt(1) ; Remove the oldest input
             lastResults.RemoveAt(1) ; Remove the oldest result
         }
+        lastInputs.Push(input) ; Add new entry at the end
+        lastResults.Push(result) ; Add new result at the end
     }
 }
 
@@ -126,6 +127,7 @@ return
 IsNumber(value) {
     return (value is number)
 }
+
 
 ;//MISC//
 #MaxThreadsPerHotkey 2
