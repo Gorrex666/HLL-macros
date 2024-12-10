@@ -1,8 +1,8 @@
 //Mini Artillery calculator:
 
-DOWN arrow = always on top on/off
+Up arrow = always on top on/off
 
-UP arrow = show history list on/off
+Down arrow = show history list on/off
 
 "`"(console key) = focus on window (input distance)
 
