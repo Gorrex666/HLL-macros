@@ -11,6 +11,7 @@ options["ru"] := { "m": -0.2136691176, "b": 1141.7215 }
 options["uk"] := { "m": -0.1773, "b": 550.69 }
 
 ; GUI window
+Gui, Color, f3f3f3,
 Gui, Font, s11, Bold
 Gui -sysmenu 
 Gui, Add, DropDownList, vNationSelect gCalculate x0 y-9 w39 h110, us/ge|ru|uk
