@@ -26,21 +26,26 @@ Gui, Font, s11
 Gui, Add, Button, x0 y0 w0 h0 gToggleHistory, Show History ; Button to toggle history
 Gui, Show, x1835 y860 w76 h50, Comp
 
-; Set a timer to update the history every 3 seconds
+; Set a timer to update the history every 10 seconds
 SetTimer, UpdateHistoryInBackground, 10000
 
+; Modify SubmitInput to reset the timer on each keypress
 SubmitInput:
-SetTimer, DelayedUpdate, -50
+SetTimer, DelayedUpdate, -200 ; Set a 200ms delay after last key press before calling the update
 Return
 
 DelayedUpdate:
 Gui, Submit, NoHide
-if (StrLen(DistanceInput) >= 3) { ; Only calculate if input has at least 3 characters
-    result := calculate(DistanceInput, NationSelect)
-    updateHistory(DistanceInput, result)
-    GuiControl, , ResultText, %result%
+
+if (StrLen(DistanceInput) >= 3) {
+    ; Only calculate if input has at least 3 characters and is different from last input
+    if (DistanceInput != lastInputs[lastInputs.Length()]) {
+        result := calculate(DistanceInput, NationSelect)
+        updateHistory(DistanceInput, result)
+        GuiControl, , ResultText, %result%
+    }
 } else {
-    GuiControl, , ResultText, ; Clear the result text if input is less than 3 characters
+    GuiControl, , ResultText, ; Clear result text if input is less than 3 characters
 }
 Return
 
@@ -57,13 +62,11 @@ updateHistory(input, result) {
     global lastInputs, lastResults
     ; Check if input and result are numbers
     if (IsNumber(input) && IsNumber(result)) {
-        lastInputs.Push(input)
-        lastResults.Push(result)
-        if (lastInputs.Length() > 8) {
-            lastInputs.RemoveAt(1)
-        }
-        if (lastResults.Length() > 8) {
-            lastResults.RemoveAt(1)
+        lastInputs.Insert(input) ; Add new entry at the end
+        lastResults.Insert(result) ; Add new result at the end
+        if (lastInputs.MaxIndex() > 8) {
+            lastInputs.RemoveAt(1) ; Remove the oldest input
+            lastResults.RemoveAt(1) ; Remove the oldest result
         }
     }
 }
@@ -88,7 +91,7 @@ if (historyWindowVisible) {
 }
 Return
 
-up:: ; Hotkey to toggle history window visibility and always-on-top
+down:: ; Hotkey to toggle history window visibility and always-on-top
 ToggleHistory:
 if (historyWindowVisible) {
     Gui, 2:Destroy ; Close the history window
@@ -99,8 +102,8 @@ if (historyWindowVisible) {
     Gui -sysmenu
 	Gui -caption
     Gui, 2:Font, s11
-    Gui, 2:Add, Text, w100 h140 vHistoryList, % formatHistory()
-    Gui, 2:Show, x1830 y720 w88 h140, History 
+    Gui, 2:Add, Text, x4 y2 w90 h130 vHistoryList, % formatHistory()
+    Gui, 2:Show, x1839 y937 w80 h130, History 
 	-Caption
     WinSet, AlwaysOnTop, On, History ; Ensure the history window is always on top
     historyWindowVisible := true
@@ -115,7 +118,7 @@ Return
 }
 return
 
-down:: ; Toggle "AlwaysOnTop" for main window
+up:: ; Toggle "AlwaysOnTop" for main window
 WinSet, AlwaysOnTop, Toggle, Comp
 return
 
