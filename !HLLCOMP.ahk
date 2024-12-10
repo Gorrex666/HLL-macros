@@ -1,3 +1,4 @@
+;//CALCULATOR//
 ;control + backspace = always on top on/off // "-" = focus on window //
 
 xMin := 100
@@ -5,42 +6,23 @@ xMax := 1600
 
 ; Options object for different nations
 options := {}
-options["us/ger"] := { "m": -0.237035714285714, "b": 1001.46547619048 }
+options["us/ge"] := { "m": -0.237035714285714, "b": 1001.46547619048 }
 options["ru"] := { "m": -0.2136691176, "b": 1141.7215 }
 options["uk"] := { "m": -0.1773, "b": 550.69 }
 
-; Font for the GUI
-Gui, Font, s14, Bold
 ; GUI window
-Gui -sysmenu
-Gui, Add, Edit, vDistanceInput gCalculate x45 y0 w50 h30 ; us/gere gLabel to trigger calculation
-Gui, Add, DropDownList, vNationSelect gCalculate x0 y0 w45 h110, us/ger|ru|uk
-; Result text
-Gui, Font, s26, Bold
-Gui, Add, Text, vResultText x18 y25 w220 h40
-Gui, Show, w95 h60 minimize, Calculation
-
-
-
-; Hotkey to toggle Always on Top functionality
-^Backspace::WinSet, AlwaysOnTop, Toggle, Calculation
-return
-
-~`::
-{
-WinActivate, Calculation
-Send ^a
-Send {Backspace}
-}
-return
+Gui, Font, s11, Bold
+Gui -sysmenu 
+Gui, Add, DropDownList, vNationSelect gCalculate x0 y-9 w39 h110, us/ge|ru|uk
+Gui, Add, Edit, vDistanceInput gCalculate x39 y-5 w35 h20 ; us/ge gLabel to trigger Comp
+Gui, Font, s26, Bold ; Result text
+Gui, Add, Text, vResultText x0 y13 w75 h35 center
+Gui, Show, w76 h50 minimize, Comp
 
 Calculate:
-; Get the input values
 Gui, Submit, NoHide ; Get the values from the GUI
-; Perform the calculation
-result := calculate(DistanceInput, NationSelect)
-; Display the result in the GUI
-GuiControl, , ResultText, %result%
+result := calculate(DistanceInput, NationSelect) ; Perform the Comp
+GuiControl, , ResultText, %result% ; Display the result in the GUI
 Return
 
 calculate(x, nation) {
@@ -51,8 +33,19 @@ calculate(x, nation) {
         return Round(m * x + b)
     }
 }
-GuiClose:
-ExitApp
+
+^Backspace::WinSet, AlwaysOnTop, Toggle, Comp ; Hotkey to toggle Always on Top
+return
+
+~`:: ; Hotkey to focus on window and delete text
+{
+WinActivate, Comp
+Sendinput ^a
+Sendinput {Backspace}
+}
+return
+
+;//MISC//
 #MaxThreadsPerHotkey 2
 ~pgdn::Reload ;Recarga el script
 
