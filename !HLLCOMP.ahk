@@ -1,3 +1,4 @@
+;//CALCULATOR//
 xMin := 100
 xMax := 1600
 
@@ -24,7 +25,7 @@ Gui, Font, s11
 Gui, Add, Button, x0 y0 w0 h0 gToggleHistory, Show History ; Button to toggle history
 Gui, Show, x1835 y860 w76 h50, Comp
 
-; Set a timer to update the history every(3 second)
+; Set a timer to update the history every 3 seconds
 SetTimer, UpdateHistoryInBackground, 3000
 
 SubmitInput:
@@ -53,13 +54,16 @@ calculate(x, nation) {
 
 updateHistory(input, result) {
     global lastInputs, lastResults
-    lastInputs.Push(input)
-    lastResults.Push(result)
-    if (lastInputs.Length() > 8) {
-        lastInputs.RemoveAt(1)
-    }
-    if (lastResults.Length() > 8) {
-        lastResults.RemoveAt(1)
+    ; Check if input and result are numbers
+    if (IsNumber(input) && IsNumber(result)) {
+        lastInputs.Push(input)
+        lastResults.Push(result)
+        if (lastInputs.Length() > 8) {
+            lastInputs.RemoveAt(1)
+        }
+        if (lastResults.Length() > 8) {
+            lastResults.RemoveAt(1)
+        }
     }
 }
 
@@ -68,7 +72,10 @@ formatHistory() {
     text := ""
     Loop % lastInputs.Length() {
         idx := lastInputs.Length() - A_Index + 1
-        text .= lastInputs[idx] " m | " lastResults[idx] "`n"
+        ; Only append numeric history entries
+        if (IsNumber(lastInputs[idx]) && IsNumber(lastResults[idx])) {
+            text .= lastInputs[idx] " m | " lastResults[idx] "`n"
+        }
     }
     return text
 }
@@ -110,6 +117,11 @@ return
 down:: ; Toggle "AlwaysOnTop" for main window
 WinSet, AlwaysOnTop, Toggle, Comp
 return
+
+; Helper function to check if a value is numeric
+IsNumber(value) {
+    return (value is number)
+}
 
 ;//MISC//
 #MaxThreadsPerHotkey 2
