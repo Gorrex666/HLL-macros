@@ -251,7 +251,6 @@ Gosub AMMO
 Gosub SHOOT
 Gosub AMMO
 Gosub SHOOT
-Gosub CHATY
 }
 Return
 
