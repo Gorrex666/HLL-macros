@@ -1,27 +1,25 @@
 ;// CALCULATOR //
-
-; Process and Priority settings
 Process, Priority,, A
-xMin := 100
-xMax := 1600
 
 ; Options object for different nations
+xMin := 100
+xMax := 1600
 options := {}
 options["us/ge"] := { "m": -0.237035714285714, "b": 1001.46547619048 }
 options["ru"] := { "m": -0.2136691176, "b": 1141.7215 }
 options["uk"] := { "m": -0.1773, "b": 550.69 }
-
 ; Arrays to store last inputs and results
 lastInputs := []
 lastResults := []
-historyWindowVisible := false ; Tracks if the history GUI is visible
+; Set timer to update the history every 10 seconds (reduced frequency)
+SetTimer, UpdateHistoryInBackground, 10000
 
 ; --- Main GUI window ---
 Gui, Color, afaca9
 Gui, Font, s11, Bold
 Gui -sysmenu
 Gui -caption
-
+Gui, Show, x1842 y923 w76 h44, Comp
 ; Add Nation Dropdown and Input fields
 Gui, Add, DropDownList, vNationSelect gSubmitInput x0 y-9 w39 h110, us/ge|ru|uk 
 Gui, color,, afaca9
@@ -29,11 +27,6 @@ Gui, Add, Edit, vDistanceInput x39 y-5 w35 h20 gSubmitInput
 Gui, Font, s20, Bold
 Gui, Add, Text, vResultText x0 y11 w75 h30 center
 
-; Show main GUI window
-Gui, Show, x1842 y923 w76 h44, Comp
-
-; Set timer to update the history every 10 seconds (reduced frequency)
-SetTimer, UpdateHistoryInBackground, 10000
 
 ; --- Submit Input Function ---
 SubmitInput:
@@ -55,6 +48,8 @@ DelayedUpdate:
 Return
 
 ; --- Calculate Function ---
+xMin := 100
+xMax := 1600
 calculate(x, nation) {
     global options, xMin, xMax
     if (x >= xMin && x <= xMax) {
