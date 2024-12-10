@@ -1,6 +1,6 @@
 //Mini Artillery calculator:
 
-UP arrow = always on top on/off
+DOWN arrow = always on top on/off
 
 UP arrow = show history list on/off
 
