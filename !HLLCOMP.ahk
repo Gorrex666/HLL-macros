@@ -1,4 +1,5 @@
 ;//CALCULATOR//
+Process,Priority,,A
 xMin := 100
 xMax := 1600
 
@@ -26,7 +27,7 @@ Gui, Add, Button, x0 y0 w0 h0 gToggleHistory, Show History ; Button to toggle hi
 Gui, Show, x1835 y860 w76 h50, Comp
 
 ; Set a timer to update the history every 3 seconds
-SetTimer, UpdateHistoryInBackground, 3000
+SetTimer, UpdateHistoryInBackground, 10000
 
 SubmitInput:
 SetTimer, DelayedUpdate, -50
@@ -194,14 +195,12 @@ Return
 {
 Gosub DELAY
 SendInput, {f2 Down}
-Sleep, 1500
+Sleep, 1400
 SendInput, {f2 Up}
 Sendinput {r Down}
 Sleep, 50
 Sendinput {r Up}
-Sleep, 50
 Send {r Down}
-Sleep, 50
 Send {r Up}
 Sleep, 3400
 Send, {f1 Down}
@@ -212,7 +211,7 @@ Send, {f1 Up}
 SendInput, {a Down}
 Sleep, 200
 SendInput, {f2 Down}
-Sleep, 800
+Sleep, 700
 SendInput, {a Up}
 Gosub SHOOT
 Gosub SRCONT
@@ -224,9 +223,7 @@ SendInput, {f2 Up}
 Sendinput {r Down}
 Sleep, 50
 Sendinput {r Up}
-Sleep, 50
 Send {r Down}
-Sleep, 50
 Send {r Up}
 Sleep, 3400
 Send, {f1 Down}
@@ -270,14 +267,12 @@ If (!Toggle)
 Break
 Gosub DELAY
 SendInput, {f2 Down}
-Sleep, 1500
+Sleep, 1400
 SendInput, {f2 Up}
 Sendinput {r Down}
 Sleep, 50
 Sendinput {r Up}
-Sleep, 50
 Send {r Down}
-Sleep, 50
 Send {r Up}
 Sleep, 3400
 Send, {f1 Down}
@@ -288,7 +283,7 @@ Send, {f1 Up}
 SendInput, {a Down}
 Sleep, 200
 SendInput, {f2 Down}
-Sleep, 800
+Sleep, 700
 SendInput, {a Up}
 Gosub SHOOT
 Gosub SRCONT
@@ -300,9 +295,7 @@ SendInput, {f2 Up}
 Sendinput {r Down}
 Sleep, 50
 Sendinput {r Up}
-Sleep, 50
 Send {r Down}
-Sleep, 50
 Send {r Up}
 Sleep, 3400
 Send, {f1 Down}
@@ -327,14 +320,12 @@ Return
 ;LABELS
 AMMO:
 SendInput, {f2 Down}
-Sleep, 1500
+Sleep, 1400
 SendInput, {f2 Up}
 Sendinput {r Down}
 Sleep, 50
 Sendinput {r Up}
-Sleep, 50
 Send {r Down}
-Sleep, 50
 Send {r Up}
 Sleep, 3400
 Send, {f1 Down}
@@ -376,9 +367,7 @@ SendInput, {f2 Up}
 Sendinput {r Down}
 Sleep, 50
 Sendinput {r Up}
-Sleep, 50
 Send {r Down}
-Sleep, 50
 Send {r Up}
 Sleep, 3400
 Send, {f1 Down}
@@ -389,6 +378,6 @@ Send, {f1 Up}
 SendInput, {d Down}
 Sleep, 200
 SendInput, {f2 Down}
-Sleep, 800
+Sleep, 700
 SendInput, {d Up}
 return
