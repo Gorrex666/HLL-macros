@@ -1,5 +1,7 @@
-;//CALCULATOR//
-Process,Priority,,A
+;// CALCULATOR //
+
+; Process and Priority settings
+Process, Priority,, A
 xMin := 100
 xMax := 1600
 
@@ -14,43 +16,45 @@ lastInputs := []
 lastResults := []
 historyWindowVisible := false ; Tracks if the history GUI is visible
 
-; Main GUI window
+; --- Main GUI window ---
 Gui, Color, afaca9
 Gui, Font, s11, Bold
 Gui -sysmenu
 Gui -caption
+
+; Add Nation Dropdown and Input fields
 Gui, Add, DropDownList, vNationSelect gSubmitInput x0 y-9 w39 h110, us/ge|ru|uk 
 Gui, color,, afaca9
 Gui, Add, Edit, vDistanceInput x39 y-5 w35 h20 gSubmitInput
 Gui, Font, s20, Bold
 Gui, Add, Text, vResultText x0 y11 w75 h30 center
-Gui, Font, s11
-Gui, Add, Button, x0 y0 w0 h0 gToggleHistory, Show History ; Button to toggle history
+
+; Show main GUI window
 Gui, Show, x1842 y923 w76 h44, Comp
 
-; Set a timer to update the history every 10 seconds (reduced frequency)
+; Set timer to update the history every 10 seconds (reduced frequency)
 SetTimer, UpdateHistoryInBackground, 10000
 
-; Modify SubmitInput to reset the timer on each keypress
+; --- Submit Input Function ---
 SubmitInput:
-SetTimer, DelayedUpdate, -300 ; Increased delay to 300ms to reduce CPU usage
+    SetTimer, DelayedUpdate, -300 ; Increased delay to 300ms to reduce CPU usage
 Return
 
 DelayedUpdate:
-Gui, Submit, NoHide
-
-if (StrLen(DistanceInput) >= 3) {
-    ; Only calculate if input has at least 3 characters and is different from last input
-    if (DistanceInput != lastInputs[lastInputs.Length()]) {
-        result := calculate(DistanceInput, NationSelect)
-        updateHistory(DistanceInput, result)
-        GuiControl, , ResultText, %result%
+    Gui, Submit, NoHide
+    ; Only calculate if input is valid and different from last input
+    if (StrLen(DistanceInput) >= 3) {
+        if (DistanceInput != lastInputs[lastInputs.Length()]) {
+            result := calculate(DistanceInput, NationSelect)
+            updateHistory(DistanceInput, result)
+            GuiControl, , ResultText, %result%
+        }
+    } else {
+        GuiControl, , ResultText, ; Clear result text if input is less than 3 characters
     }
-} else {
-    GuiControl, , ResultText, ; Clear result text if input is less than 3 characters
-}
 Return
 
+; --- Calculate Function ---
 calculate(x, nation) {
     global options, xMin, xMax
     if (x >= xMin && x <= xMax) {
@@ -60,6 +64,7 @@ calculate(x, nation) {
     }
 }
 
+; --- Update History Function ---
 updateHistory(input, result) {
     global lastInputs, lastResults
     ; Check if input and result are numbers
@@ -74,6 +79,7 @@ updateHistory(input, result) {
     }
 }
 
+; --- Format History Function ---
 formatHistory() {
     global lastInputs, lastResults
     text := ""
@@ -87,34 +93,37 @@ formatHistory() {
     return text
 }
 
+; --- Update History in Background ---
 UpdateHistoryInBackground:
-if (historyWindowVisible) {
-    Gui, 2:Submit, NoHide ; Update the history window even if it is not focused
-    GuiControl, 2:, HistoryList, % formatHistory()
-}
+    if (historyWindowVisible) {
+        Gui, 2:Submit, NoHide ; Update the history window even if it is not focused
+        GuiControl, 2:, HistoryList, % formatHistory()
+    }
 Return
 
-down:: ; Hotkey to toggle history window visibility and always-on-top
+; --- Toggle History Window Visibility ---
+down:: 
 ToggleHistory:
-if (historyWindowVisible) {
-    Gui, 2:Destroy ; Close the history window
-    historyWindowVisible := false
-} else {
-    ; Create and show the history GUI
-    Gui, 2:New, , History
-	Gui, Color, afaca9
-    Gui -sysmenu
-	Gui -caption
-    Gui, 2:Font, s11
-    Gui, 2:Add, Text, x0 y0 w80 h110 center vHistoryList, % formatHistory()
-    Gui, 2:Show, x1839 y968 w80 h110, History 
-	-Caption
-    WinSet, AlwaysOnTop, On, History ; Ensure the history window is always on top
-    historyWindowVisible := true
-}
+    if (historyWindowVisible) {
+        Gui, 2:Destroy ; Close the history window
+        historyWindowVisible := false
+    } else {
+        ; Create and show the history GUI
+        Gui, 2:New, , History
+        Gui, Color, afaca9
+        Gui -sysmenu
+        Gui -caption
+        Gui, 2:Font, s11
+        Gui, 2:Add, Text, x0 y0 w80 h110 center vHistoryList, % formatHistory()
+        Gui, 2:Show, x1839 y968 w80 h110, History 
+        -Caption
+        WinSet, AlwaysOnTop, On, History ; Ensure the history window is always on top
+        historyWindowVisible := true
+    }
 Return
 
-~`:: ; Hotkey to focus on main window and delete text
+; --- Hotkey to Focus and Clear Main Window ---
+~`::
 {
     WinActivate, Comp
     Sendinput ^a
@@ -122,15 +131,15 @@ Return
 }
 return
 
-up:: ; Toggle "AlwaysOnTop" for main window
-WinSet, AlwaysOnTop, Toggle, Comp
+; --- Toggle AlwaysOnTop for Main Window ---
+up::
+    WinSet, AlwaysOnTop, Toggle, Comp
 return
 
-; Helper function to check if a value is numeric
+; --- Helper Function to Check if a Value is Numeric ---
 IsNumber(value) {
     return (value is number)
 }
-
 
 ;//MISC//
 #MaxThreadsPerHotkey 2
