@@ -110,6 +110,8 @@ IsNumber(value) {
 
 ~f12::ExitApp ;Cierra
 
+#IfWinActive ahk_exe HLL-Win64-Shipping.exe
+
 ~f4:: ;LOOP r (spamea recarga)
 Toggle := !Toggle
 Loop
