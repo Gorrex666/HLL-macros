@@ -179,7 +179,7 @@ SendInput, {f2 Down}
 Sleep, 1400
 SendInput, {f2 Up}
 Sendinput {r Down}
-Sleep, 50
+Sleep, 150
 Sendinput {r Up}
 Send {r Down}
 Send {r Up}
@@ -202,7 +202,7 @@ Gosub SHOOT
 Sleep, 500
 SendInput, {f2 Up}
 Sendinput {r Down}
-Sleep, 50
+Sleep, 150
 Sendinput {r Up}
 Send {r Down}
 Send {r Up}
@@ -238,7 +238,7 @@ Return
     Sleep, 1400
     SendInput, {f2 Up}
     Sendinput {r Down}
-    Sleep, 50
+    Sleep, 150
     Sendinput {r Up}
     Send {r Down}
     Send {r Up}
@@ -259,7 +259,7 @@ Return
     Sleep, 500
     Send, {f2 Up}
     Sendinput {r Down}
-    Sleep, 50
+    Sleep, 150
     Sendinput {r Up}
     Send {r Down}
     Send {r Up}
@@ -276,7 +276,7 @@ SendInput, {f2 Down}
 Sleep, 1400
 SendInput, {f2 Up}
 Sendinput {r Down}
-Sleep, 50
+Sleep, 150
 Sendinput {r Up}
 Send {r Down}
 Send {r Up}
@@ -300,7 +300,7 @@ return
     Sleep, 1400
     SendInput, {f2 Up}
     Sendinput {r Down}
-    Sleep, 50
+    Sleep, 150
     Sendinput {r Up}
     Send {r Down}
     Send {r Up}
@@ -321,7 +321,7 @@ return
     Sleep, 500
     Send, {f2 Up}
     Sendinput {r Down}
-    Sleep, 50
+    Sleep, 150
     Sendinput {r Up}
     Send {r Down}
     Send {r Up}
@@ -338,7 +338,7 @@ SendInput, {f2 Down}
 Sleep, 1400
 SendInput, {f2 Up}
 Sendinput {r Down}
-Sleep, 50
+Sleep, 150
 Sendinput {r Up}
 Send {r Down}
 Send {r Up}
@@ -375,7 +375,7 @@ SendInput, {f2 Down}
 Sleep, 1400
 SendInput, {f2 Up}
 Sendinput {r Down}
-Sleep, 50
+Sleep, 150
 Sendinput {r Up}
 Send {r Down}
 Send {r Up}
@@ -398,7 +398,7 @@ Gosub SHOOT
 Sleep, 500
 SendInput, {f2 Up}
 Sendinput {r Down}
-Sleep, 50
+Sleep, 150
 Sendinput {r Up}
 Send {r Down}
 Send {r Up}
@@ -428,7 +428,7 @@ SendInput, {f2 Down}
 Sleep, 1400
 SendInput, {f2 Up}
 Sendinput {r Down}
-Sleep, 50
+Sleep, 150
 Sendinput {r Up}
 Send {r Down}
 Send {r Up}
@@ -470,7 +470,7 @@ SRCONT: ;Shoot right continuous, (saves a second by pressing f2 before the shoot
 Sleep, 500
 SendInput, {f2 Up}
 Sendinput {r Down}
-Sleep, 50
+Sleep, 150
 Sendinput {r Up}
 Send {r Down}
 Send {r Up}
