@@ -1,136 +1,105 @@
 ;// CALCULATOR //
 Process, Priority,, A
-; Options object for different nations
-xMin := 100
-xMax := 1600
-options := {}
-options["us/ge"] := { "m": -0.237035714285714, "b": 1001.46547619048 }
-options["ru"] := { "m": -0.2136691176, "b": 1141.7215 }
-options["uk"] := { "m": -0.1773, "b": 550.69 }
-; Arrays to store last inputs and results
-lastInputs := []
-lastResults := []
-; Set timer to update the history every 10 seconds (reduced frequency)
-SetTimer, UpdateHistoryInBackground, 10000
 
-; --- Main GUI window ---
+; Options for different nations
+xMin := 100, xMax := 1600
+options := {}
+options["us/ge"] := { "m": -0.237, "b": 1001.465 }
+options["ru"] := { "m": -0.214, "b": 1141.722 }
+options["uk"] := { "m": -0.177, "b": 550.69 }
+
+; History data
+lastInputs := [], lastResults := []
+
+; Main GUI
 Gui, Color, afaca9
 Gui, Font, s11, Bold
-Gui -sysmenu
-Gui -caption
+Gui -sysmenu -caption
 Gui, Show, x1842 y923 w76 h44, Comp
-; Add Nation Dropdown and Input fields
-Gui, Add, DropDownList, vNationSelect gSubmitInput x0 y-9 w39 h110, us/ge|ru|uk 
+Gui, Add, DropDownList, vNationSelect gUpdateResult x0 y-9 w39 h110, us/ge|ru|uk
 Gui, color,, afaca9
-Gui, Add, Edit, vDistanceInput x39 y-5 w35 h20 gSubmitInput
+Gui, Add, Edit, vDistanceInput gUpdateResult x39 y-5 w35 h20
 Gui, Font, s20, Bold
 Gui, Add, Text, vResultText x0 y11 w75 h30 center
 
-
-; --- Submit Input Function ---
-SubmitInput:
-    SetTimer, DelayedUpdate, -300 ; Increased delay to 300ms to reduce CPU usage
+; Update Result
+UpdateResult:
+    SetTimer, DelayedUpdate, -650
 Return
 
 DelayedUpdate:
     Gui, Submit, NoHide
-    ; Only calculate if input is valid and different from last input
-    if (StrLen(DistanceInput) >= 3) {
-        if (DistanceInput != lastInputs[lastInputs.Length()]) {
-            result := calculate(DistanceInput, NationSelect)
-            updateHistory(DistanceInput, result)
+    if (StrLen(DistanceInput) >= 3 && DistanceInput != lastInputs[lastInputs.Length()]) {
+        result := calculate(DistanceInput, NationSelect)
+        if (!IsNumber(result)) {
+            GuiControl, , ResultText,
+        } else {
             GuiControl, , ResultText, %result%
+            updateHistory(DistanceInput, result)
+            updateHistoryDisplay()
         }
     } else {
-        GuiControl, , ResultText, ; Clear result text if input is less than 3 characters
+        GuiControl, , ResultText,
     }
 Return
 
-; --- Calculate Function ---
-xMin := 100
-xMax := 1600
+; Calculation
 calculate(x, nation) {
     global options, xMin, xMax
     if (x >= xMin && x <= xMax) {
-        m := options[nation]["m"]
-        b := options[nation]["b"]
+        m := options[nation].m, b := options[nation].b
         return Round(m * x + b)
     }
+    return ""
 }
 
-; --- Update History Function ---
+; Update History
 updateHistory(input, result) {
     global lastInputs, lastResults
-    ; Check if input and result are numbers
-    if (IsNumber(input) && IsNumber(result)) {
-        ; Limit history size to avoid unnecessary resource usage
-        if (lastInputs.MaxIndex() > 7) {
-            lastInputs.RemoveAt(1) ; Remove the oldest input
-            lastResults.RemoveAt(1) ; Remove the oldest result
-        }
-        lastInputs.Push(input) ; Add new entry at the end
-        lastResults.Push(result) ; Add new result at the end
+    if (lastInputs.MaxIndex() > 7) {
+        lastInputs.RemoveAt(1), lastResults.RemoveAt(1)
     }
+    lastInputs.Push(input), lastResults.Push(result)
 }
 
-; --- Format History Function ---
-formatHistory() {
-    global lastInputs, lastResults
+; Format and Update History Display
+updateHistoryDisplay() {
+    global lastInputs, lastResults, historyWindowVisible
+    if (!historyWindowVisible) return
     text := ""
     Loop % lastInputs.Length() {
         idx := lastInputs.Length() - A_Index + 1
-        ; Only append numeric history entries
-        if (IsNumber(lastInputs[idx]) && IsNumber(lastResults[idx])) {
-            text .= lastInputs[idx] " m | " lastResults[idx] "`n"
-        }
+        text .= lastInputs[idx] " m | " lastResults[idx] "`n"
     }
-    return text
+    GuiControl, 2:, HistoryList, %text%
 }
 
-; --- Update History in Background ---
-UpdateHistoryInBackground:
+; Toggle History Window
+~down::
     if (historyWindowVisible) {
-        Gui, 2:Submit, NoHide ; Update the history window even if it is not focused
-        GuiControl, 2:, HistoryList, % formatHistory()
-    }
-Return
-
-; --- Toggle History Window Visibility ---
-~down:: 
-ToggleHistory:
-    if (historyWindowVisible) {
-        Gui, 2:Destroy ; Close the history window
+        Gui, 2:Destroy
         historyWindowVisible := false
     } else {
-        ; Create and show the history GUI
         Gui, 2:New, , History
         Gui, Color, afaca9
-        Gui -sysmenu
-        Gui -caption
-        Gui, 2:Font, s11
-        Gui, 2:Add, Text, x0 y0 w80 h110 center vHistoryList, % formatHistory()
-        Gui, 2:Show, x1839 y968 w80 h110, History 
-        -Caption
-        WinSet, AlwaysOnTop, On, History ; Ensure the history window is always on top
-        historyWindowVisible := true
+        Gui -sysmenu -caption
+        Gui, Add, Text, x0 y0 w80 h110 vHistoryList center
+        Gui, Show, x1839 y968 w80 h110
+        WinSet, AlwaysOnTop, On, History
+        historyWindowVisible := truerr
+        updateHistoryDisplay()
     }
 Return
 
-; --- Hotkey to Focus and Clear Main Window ---
+; Hotkeys
 ~`::
-{
     WinActivate, Comp
-    Sendinput ^a
-    Sendinput {Backspace}
-}
-return
+    Send !a{Backspace}
+Return
 
-; --- Toggle AlwaysOnTop for Main Window ---
-up::
-    WinSet, AlwaysOnTop, Toggle, Comp
-return
+up:: WinSet, AlwaysOnTop, Toggle, Comp
 
-; --- Helper Function to Check if a Value is Numeric ---
+; Helper
 IsNumber(value) {
     return (value is number)
 }
@@ -161,7 +130,7 @@ SendInput {w down}
 Else
 SendInput {w up}
 Return
-^CapsLock::
+!CapsLock::
 KeyDown := !KeyDown
 If KeyDown
 SendInput {s down}
@@ -187,14 +156,14 @@ SendInput {Click up}
 Return
 
 ;//SCRIPTS ARTILLERIA//
-~^1:: ;Recarga
+~!1:: ;Recarga
 {
 Gosub DELAY
 Gosub AMMO
 }
 Return
 
-~^2:: ;Recarga y dispara
+~!2:: ;Recarga y dispara
 {
 Gosub DELAY
 Gosub AMMO
@@ -202,7 +171,7 @@ Gosub SHOOT
 }
 Return
 
-~^4:: ;4 tiros(DISPERSION 15 MTS A 800 MTS)
+~!4:: ;4 tiros(DISPERSION 15 MTS A 800 MTS)
 {
 Gosub DELAY
 SendInput, {f2 Down}
@@ -245,7 +214,7 @@ Send, {f1 Up}
 }
 Return
 
-~^3:: ;3 tiros (fire mission)
+~!3:: ;3 tiros (fire mission)
 {
 Gosub DELAY
 Gosub AMMO
@@ -258,7 +227,7 @@ Gosub SHOOT
 Return
 
 
-~^5:: ;4 tiros(DISPERSION 15 MTS) Dynamic Calculation
+~!5:: ;4 tiros(DISPERSION 15 MTS) Dynamic Calculation
 {
     gui, Submit, NoHide ; Ensure the distance is updated from GUI
     distance := DistanceInput ; Get the distance input
