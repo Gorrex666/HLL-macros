@@ -202,7 +202,7 @@ Gosub SHOOT
 }
 Return
 
-~^3:: ;4 tiros(DISPERSION 15 MTS A 800 MTS)
+~^4:: ;4 tiros(DISPERSION 15 MTS A 800 MTS)
 {
 Gosub DELAY
 SendInput, {f2 Down}
@@ -220,7 +220,7 @@ Sleep, 1500
 SendInput, {f1 Up}
 Send, {f1 Up}
 SendInput, {a Down}
-Sleep, 200
+Sleep, 275
 SendInput, {f2 Down}
 Sleep, 700
 SendInput, {a Up}
@@ -245,7 +245,7 @@ Send, {f1 Up}
 }
 Return
 
-~^4:: ;3 tiros (fire mission)
+~^3:: ;3 tiros (fire mission)
 {
 Gosub DELAY
 Gosub AMMO
@@ -262,8 +262,7 @@ Return
 {
     gui, Submit, NoHide ; Ensure the distance is updated from GUI
     distance := DistanceInput ; Get the distance input
-    Time := round((800 * 1000) / distance) ; Calculate the press time
-
+    Time := round((800 * 1075) / distance) ; Calculate the press time
     Gosub DELAY
     SendInput, {f2 Down}
     Sleep, 1400
@@ -315,12 +314,11 @@ Sleep, 3400
 Send, {f1 Down}
 SendInput, {f1 Down}
 Sleep, 1400
-    Send, {f1 Up}
-    SendInput, {d Down}
-    Sleep, Time
-	SendInput, {d Up}
+Send, {f1 Up}
+SendInput, {d Down}
+Sleep, Time
+SendInput, {d Up}
 return
-
 
 ~F9:: ;LOOP Recarga y dispar
 Toggle := !Toggle
@@ -356,7 +354,7 @@ Sleep, 1500
 SendInput, {f1 Up}
 Send, {f1 Up}
 SendInput, {a Down}
-Sleep, 200
+Sleep, 275
 SendInput, {f2 Down}
 Sleep, 700
 SendInput, {a Up}
@@ -379,7 +377,7 @@ Sleep, 1500
 SendInput, {f1 Up}
 Send, {f1 Up}
 SendInput, {a Down}
-Sleep, 200
+Sleep, 275
 Sleep, 800
 SendInput, {a Up}
 }
@@ -451,12 +449,8 @@ Sleep, 1500
 SendInput, {f1 Up}
 Send, {f1 Up}
 SendInput, {d Down}
-Sleep, 200
+Sleep, 275
 SendInput, {f2 Down}
 Sleep, 700
 SendInput, {d Up}
 return
-
-
-
-
