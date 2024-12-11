@@ -50,7 +50,6 @@ calculate(x, nation) {
         m := options[nation].m, b := options[nation].b
         return Round(m * x + b)
     }
-    return ""
 }
 
 ; Update History
