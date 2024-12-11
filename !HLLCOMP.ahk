@@ -83,6 +83,7 @@ updateHistoryDisplay() {
         Gui, 2:New, , History
         Gui, Color, afaca9
         Gui -sysmenu -caption
+		Gui, Font, s11, Bold
         Gui, Add, Text, x0 y0 w80 h110 vHistoryList center
         Gui, Show, x1839 y968 w80 h110
         WinSet, AlwaysOnTop, On, History
