@@ -24,17 +24,17 @@
 
 //ARTY MACROS
 
-"Alt + 1" reload arty
+"," reload arty
 
-"Alt + 2" reload and shoot
+"." reload and shoot
 
-"Alt + 3" 3/4shots (fire mission)
+"/" 3/4shots (fire mission)
 
-"Alt + 4" 3/4shots(spread 15 MTS At 800 MTS)
+";" 3/4shots(spread 15 MTS At 800 MTS)
 
-"Alt + 5" 3/4shots(DYNAMIC spread, 15 MTS At any distance centered around aiming point)
+"'" 3/4shots(DYNAMIC spread, 15 MTS At any distance centered around aiming point)
 
-"Alt + 6" 3/4shots(DYNAMIC spread, 20 MTS At any distance centered around aiming point)
+"\" 3/4shots(DYNAMIC spread, 20 MTS At any distance centered around aiming point)
 
 "F5" LOOP reload and soot
 
