@@ -1,6 +1,5 @@
 ;// CALCULATOR //
 Process, Priority,, A
-
 ; Options object for different nations
 xMin := 100
 xMax := 1600
@@ -97,7 +96,7 @@ UpdateHistoryInBackground:
 Return
 
 ; --- Toggle History Window Visibility ---
-down:: 
+~down:: 
 ToggleHistory:
     if (historyWindowVisible) {
         Gui, 2:Destroy ; Close the history window
@@ -141,9 +140,9 @@ IsNumber(value) {
 
 ~pgdn::Reload ;Recarga el script
 
-f12::ExitApp ;Cierra
+~f12::ExitApp ;Cierra
 
-f4:: ;LOOP r (spamea recarga)
+~f4:: ;LOOP r (spamea recarga)
 Toggle := !Toggle
 Loop
 {
@@ -188,14 +187,14 @@ SendInput {Click up}
 Return
 
 ;//SCRIPTS ARTILLERIA//
-^1:: ;Recarga
+~^1:: ;Recarga
 {
 Gosub DELAY
 Gosub AMMO
 }
 Return
 
-^2:: ;Recarga y dispara
+~^2:: ;Recarga y dispara
 {
 Gosub DELAY
 Gosub AMMO
@@ -203,7 +202,7 @@ Gosub SHOOT
 }
 Return
 
-^3:: ;4 tiros(DISPERSION 15 MTS A 800 MTS)
+~^3:: ;4 tiros(DISPERSION 15 MTS A 800 MTS)
 {
 Gosub DELAY
 SendInput, {f2 Down}
@@ -246,7 +245,7 @@ Send, {f1 Up}
 }
 Return
 
-^4:: ;3 tiros (fire mission)
+~^4:: ;3 tiros (fire mission)
 {
 Gosub DELAY
 Gosub AMMO
@@ -258,7 +257,72 @@ Gosub SHOOT
 }
 Return
 
-F5:: ;LOOP Recarga y dispar
+
+~^5:: ;4 tiros(DISPERSION 15 MTS) Dynamic Calculation
+{
+    gui, Submit, NoHide ; Ensure the distance is updated from GUI
+    distance := DistanceInput ; Get the distance input
+    Time := round((800 * 1000) / distance) ; Calculate the press time
+
+    Gosub DELAY
+    SendInput, {f2 Down}
+    Sleep, 1400
+    SendInput, {f2 Up}
+    Sendinput {r Down}
+    Sleep, 50
+    Sendinput {r Up}
+    Send {r Down}
+    Send {r Up}
+    Sleep, 3400
+    Send, {f1 Down}
+    SendInput, {f1 Down}
+    Sleep, 1400
+    SendInput, {f1 Up}
+    Send, {f1 Up}
+    SendInput, {a Down}
+    Sleep, Time
+	SendInput, {a Up}
+    Gosub SHOOT
+    Gosub SRCONTDYN
+    Gosub SHOOT
+    Gosub SRCONTDYN
+    Gosub SHOOT
+    Sleep, 500
+    Send, {f2 Up}
+    Sendinput {r Down}
+    Sleep, 50
+    Sendinput {r Up}
+    Send {r Down}
+    Send {r Up}
+    Sleep, 3400
+    Send, {f1 Down}
+    SendInput, {f1 Down}
+    Sleep, 1400
+    SendInput, {f1 Up}
+    Send, {f1 Up}
+}
+Return
+SRCONTDYN: ;Shoot right continuous DYNAMIC
+SendInput, {f2 Down}
+Sleep, 1400
+SendInput, {f2 Up}
+Sendinput {r Down}
+Sleep, 50
+Sendinput {r Up}
+Send {r Down}
+Send {r Up}
+Sleep, 3400
+Send, {f1 Down}
+SendInput, {f1 Down}
+Sleep, 1400
+    Send, {f1 Up}
+    SendInput, {d Down}
+    Sleep, Time
+	SendInput, {d Up}
+return
+
+
+~F9:: ;LOOP Recarga y dispar
 Toggle := !Toggle
 Loop
 {
@@ -270,7 +334,7 @@ Gosub SHOOT
 }
 Return
 
-F6:: ;4 TIROS LOOP (DISPERSION 15 MTS A 800 MTS)
+~F6:: ;4 TIROS LOOP (DISPERSION 15 MTS A 800 MTS)
 Toggle := !Toggle
 Loop
 {
@@ -321,7 +385,7 @@ SendInput, {a Up}
 }
 Return
 
-f11:: ;"FIRE MISSION OVER" por chat
+~f11:: ;"FIRE MISSION OVER" por chat
 {
 Sleep, 200
 Goto CHATY
@@ -392,3 +456,7 @@ SendInput, {f2 Down}
 Sleep, 700
 SendInput, {d Up}
 return
+
+
+
+
