@@ -18,21 +18,21 @@
 
 "capslock" holds down "w" on/off
 
-"ctrl + capslock" holds down "s" on/off
+"Alt + capslock" holds down "s" on/off
 
 "F4" R spam
 
 //ARTY MACROS
 
-"Ctrl + 1" reload arty
+"Alt + 1" reload arty
 
-"Ctrl + 2" reload and shoot
+"Alt + 2" reload and shoot
 
-"Ctrl + 3" 3/4shots (fire mission)
+"Alt + 3" 3/4shots (fire mission)
 
-"Ctrl + 4" 3/4shots(spread 15 MTS At 800 MTS)
+"Alt + 4" 3/4shots(spread 15 MTS At 800 MTS)
 
-"Ctrl + 5" 3/4shots(DYNAMIC spread, 15 MTS At any distance centered around aiming point)
+"Alt + 5" 3/4shots(DYNAMIC spread, 15 MTS At any distance centered around aiming point)
 
 "F5" LOOP reload and soot
 
