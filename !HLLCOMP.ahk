@@ -24,7 +24,7 @@ Gui, Add, Text, vResultText x0 y11 w75 h30 center
 
 ; Update Result
 UpdateResult:
-    SetTimer, DelayedUpdate, -650
+    SetTimer, DelayedUpdate, -400
 Return
 
 DelayedUpdate:
@@ -91,6 +91,7 @@ updateHistoryDisplay() {
     }
 Return
 
+; Hotkeys
 ~`::
 WinActivate, Comp
 Send ^a{Backspace}
