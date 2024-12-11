@@ -290,6 +290,68 @@ Sleep, Time
 SendInput, {d Up}
 return
 
+~!6:: ;4 tiros(DISPERSION 20 MTS) Dynamic Calculation
+{
+    gui, Submit, NoHide ; Ensure the distance is updated from GUI
+    distance := DistanceInput ; Get the distance input
+    Time1 := round(((800 * 1075) / distance ) / 15 * 20) ; Calculate the press time
+    Gosub DELAY
+    SendInput, {f2 Down}
+    Sleep, 1400
+    SendInput, {f2 Up}
+    Sendinput {r Down}
+    Sleep, 50
+    Sendinput {r Up}
+    Send {r Down}
+    Send {r Up}
+    Sleep, 3400
+    Send, {f1 Down}
+    SendInput, {f1 Down}
+    Sleep, 1400
+    SendInput, {f1 Up}
+    Send, {f1 Up}
+    SendInput, {a Down}
+    Sleep, Time1
+	SendInput, {a Up}
+    Gosub SHOOT
+    Gosub SRCONTDYN1
+    Gosub SHOOT
+    Gosub SRCONTDYN1
+    Gosub SHOOT
+    Sleep, 500
+    Send, {f2 Up}
+    Sendinput {r Down}
+    Sleep, 50
+    Sendinput {r Up}
+    Send {r Down}
+    Send {r Up}
+    Sleep, 3400
+    Send, {f1 Down}
+    SendInput, {f1 Down}
+    Sleep, 1400
+    SendInput, {f1 Up}
+    Send, {f1 Up}
+}
+Return
+SRCONTDYN1: ;Shoot right continuous DYNAMIC
+SendInput, {f2 Down}
+Sleep, 1400
+SendInput, {f2 Up}
+Sendinput {r Down}
+Sleep, 50
+Sendinput {r Up}
+Send {r Down}
+Send {r Up}
+Sleep, 3400
+Send, {f1 Down}
+SendInput, {f1 Down}
+Sleep, 1400
+Send, {f1 Up}
+SendInput, {d Down}
+Sleep, Time1
+SendInput, {d Up}
+return
+
 ~F9:: ;LOOP Recarga y dispar
 Toggle := !Toggle
 Loop
