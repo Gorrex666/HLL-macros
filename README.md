@@ -32,6 +32,8 @@ Ctrl + 3 3shots(spread 15 MTS At 800 MTS)
 
 Ctrl + 4 3shots (fire mission)
 
+Ctrl + 5 4shots(DYNAMIC spread, 15 MTS At any distance)
+
 F5 LOOP reload and soot
 
 F6 LOOP 4 3shots (spread 15 MTS At 800 MTS)
