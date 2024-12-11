@@ -352,7 +352,7 @@ Sleep, Time1
 SendInput, {d Up}
 return
 
-~F9:: ;LOOP Recarga y dispar
+~F5:: ;LOOP Recarga y dispar
 Toggle := !Toggle
 Loop
 {
