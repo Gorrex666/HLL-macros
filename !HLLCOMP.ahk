@@ -103,6 +103,7 @@ IsNumber(value) {
 }
 
 ;//MISC//
+
 #MaxThreadsPerHotkey 2
 
 ~pgdn::Reload ;Recarga el script
@@ -154,14 +155,14 @@ SendInput {Click up}
 Return
 
 ;//SCRIPTS ARTILLERIA//
-~!1:: ;Recarga
+~,:: ;Recarga
 {
 Gosub DELAY
 Gosub AMMO
 }
 Return
 
-~!2:: ;Recarga y dispara
+~.:: ;Recarga y dispara
 {
 Gosub DELAY
 Gosub AMMO
@@ -169,7 +170,7 @@ Gosub SHOOT
 }
 Return
 
-~!4:: ;4 tiros(DISPERSION 15 MTS A 800 MTS)
+~;:: ;4 tiros(DISPERSION 15 MTS A 800 MTS)
 {
 Gosub DELAY
 SendInput, {f2 Down}
@@ -212,7 +213,7 @@ Send, {f1 Up}
 }
 Return
 
-~!3:: ;3 tiros (fire mission)
+~/:: ;3 tiros (fire mission)
 {
 Gosub DELAY
 Gosub AMMO
@@ -225,7 +226,7 @@ Gosub SHOOT
 Return
 
 
-~!5:: ;4 tiros(DISPERSION 15 MTS) Dynamic Calculation
+~':: ;4 tiros(DISPERSION 15 MTS) Dynamic Calculation
 {
     gui, Submit, NoHide ; Ensure the distance is updated from GUI
     distance := DistanceInput ; Get the distance input
@@ -287,7 +288,7 @@ Sleep, Time
 SendInput, {d Up}
 return
 
-~!6:: ;4 tiros(DISPERSION 20 MTS) Dynamic Calculation
+~\:: ;4 tiros(DISPERSION 20 MTS) Dynamic Calculation
 {
     gui, Submit, NoHide ; Ensure the distance is updated from GUI
     distance := DistanceInput ; Get the distance input
