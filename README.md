@@ -24,11 +24,11 @@
 
 //ARTY MACROS
 
-"," reload arty
+"/" reload arty
 
 "." reload and shoot
 
-"/" 3/4shots (fire mission)
+"," 3/4shots (fire mission)
 
 ";" 3/4shots(spread 15 MTS At 800 MTS)
 
