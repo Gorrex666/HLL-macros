@@ -38,8 +38,6 @@ DelayedUpdate:
             updateHistory(DistanceInput, result)
             updateHistoryDisplay()
         }
-    } else {
-        GuiControl, , ResultText,
     }
 Return
 
@@ -68,7 +66,7 @@ updateHistoryDisplay() {
     text := ""
     Loop % lastInputs.Length() {
         idx := lastInputs.Length() - A_Index + 1
-        text .= lastInputs[idx] " m | " lastResults[idx] "`n"
+        text .= lastInputs[idx] "m | " lastResults[idx] "`n"
     }
     GuiControl, 2:, HistoryList, %text%
 }
