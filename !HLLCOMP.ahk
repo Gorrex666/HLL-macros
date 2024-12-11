@@ -157,7 +157,7 @@ SendInput {Click up}
 Return
 
 ;//SCRIPTS ARTILLERIA//
-~,:: ;Recarga
+~/:: ;Recarga
 {
 Gosub DELAY
 Gosub AMMO
@@ -215,7 +215,7 @@ Send, {f1 Up}
 }
 Return
 
-~/:: ;3 tiros (fire mission)
+~,:: ;3 tiros (fire mission)
 {
 Gosub DELAY
 Gosub AMMO
