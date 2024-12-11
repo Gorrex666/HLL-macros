@@ -28,11 +28,11 @@ Ctrl + 1 reload arty
 
 Ctrl + 2 reload and shoot
 
-Ctrl + 3 3shots(spread 15 MTS At 800 MTS)
+Ctrl + 3 3/4shots (fire mission)
 
-Ctrl + 4 3shots (fire mission)
+Ctrl + 4 3/4shots(spread 15 MTS At 800 MTS)
 
-Ctrl + 5 4shots(DYNAMIC spread, 15 MTS At any distance centered around aiming point)
+Ctrl + 5 3/4shots(DYNAMIC spread, 15 MTS At any distance centered around aiming point)
 
 F5 LOOP reload and soot
 
