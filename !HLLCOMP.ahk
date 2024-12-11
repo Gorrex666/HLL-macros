@@ -87,7 +87,7 @@ updateHistoryDisplay() {
         Gui, Add, Text, x0 y0 w80 h110 vHistoryList center
         Gui, Show, x1839 y968 w80 h110
         WinSet, AlwaysOnTop, On, History
-        historyWindowVisible := truerr
+        historyWindowVisible := true
         updateHistoryDisplay()
     }
 Return
