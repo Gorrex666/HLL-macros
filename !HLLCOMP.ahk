@@ -91,10 +91,9 @@ updateHistoryDisplay() {
     }
 Return
 
-; Hotkeys
 ~`::
-    WinActivate, Comp
-    Send !a{Backspace}
+WinActivate, Comp
+Send ^a{Backspace}
 Return
 
 up:: WinSet, AlwaysOnTop, Toggle, Comp
