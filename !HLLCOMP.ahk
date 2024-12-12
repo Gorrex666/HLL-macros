@@ -188,23 +188,27 @@ Return
 HandleShots(15)
 Return
 
-~':: ; 4 shots (22 MTS dispersion) Dynamic
-HandleShots(22)
+~':: ; 4 shots (20 MTS dispersion) Dynamic
+HandleShots(20)
 Return
 
 \:: ; 4 shots (30 MTS dispersion) Dynamic
 HandleShots(30)
 Return
 
+[:: ; 4 shots (40 MTS dispersion) Dynamic
+HandleShots(40)
+Return
+
 ~F5:: ; Loop reload and shoot
 Toggle := !Toggle
 Loop
 {
-    If (!Toggle)
-        Break
-    Gosub DELAY
-    Gosub AMMO
-    Gosub SHOOT
+If (!Toggle)
+Break
+Gosub DELAY
+Gosub AMMO
+Gosub SHOOT
 }
 Return
 
@@ -212,12 +216,16 @@ Return
 HandleShotLoop(15)
 Return
 
-~F7:: ; Loop 4 shots (22 MTS dispersion)
-HandleShotLoop(22)
+~F7:: ; Loop 4 shots (20 MTS dispersion)
+HandleShotLoop(20)
 Return
 
 ~F8:: ; Loop 4 shots (30 MTS dispersion)
 HandleShotLoop(30)
+Return
+
+~F9:: ; Loop 4 shots (40 MTS dispersion)
+HandleShotLoop(40)
 Return
 
 ; Functions
