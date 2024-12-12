@@ -32,16 +32,16 @@
 
 ";" 3/4shots(15 MTS spread At any distance centered around aiming point)
 
-"'" 3/4shots(22 MTS spread At any distance centered around aiming point)
+"'" 3/4shots(22 MTS spread centered around aiming point)
 
-"\" 3/4shots(30 MTS spread At any distance centered around aiming point)
+"\" 3/4shots(30 MTS spread centered around aiming point)
 
 "F5" LOOP reload and soot
 
-"F6" LOOP 3/4shots(15 MTS spread At any distance centered around aiming point)
+"F6" LOOP 3/4shots(15 MTS spread centered around aiming point)
 
-"F7" LOOP 3/4shots(22 MTS spread At any distance centered around aiming point)
+"F7" LOOP 3/4shots(22 MTS spread centered around aiming point)
 
-"F8" LOOP 3/4shots(30 MTS spread At any distance centered around aiming point)
+"F8" LOOP 3/4shots(30 MTS spread centered around aiming point)
 
 "F11" chat message ">fire mission stop, approx 20 sec"
