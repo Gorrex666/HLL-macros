@@ -184,7 +184,7 @@ Gosub SHOOT
 }
 Return
 
-~;:: ;4 shots(15 MTS dispersion) Dynamic Calculation
+~;:: ;4 shots(15 MTS dispersion) Dynamic
 {
 gui, Submit, NoHide ; Ensure the distance is updated from GUI
 distance := DistanceInput ; Get the distance input
@@ -242,7 +242,7 @@ Gosub SHOOT
 }
 Return
 
-F6:: ;4 shots loop(15 MTS dispersion) Dynamic Calculation
+F6:: ;4 shots loop(15 MTS dispersion) Dynamic 
 Toggle := !Toggle
 Loop
 {
@@ -316,7 +316,7 @@ Sleep, 150
 Sendinput {r Up}
 Send {r Down}
 Send {r Up}
-Sleep, 3200
+Sleep, 3300
 Send, {f1 Down}
 SendInput, {f1 Down}
 Sleep, 1300
