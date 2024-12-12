@@ -256,7 +256,7 @@ HandleShots(dispersion) {
     Gosub AMMODYN
     SendInput, {d Down}
     Sleep, Vm
-    Sleep, V300
+    Sleep, V500
     Sleep, V800
     Send {Click down}{Click up}
     SendInput, {d Up}
@@ -269,7 +269,38 @@ HandleShotLoop(dispersion) {
     {
         If (!Toggle)
             Break
-        HandleShots(dispersion)
+			    
+    Gui, Submit, NoHide ; Ensure the distance is updated from GUI
+    distance := DistanceInput ; Get the distance input
+    Time := Round(((800 * 1075) / distance) / 15 * dispersion) ; Calculate the press time
+    V800 := (Time > 800) ? 800 : Time
+    V500 := (Time > 800) ? ((Time - 800 > 500) ? 500 : Time - 800) : 0
+    Vm := (Time > 1300) ? (Time - 1300) : 0
+    TotalTime := V500 + V800 + Vm
+    V4 := (TotalTime < 1300) ? (1300 - TotalTime) : 0
+Gosub DELAY
+Gosub AMMO
+SendInput, {a Down}
+Sleep, Vm
+Send, {f2 Down}
+SendInput, {f2 Down}
+Sleep, V800
+Send {Click down}{Click up}{Click down}{Click up}
+Sleep, V500
+SendInput, {a Up}
+Sleep, V4 
+Send, {f2 up}
+SendInput, {f2 Up}
+Gosub AMMODYN
+Gosub SRCONTDYN
+Gosub AMMODYN
+Gosub SRCONTDYN
+Gosub AMMODYN
+SendInput, {a Down}
+Sleep, Vm
+Sleep, V500
+Sleep, V800 
+SendInput, {a Up}
     }
 }
 
