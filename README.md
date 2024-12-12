@@ -34,6 +34,6 @@
 
 "F5" LOOP reload and soot
 
-"F6" 3/4shots(DYNAMIC spread, 15 MTS At any distance centered around aiming point)
+"F6" LOOP 3/4shots(DYNAMIC spread, 15 MTS At any distance centered around aiming point)
 
 "F11" chat message ">fire mission stop, approx 20 sec"
