@@ -188,45 +188,38 @@ Return
 {
 gui, Submit, NoHide ; Ensure the distance is updated from GUI
 distance := DistanceInput ; Get the distance input
-Time := Round(((800 * 1075) / distance) / 15 * 15) ; Calculate the press time, Split Time into two parts if it's greater than 800 ,Add a third value if the total is less than 1400
-V1 := (Time > 800) ? 800 : Time
-V2 := (Time > 800) ? (Time - 800) : 0
-TotalTime := V1 + V2
-V3 := (TotalTime < 1400) ? (1400 - TotalTime) : 0
+Time := Round(((800 * 1075) / distance) / 15 * 15) ; Calculate the press time
+V800 := (Time > 800) ? 800 : Time  ; First part is at most 800 ms
+V500 := (Time > 800) ? ((Time - 800 > 500) ? 500 : Time - 800) : 0 ; Second part is at most 800 ms
+Vm := (Time > 1300) ? (Time - 1300) : 0 ; Remaining time after V1 and V2
+TotalTime := V500 + V800 + Vm ; Add a fourth value if total is less than 1300 ms
+V4 := (TotalTime < 1300) ? (1300 - TotalTime) : 0
 Gosub DELAY
-SendInput, {f2 Down}
-Sleep, 1400
-SendInput, {f2 Up}
-Sendinput {r Down}
-Sendinput {r Up}
-Send {r Down}
-Send {r Up}
-Sleep, 3300
-SendInput, {f1 Down}
-Sleep, 1400
-SendInput, {f1 Up}
+Gosub AMMO
 SendInput, {a Down}
-Sleep, V2
+Sleep, Vm
 Send, {f2 Down}
 SendInput, {f2 Down}
-Sleep, V1 
-SendInput {Click down}
-SendInput {Click up}
+Sleep, V800
+Send {Click down}
+Send {Click up}
+Sendinput {Click down}
+Sendinput {Click up}
+Sleep, V500
 SendInput, {a Up}
-Sleep, V3
+Sleep, V4 
 Send, {f2 up}
 SendInput, {f2 Up}
 Gosub AMMODYN
 Gosub SRCONTDYN
 Gosub AMMODYN
-Sleep, 50
 SendInput, {d Down}
-Sleep, V2
-Sleep, V1 
+Sleep, Vm
+Sleep, V300
+Sleep, V800 
 Send {Click down}
 Send {Click up}
 SendInput, {d Up}
-Sleep, 50
 }
 Return
 
@@ -242,7 +235,7 @@ Gosub SHOOT
 }
 Return
 
-F6:: ;4 shots loop(15 MTS dispersion) Dynamic 
+~f6:: ;4 shots(15 MTS dispersion) Dynamic
 Toggle := !Toggle
 Loop
 {
@@ -250,32 +243,26 @@ If (!Toggle)
 Break
 gui, Submit, NoHide ; Ensure the distance is updated from GUI
 distance := DistanceInput ; Get the distance input
-Time := Round((800 * 1075) / distance) ; Calculate the press time, Split Time into two parts if it's greater than 800 ,Add a third value if the total is less than 1400
-V1 := (Time > 800) ? 800 : Time
-V2 := (Time > 800) ? (Time - 800) : 0
-TotalTime := V1 + V2
-V3 := (TotalTime < 1400) ? (1400 - TotalTime) : 0
+Time := Round(((800 * 1075) / distance) / 15 * 15) ; Calculate the press time
+V800 := (Time > 800) ? 800 : Time  ; First part is at most 800 ms
+V500 := (Time > 800) ? ((Time - 800 > 500) ? 500 : Time - 800) : 0 ; Second part is at most 800 ms
+Vm := (Time > 1300) ? (Time - 1300) : 0 ; Remaining time after V1 and V2
+TotalTime := V500 + V800 + Vm ; Add a fourth value if total is less than 1300 ms
+V4 := (TotalTime < 1300) ? (1300 - TotalTime) : 0
 Gosub DELAY
-SendInput, {f2 Down}
-Sleep, 1400
-SendInput, {f2 Up}
-Sendinput {r Down}
-Sendinput {r Up}
-Send {r Down}
-Send {r Up}
-Sleep, 3300
-SendInput, {f1 Down}
-Sleep, 1400
-SendInput, {f1 Up}
+Gosub AMMO
 SendInput, {a Down}
-Sleep, V2
+Sleep, Vm
 Send, {f2 Down}
 SendInput, {f2 Down}
-Sleep, V1 
-SendInput {Click down}
-SendInput {Click up}
+Sleep, V800
+Send {Click down}
+Send {Click up}
+Sendinput {Click down}
+Sendinput {Click up}
+Sleep, V500
 SendInput, {a Up}
-Sleep, V3
+Sleep, V4 
 Send, {f2 up}
 SendInput, {f2 Up}
 Gosub AMMODYN
@@ -284,8 +271,9 @@ Gosub AMMODYN
 Gosub SRCONTDYN
 Gosub AMMODYN
 SendInput, {a Down}
-Sleep, V2
-Sleep, V1 
+Sleep, Vm
+Sleep, V500
+Sleep, V800 
 SendInput, {a Up}
 }
 Return
@@ -312,7 +300,7 @@ SendInput, {f2 Down}
 Sleep, 1300
 SendInput, {f2 Up}
 Sendinput {r Down}
-Sleep, 150
+Sleep, 100
 Sendinput {r Up}
 Send {r Down}
 Send {r Up}
@@ -326,35 +314,40 @@ return
 
 SHOOT:
 SendInput {Click down}
-Sleep, 50
-SendInput {Click down}
+Send {Click down}
 SendInput {Click up}
+Send {Click up}
 return
 
 AMMODYN:
 Sendinput {r Down}
-Sleep, 50
 Sendinput {r Up}
+Sleep, 100
 Send {r Down}
 Send {r Up}
 Sleep, 3300
 Send, {f1 Down}
 SendInput, {f1 Down}
-Sleep, 1400
+Sleep, 1300
 SendInput, {f1 Up}
 Send, {f1 Up}
 return
 
 SRCONTDYN:
 SendInput, {d Down}
-Sleep, V2
+Sleep, Vm
 Send, {f2 Down}
-Sleep, V1 
+SendInput, {f2 Down}
+Sleep, V800
 Send {Click down}
 Send {Click up}
+Sendinput {Click down}
+Sendinput {Click up}
+Sleep, V500
 SendInput, {d Up}
-Sleep, V3 
-Send, {f2 Up}
+Sleep, V4 
+Send, {f2 up}
+SendInput, {f2 Up}
 return
 
 CHATY:
@@ -367,3 +360,13 @@ Send, {space}secs.
 SendInput {enter Down}
 SendInput {enter Up}
 return
+
+/*
+reload timings
+1st sample
+ 2.883  f2start
+ 3.883  f2finish
+
+ 5.774 R reload start
+ 10.101 reload finish = 4,327 ??
+*/
