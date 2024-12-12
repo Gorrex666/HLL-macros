@@ -112,7 +112,7 @@ IsNumber(value) {
 
 #IfWinActive ahk_exe HLL-Win64-Shipping.exe
 
-~f4:: ;LOOP r (spamea recarga)
+~f4:: ;LOOP r
 Toggle := !Toggle
 Loop
 {
@@ -124,7 +124,7 @@ Sendinput {r Up}
 }
 Return
 
-~CapsLock:: ;Mantiene "W" con capslock "S" con ctrl+capslock (on/off)
+~CapsLock:: ;HOLDS "W" capslock, "S"  alt+capslock (on/off)
 KeyDown := !KeyDown
 If KeyDown
 SendInput {w down}
@@ -139,7 +139,7 @@ Else
 SendInput {s up}
 Return
 
-~j:: ;Mantiene apretado F por 5 segundos con J.
+~j:: ;HOLDS F por 5 seCS J.
 {
 Sleep, 200
 SendInput, {f Down}
@@ -148,7 +148,7 @@ SendInput, {f Up}
 }
 Return
 
-~=:: ;Mantiene apretado el click izq con ` (on/off)
+~=:: ;HOLDS LEFT click (on/off)
 KeyDown := !KeyDown
 If KeyDown
 SendInput {Click down}
@@ -156,15 +156,15 @@ Else
 SendInput {Click up}
 Return
 
-;//SCRIPTS ARTILLERIA//
-~/:: ;Recarga
+;//ARTILLERY SCRIPTS//
+~/:: ;RELOAD
 {
 Gosub DELAY
 Gosub AMMO
 }
 Return
 
-~.:: ;Recarga y dispara
+~.:: ;RELOAD AND SHOOT
 {
 Gosub DELAY
 Gosub AMMO
@@ -172,187 +172,65 @@ Gosub SHOOT
 }
 Return
 
-~;:: ;4 tiros(DISPERSION 15 MTS A 800 MTS)
+~,:: ;3 SHOTS (fire mission)
 {
+Gosub DELAY
+Gosub AMMO
+Gosub SHOOT
+Gosub AMMO
+Gosub SHOOT
+Gosub AMMO
+Gosub SHOOT
+}
+Return
+
+~;:: ;4 shots(15 MTS dispersion) Dynamic Calculation
+{
+gui, Submit, NoHide ; Ensure the distance is updated from GUI
+distance := DistanceInput ; Get the distance input
+Time := Round(((800 * 1075) / distance) / 15 * 15) ; Calculate the press time, Split Time into two parts if it's greater than 800 ,Add a third value if the total is less than 1400
+V1 := (Time > 800) ? 800 : Time
+V2 := (Time > 800) ? (Time - 800) : 0
+TotalTime := V1 + V2
+V3 := (TotalTime < 1400) ? (1400 - TotalTime) : 0
 Gosub DELAY
 SendInput, {f2 Down}
 Sleep, 1400
 SendInput, {f2 Up}
 Sendinput {r Down}
-Sleep, 150
 Sendinput {r Up}
 Send {r Down}
 Send {r Up}
-Sleep, 3400
-Send, {f1 Down}
+Sleep, 3300
 SendInput, {f1 Down}
-Sleep, 1500
+Sleep, 1400
 SendInput, {f1 Up}
-Send, {f1 Up}
 SendInput, {a Down}
-Sleep, 275
+Sleep, V2
+Send, {f2 Down}
 SendInput, {f2 Down}
-Sleep, 700
+Sleep, V1 
+SendInput {Click down}
+SendInput {Click up}
 SendInput, {a Up}
-Gosub SHOOT
-Gosub SRCONT
-Gosub SHOOT
-Gosub SRCONT
-Gosub SHOOT
-Sleep, 500
+Sleep, V3
+Send, {f2 up}
 SendInput, {f2 Up}
-Sendinput {r Down}
-Sleep, 150
-Sendinput {r Up}
-Send {r Down}
-Send {r Up}
-Sleep, 3400
-Send, {f1 Down}
-SendInput, {f1 Down}
-Sleep, 1500
-SendInput, {f1 Up}
-Send, {f1 Up}
-}
-Return
-
-~,:: ;3 tiros (fire mission)
-{
-Gosub DELAY
-Gosub AMMO
-Gosub SHOOT
-Gosub AMMO
-Gosub SHOOT
-Gosub AMMO
-Gosub SHOOT
-}
-Return
-
-
-~':: ;4 tiros(DISPERSION 15 MTS) Dynamic Calculation
-{
-    gui, Submit, NoHide ; Ensure the distance is updated from GUI
-    distance := DistanceInput ; Get the distance input
-    Time := round((800 * 1075) / distance) ; Calculate the press time
-    Gosub DELAY
-    SendInput, {f2 Down}
-    Sleep, 1400
-    SendInput, {f2 Up}
-    Sendinput {r Down}
-    Sleep, 150
-    Sendinput {r Up}
-    Send {r Down}
-    Send {r Up}
-    Sleep, 3400
-    Send, {f1 Down}
-    SendInput, {f1 Down}
-    Sleep, 1400
-    SendInput, {f1 Up}
-    Send, {f1 Up}
-    SendInput, {a Down}
-    Sleep, Time
-	SendInput, {a Up}
-    Gosub SHOOT
-    Gosub SRCONTDYN
-    Gosub SHOOT
-    Gosub SRCONTDYN
-    Gosub SHOOT
-    Sleep, 500
-    Send, {f2 Up}
-    Sendinput {r Down}
-    Sleep, 150
-    Sendinput {r Up}
-    Send {r Down}
-    Send {r Up}
-    Sleep, 3400
-    Send, {f1 Down}
-    SendInput, {f1 Down}
-    Sleep, 1400
-    SendInput, {f1 Up}
-    Send, {f1 Up}
-}
-Return
-SRCONTDYN: ;Shoot right continuous DYNAMIC
-SendInput, {f2 Down}
-Sleep, 1400
-SendInput, {f2 Up}
-Sendinput {r Down}
-Sleep, 150
-Sendinput {r Up}
-Send {r Down}
-Send {r Up}
-Sleep, 3400
-Send, {f1 Down}
-SendInput, {f1 Down}
-Sleep, 1400
-Send, {f1 Up}
+Gosub AMMODYN
+Gosub SRCONTDYN
+Gosub AMMODYN
+Sleep, 50
 SendInput, {d Down}
-Sleep, Time
+Sleep, V2
+Sleep, V1 
+Send {Click down}
+Send {Click up}
 SendInput, {d Up}
-return
-
-~\:: ;4 tiros(DISPERSION 20 MTS) Dynamic Calculation
-{
-    gui, Submit, NoHide ; Ensure the distance is updated from GUI
-    distance := DistanceInput ; Get the distance input
-    Time1 := round(((800 * 1075) / distance ) / 15 * 20) ; Calculate the press time
-    Gosub DELAY
-    SendInput, {f2 Down}
-    Sleep, 1400
-    SendInput, {f2 Up}
-    Sendinput {r Down}
-    Sleep, 150
-    Sendinput {r Up}
-    Send {r Down}
-    Send {r Up}
-    Sleep, 3400
-    Send, {f1 Down}
-    SendInput, {f1 Down}
-    Sleep, 1400
-    SendInput, {f1 Up}
-    Send, {f1 Up}
-    SendInput, {a Down}
-    Sleep, Time1
-	SendInput, {a Up}
-    Gosub SHOOT
-    Gosub SRCONTDYN1
-    Gosub SHOOT
-    Gosub SRCONTDYN1
-    Gosub SHOOT
-    Sleep, 500
-    Send, {f2 Up}
-    Sendinput {r Down}
-    Sleep, 150
-    Sendinput {r Up}
-    Send {r Down}
-    Send {r Up}
-    Sleep, 3400
-    Send, {f1 Down}
-    SendInput, {f1 Down}
-    Sleep, 1400
-    SendInput, {f1 Up}
-    Send, {f1 Up}
+Sleep, 50
 }
 Return
-SRCONTDYN1: ;Shoot right continuous DYNAMIC
-SendInput, {f2 Down}
-Sleep, 1400
-SendInput, {f2 Up}
-Sendinput {r Down}
-Sleep, 150
-Sendinput {r Up}
-Send {r Down}
-Send {r Up}
-Sleep, 3400
-Send, {f1 Down}
-SendInput, {f1 Down}
-Sleep, 1400
-Send, {f1 Up}
-SendInput, {d Down}
-Sleep, Time1
-SendInput, {d Up}
-return
 
-~F5:: ;LOOP Recarga y dispar
+~F5:: ;LOOP RELOAD AND SHOOT
 Toggle := !Toggle
 Loop
 {
@@ -364,53 +242,50 @@ Gosub SHOOT
 }
 Return
 
-~F6:: ;4 TIROS LOOP (DISPERSION 15 MTS A 800 MTS)
+F6:: ;4 shots loop(15 MTS dispersion) Dynamic Calculation
 Toggle := !Toggle
 Loop
 {
 If (!Toggle)
 Break
+gui, Submit, NoHide ; Ensure the distance is updated from GUI
+distance := DistanceInput ; Get the distance input
+Time := Round((800 * 1075) / distance) ; Calculate the press time, Split Time into two parts if it's greater than 800 ,Add a third value if the total is less than 1400
+V1 := (Time > 800) ? 800 : Time
+V2 := (Time > 800) ? (Time - 800) : 0
+TotalTime := V1 + V2
+V3 := (TotalTime < 1400) ? (1400 - TotalTime) : 0
 Gosub DELAY
 SendInput, {f2 Down}
 Sleep, 1400
 SendInput, {f2 Up}
 Sendinput {r Down}
-Sleep, 150
 Sendinput {r Up}
 Send {r Down}
 Send {r Up}
-Sleep, 3400
-Send, {f1 Down}
+Sleep, 3300
 SendInput, {f1 Down}
-Sleep, 1500
+Sleep, 1400
 SendInput, {f1 Up}
-Send, {f1 Up}
 SendInput, {a Down}
-Sleep, 275
+Sleep, V2
+Send, {f2 Down}
 SendInput, {f2 Down}
-Sleep, 700
+Sleep, V1 
+SendInput {Click down}
+SendInput {Click up}
 SendInput, {a Up}
-Gosub SHOOT
-Gosub SRCONT
-Gosub SHOOT
-Gosub SRCONT
-Gosub SHOOT
-Sleep, 500
+Sleep, V3
+Send, {f2 up}
 SendInput, {f2 Up}
-Sendinput {r Down}
-Sleep, 150
-Sendinput {r Up}
-Send {r Down}
-Send {r Up}
-Sleep, 3400
-Send, {f1 Down}
-SendInput, {f1 Down}
-Sleep, 1500
-SendInput, {f1 Up}
-Send, {f1 Up}
+Gosub AMMODYN
+Gosub SRCONTDYN
+Gosub AMMODYN
+Gosub SRCONTDYN
+Gosub AMMODYN
 SendInput, {a Down}
-Sleep, 275
-Sleep, 800
+Sleep, V2
+Sleep, V1 
 SendInput, {a Up}
 }
 Return
@@ -422,20 +297,29 @@ Goto CHATY
 }
 Return
 
-;LABELS
+;//LABELS//
+
+DELAY:
+Sleep, 200
+SendInput {Click down}
+Sleep, 50
+SendInput {Click down}
+SendInput {Click up}
+return
+
 AMMO:
 SendInput, {f2 Down}
-Sleep, 1400
+Sleep, 1300
 SendInput, {f2 Up}
 Sendinput {r Down}
 Sleep, 150
 Sendinput {r Up}
 Send {r Down}
 Send {r Up}
-Sleep, 3400
+Sleep, 3200
 Send, {f1 Down}
 SendInput, {f1 Down}
-Sleep, 1500
+Sleep, 1300
 SendInput, {f1 Up}
 Send, {f1 Up}
 return
@@ -447,12 +331,30 @@ SendInput {Click down}
 SendInput {Click up}
 return
 
-DELAY:
-Sleep, 200
-SendInput {Click down}
+AMMODYN:
+Sendinput {r Down}
 Sleep, 50
-SendInput {Click down}
-SendInput {Click up}
+Sendinput {r Up}
+Send {r Down}
+Send {r Up}
+Sleep, 3300
+Send, {f1 Down}
+SendInput, {f1 Down}
+Sleep, 1400
+SendInput, {f1 Up}
+Send, {f1 Up}
+return
+
+SRCONTDYN:
+SendInput, {d Down}
+Sleep, V2
+Send, {f2 Down}
+Sleep, V1 
+Send {Click down}
+Send {Click up}
+SendInput, {d Up}
+Sleep, V3 
+Send, {f2 Up}
 return
 
 CHATY:
@@ -464,25 +366,4 @@ Send, %rand%
 Send, {space}secs.
 SendInput {enter Down}
 SendInput {enter Up}
-return
-
-SRCONT: ;Shoot right continuous, (saves a second by pressing f2 before the shooting take place)
-Sleep, 500
-SendInput, {f2 Up}
-Sendinput {r Down}
-Sleep, 150
-Sendinput {r Up}
-Send {r Down}
-Send {r Up}
-Sleep, 3400
-Send, {f1 Down}
-SendInput, {f1 Down}
-Sleep, 1500
-SendInput, {f1 Up}
-Send, {f1 Up}
-SendInput, {d Down}
-Sleep, 275
-SendInput, {f2 Down}
-Sleep, 700
-SendInput, {d Up}
 return
