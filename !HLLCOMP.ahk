@@ -184,99 +184,86 @@ Gosub SHOOT
 }
 Return
 
-~;:: ;4 shots(15 MTS dispersion) Dynamic
-{
-gui, Submit, NoHide ; Ensure the distance is updated from GUI
-distance := DistanceInput ; Get the distance input
-Time := Round(((800 * 1075) / distance) / 15 * 15) ; Calculate the press time
-V800 := (Time > 800) ? 800 : Time  ; First part is at most 800 ms
-V500 := (Time > 800) ? ((Time - 800 > 500) ? 500 : Time - 800) : 0 ; Second part is at most 800 ms
-Vm := (Time > 1300) ? (Time - 1300) : 0 ; Remaining time after V1 and V2
-TotalTime := V500 + V800 + Vm ; Add a fourth value if total is less than 1300 ms
-V4 := (TotalTime < 1300) ? (1300 - TotalTime) : 0
-Gosub DELAY
-Gosub AMMO
-SendInput, {a Down}
-Sleep, Vm
-Send, {f2 Down}
-SendInput, {f2 Down}
-Sleep, V800
-Send {Click down}
-Send {Click up}
-Sendinput {Click down}
-Sendinput {Click up}
-Sleep, V500
-SendInput, {a Up}
-Sleep, V4 
-Send, {f2 up}
-SendInput, {f2 Up}
-Gosub AMMODYN
-Gosub SRCONTDYN
-Gosub AMMODYN
-SendInput, {d Down}
-Sleep, Vm
-Sleep, V300
-Sleep, V800 
-Send {Click down}
-Send {Click up}
-SendInput, {d Up}
-}
+~;:: ; 4 shots (15 MTS dispersion) Dynamic
+HandleShots(15)
 Return
 
-~F5:: ;LOOP RELOAD AND SHOOT
+~':: ; 4 shots (22 MTS dispersion) Dynamic
+HandleShots(22)
+Return
+
+\:: ; 4 shots (30 MTS dispersion) Dynamic
+HandleShots(30)
+Return
+
+~F5:: ; Loop reload and shoot
 Toggle := !Toggle
 Loop
 {
-If (!Toggle)
-Break
-Gosub DELAY
-Gosub AMMO
-Gosub SHOOT
+    If (!Toggle)
+        Break
+    Gosub DELAY
+    Gosub AMMO
+    Gosub SHOOT
 }
 Return
 
-~f6:: ;4 shots(15 MTS dispersion) Dynamic
-Toggle := !Toggle
-Loop
-{
-If (!Toggle)
-Break
-gui, Submit, NoHide ; Ensure the distance is updated from GUI
-distance := DistanceInput ; Get the distance input
-Time := Round(((800 * 1075) / distance) / 15 * 15) ; Calculate the press time
-V800 := (Time > 800) ? 800 : Time  ; First part is at most 800 ms
-V500 := (Time > 800) ? ((Time - 800 > 500) ? 500 : Time - 800) : 0 ; Second part is at most 800 ms
-Vm := (Time > 1300) ? (Time - 1300) : 0 ; Remaining time after V1 and V2
-TotalTime := V500 + V800 + Vm ; Add a fourth value if total is less than 1300 ms
-V4 := (TotalTime < 1300) ? (1300 - TotalTime) : 0
-Gosub DELAY
-Gosub AMMO
-SendInput, {a Down}
-Sleep, Vm
-Send, {f2 Down}
-SendInput, {f2 Down}
-Sleep, V800
-Send {Click down}
-Send {Click up}
-Sendinput {Click down}
-Sendinput {Click up}
-Sleep, V500
-SendInput, {a Up}
-Sleep, V4 
-Send, {f2 up}
-SendInput, {f2 Up}
-Gosub AMMODYN
-Gosub SRCONTDYN
-Gosub AMMODYN
-Gosub SRCONTDYN
-Gosub AMMODYN
-SendInput, {a Down}
-Sleep, Vm
-Sleep, V500
-Sleep, V800 
-SendInput, {a Up}
-}
+~F6:: ; Loop 4 shots (15 MTS dispersion)
+HandleShotLoop(15)
 Return
+
+~F7:: ; Loop 4 shots (22 MTS dispersion)
+HandleShotLoop(22)
+Return
+
+~F8:: ; Loop 4 shots (30 MTS dispersion)
+HandleShotLoop(30)
+Return
+
+; Functions
+HandleShots(dispersion) {
+    global
+    Gui, Submit, NoHide ; Ensure the distance is updated from GUI
+    distance := DistanceInput ; Get the distance input
+    Time := Round(((800 * 1075) / distance) / 15 * dispersion) ; Calculate the press time
+    V800 := (Time > 800) ? 800 : Time
+    V500 := (Time > 800) ? ((Time - 800 > 500) ? 500 : Time - 800) : 0
+    Vm := (Time > 1300) ? (Time - 1300) : 0
+    TotalTime := V500 + V800 + Vm
+    V4 := (TotalTime < 1300) ? (1300 - TotalTime) : 0
+
+    Gosub DELAY
+    Gosub AMMO
+    SendInput, {a Down}
+    Sleep, Vm
+    Send, {f2 Down}
+    Sleep, V800
+    Send {Click down}{Click up}{Click down}{Click up}
+    Sleep, V500
+    SendInput, {a Up}
+    Sleep, V4
+    Send, {f2 Up}
+    Gosub AMMODYN
+    Gosub SRCONTDYN
+    Gosub AMMODYN
+    SendInput, {d Down}
+    Sleep, Vm
+    Sleep, V300
+    Sleep, V800
+    Send {Click down}{Click up}
+    SendInput, {d Up}
+}
+
+HandleShotLoop(dispersion) {
+    global
+    Toggle := !Toggle
+    Loop
+    {
+        If (!Toggle)
+            Break
+        HandleShots(dispersion)
+    }
+}
 
 ~f11:: ;"FIRE MISSION OVER" por chat
 {
@@ -291,8 +278,7 @@ DELAY:
 Sleep, 200
 SendInput {Click down}
 Sleep, 50
-SendInput {Click down}
-SendInput {Click up}
+Send {Click down}{Click up}
 return
 
 AMMO:
@@ -304,7 +290,7 @@ Sleep, 100
 Sendinput {r Up}
 Send {r Down}
 Send {r Up}
-Sleep, 3300
+Sleep, 3400
 Send, {f1 Down}
 SendInput, {f1 Down}
 Sleep, 1300
@@ -313,19 +299,14 @@ Send, {f1 Up}
 return
 
 SHOOT:
-SendInput {Click down}
-Send {Click down}
-SendInput {Click up}
-Send {Click up}
+Send {Click down}{Click up}{Click down}{Click up}
 return
 
 AMMODYN:
-Sendinput {r Down}
-Sendinput {r Up}
+Send {r down}{r up}
 Sleep, 100
-Send {r Down}
-Send {r Up}
-Sleep, 3300
+Send {r down}{r up}
+Sleep, 3400
 Send, {f1 Down}
 SendInput, {f1 Down}
 Sleep, 1300
@@ -339,10 +320,8 @@ Sleep, Vm
 Send, {f2 Down}
 SendInput, {f2 Down}
 Sleep, V800
-Send {Click down}
-Send {Click up}
-Sendinput {Click down}
-Sendinput {Click up}
+Send {Click down}{Click up}
+Sendinput {Click down}{Click up}
 Sleep, V500
 SendInput, {d Up}
 Sleep, V4 
@@ -352,21 +331,9 @@ return
 
 CHATY:
 Random, rand, 21, 23
-SendInput {k Down}
-SendInput {k Up}
+SendInput {k Down}{k Up}
 Send, >fire stop, approx{space}
 Send, %rand%
 Send, {space}secs.
-SendInput {enter Down}
-SendInput {enter Up}
+SendInput {enter Down}{enter Up}
 return
-
-/*
-reload timings
-1st sample
- 2.883  f2start
- 3.883  f2finish
-
- 5.774 R reload start
- 10.101 reload finish = 4,327 ??
-*/
