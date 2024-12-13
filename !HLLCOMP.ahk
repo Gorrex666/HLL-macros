@@ -62,8 +62,6 @@ updateHistory(input, result) {
 ; Format and Update History Display
 updateHistoryDisplay() {
     global lastInputs, lastResults, historyWindowVisible
-    if (!historyWindowVisible) return
-    text := ""
     Loop % lastInputs.Length() {
         idx := lastInputs.Length() - A_Index + 1
         text .= lastInputs[idx] "m | " lastResults[idx] "`n"
@@ -234,8 +232,8 @@ HandleShots(dispersion) {
     Gui, Submit, NoHide ; Ensure the distance is updated from GUI
     distance := DistanceInput ; Get the distance input
     Time := Round(((800 * 1075) / distance) / 15 * dispersion) ; Calculate the press time
-    V800 := (Time > 800) ? 800 : Time
-    V500 := (Time > 800) ? ((Time - 800 > 500) ? 500 : Time - 800) : 0
+    V800 := (Time > 900) ? 900 : Time
+    V500 := (Time > 900) ? ((Time - 900 > 400) ? 400 : Time - 900) : 0
     Vm := (Time > 1300) ? (Time - 1300) : 0
     TotalTime := V500 + V800 + Vm
     V4 := (TotalTime < 1300) ? (1300 - TotalTime) : 0
@@ -246,11 +244,11 @@ HandleShots(dispersion) {
     Sleep, Vm
     Send, {f2 Down}
     Sleep, V800
-    Send {Click down}{Click up}{Click down}{Click up}
+    SendInput {Click down}{Click up}
     Sleep, V500
     SendInput, {a Up}
     Sleep, V4
-    Send, {f2 Up}
+    SendInput, {f2 Up}
     Gosub AMMODYN
     Gosub SRCONTDYN
     Gosub AMMODYN
@@ -258,7 +256,7 @@ HandleShots(dispersion) {
     Sleep, Vm
     Sleep, V500
     Sleep, V800
-    Send {Click down}{Click up}
+    SendInput {Click down}{Click up}
     SendInput, {d Up}
 }
 
@@ -270,11 +268,11 @@ HandleShotLoop(dispersion) {
         If (!Toggle)
             Break
 			    
-    Gui, Submit, NoHide ; Ensure the distance is updated from GUI
+ Gui, Submit, NoHide ; Ensure the distance is updated from GUI
     distance := DistanceInput ; Get the distance input
     Time := Round(((800 * 1075) / distance) / 15 * dispersion) ; Calculate the press time
-    V800 := (Time > 800) ? 800 : Time
-    V500 := (Time > 800) ? ((Time - 800 > 500) ? 500 : Time - 800) : 0
+    V800 := (Time > 900) ? 900 : Time
+    V500 := (Time > 900) ? ((Time - 900 > 400) ? 400 : Time - 900) : 0
     Vm := (Time > 1300) ? (Time - 1300) : 0
     TotalTime := V500 + V800 + Vm
     V4 := (TotalTime < 1300) ? (1300 - TotalTime) : 0
@@ -282,14 +280,12 @@ Gosub DELAY
 Gosub AMMO
 SendInput, {a Down}
 Sleep, Vm
-Send, {f2 Down}
 SendInput, {f2 Down}
 Sleep, V800
-Send {Click down}{Click up}{Click down}{Click up}
+SendInput {Click down}{Click up}
 Sleep, V500
 SendInput, {a Up}
 Sleep, V4 
-Send, {f2 up}
 SendInput, {f2 Up}
 Gosub AMMODYN
 Gosub SRCONTDYN
@@ -324,55 +320,42 @@ AMMO:
 SendInput, {f2 Down}
 Sleep, 1300
 SendInput, {f2 Up}
-Sendinput {r Down}
-Sleep, 100
-Sendinput {r Up}
-Send {r Down}
-Send {r Up}
-Sleep, 3400
-Send, {f1 Down}
+SendInput {r Down}{r Up}
+Sleep, 3500
 SendInput, {f1 Down}
 Sleep, 1300
 SendInput, {f1 Up}
-Send, {f1 Up}
 return
 
 SHOOT:
-Send {Click down}{Click up}{Click down}{Click up}
+Send {Click down}{Click up}
 return
 
 AMMODYN:
-Send {r down}{r up}
-Sleep, 100
-Send {r down}{r up}
-Sleep, 3400
-Send, {f1 Down}
+SendInput {r down}{r up}
+Sleep, 3500
 SendInput, {f1 Down}
 Sleep, 1300
 SendInput, {f1 Up}
-Send, {f1 Up}
 return
 
 SRCONTDYN:
 SendInput, {d Down}
 Sleep, Vm
-Send, {f2 Down}
 SendInput, {f2 Down}
 Sleep, V800
-Send {Click down}{Click up}
 Sendinput {Click down}{Click up}
 Sleep, V500
 SendInput, {d Up}
 Sleep, V4 
-Send, {f2 up}
 SendInput, {f2 Up}
 return
 
 CHATY:
 Random, rand, 21, 23
 SendInput {k Down}{k Up}
-Send, >fire stop, approx{space}
-Send, %rand%
-Send, {space}secs.
+SendInput, >fire stop, approx{space}
+SendInput, %rand%
+SendInput, {space}secs.
 SendInput {enter Down}{enter Up}
 return
