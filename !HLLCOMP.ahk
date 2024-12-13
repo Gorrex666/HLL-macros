@@ -182,19 +182,15 @@ Gosub SHOOT
 }
 Return
 
-~;:: ; 4 shots (15 MTS dispersion) Dynamic
-HandleShots(15)
-Return
-
-~':: ; 4 shots (20 MTS dispersion) Dynamic
+~;:: ; 4 shots (20 MTS dispersion) Dynamic
 HandleShots(20)
 Return
 
-\:: ; 4 shots (30 MTS dispersion) Dynamic
+~':: ; 4 shots (30 MTS dispersion) Dynamic
 HandleShots(30)
 Return
 
-[:: ; 4 shots (40 MTS dispersion) Dynamic
+~\:: ; 4 shots (40 MTS dispersion) Dynamic
 HandleShots(40)
 Return
 
@@ -210,19 +206,15 @@ Gosub SHOOT
 }
 Return
 
-~F6:: ; Loop 4 shots (15 MTS dispersion)
-HandleShotLoop(15)
-Return
-
-~F7:: ; Loop 4 shots (20 MTS dispersion)
+~F6:: ; Loop 4 shots (20 MTS dispersion)
 HandleShotLoop(20)
 Return
 
-~F8:: ; Loop 4 shots (30 MTS dispersion)
+~F7:: ; Loop 4 shots (30 MTS dispersion)
 HandleShotLoop(30)
 Return
 
-~F9:: ; Loop 4 shots (40 MTS dispersion)
+~F8:: ; Loop 4 shots (40 MTS dispersion)
 HandleShotLoop(40)
 Return
 
