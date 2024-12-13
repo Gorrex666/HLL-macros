@@ -224,20 +224,21 @@ HandleShots(dispersion) {
     Gui, Submit, NoHide ; Ensure the distance is updated from GUI
     distance := DistanceInput ; Get the distance input
     Time := Round(((200 * 29854) / distance) / 105 * dispersion) ; Calculate the press time
-    V800 := (Time > 900) ? 900 : Time
-    V500 := (Time > 900) ? ((Time - 900 > 400) ? 400 : Time - 900) : 0
+    V900 := (Time > 900) ? 900 : Time
+    V400 := (Time > 900) ? ((Time - 900 > 400) ? 400 : Time - 900) : 0
     Vm := (Time > 1300) ? (Time - 1300) : 0
-    TotalTime := V500 + V800 + Vm
+    TotalTime := V400 + V900 + Vm
     V4 := (TotalTime < 1300) ? (1300 - TotalTime) : 0
     Gosub DELAY
     Gosub AMMO
     SendInput, {a Down}
     Sleep, Vm
+	Sleep, V400
     Send, {f2 Down}
-    Sleep, V800
+    Sleep, V900
     SendInput {Click down}{Click up}
-    Sleep, V500
     SendInput, {a Up}
+Sleep, 300
     Sleep, V4
     SendInput, {f2 Up}
     Gosub AMMODYN
@@ -245,8 +246,8 @@ HandleShots(dispersion) {
     Gosub AMMODYN
     SendInput, {d Down}
     Sleep, Vm
-    Sleep, V500
-    Sleep, V800
+    Sleep, V400
+    Sleep, V900
     SendInput {Click down}{Click up}
     SendInput, {d Up}
 }
@@ -262,20 +263,21 @@ HandleShotLoop(dispersion) {
  Gui, Submit, NoHide ; Ensure the distance is updated from GUI
     distance := DistanceInput ; Get the distance input
     Time := Round(((200 * 29854) / distance) / 105 * dispersion) ; Calculate the press time
-    V800 := (Time > 900) ? 900 : Time
-    V500 := (Time > 900) ? ((Time - 900 > 400) ? 400 : Time - 900) : 0
+    V900 := (Time > 900) ? 900 : Time
+    V400 := (Time > 900) ? ((Time - 900 > 400) ? 400 : Time - 900) : 0
     Vm := (Time > 1300) ? (Time - 1300) : 0
-    TotalTime := V500 + V800 + Vm
+    TotalTime := V400 + V900 + Vm
     V4 := (TotalTime < 1300) ? (1300 - TotalTime) : 0
 Gosub DELAY
 Gosub AMMO
 SendInput, {a Down}
 Sleep, Vm
-SendInput, {f2 Down}
-Sleep, V800
+Sleep, V400
+Send, {f2 Down}
+Sleep, V900
 SendInput {Click down}{Click up}
-Sleep, V500
 SendInput, {a Up}
+Sleep, 300
 Sleep, V4 
 SendInput, {f2 Up}
 Gosub AMMODYN
@@ -285,8 +287,8 @@ Gosub SRCONTDYN
 Gosub AMMODYN
 SendInput, {a Down}
 Sleep, Vm
-Sleep, V500
-Sleep, V800 
+Sleep, V400
+Sleep, V900 
 SendInput, {a Up}
     }
 }
@@ -331,11 +333,12 @@ return
 SRCONTDYN:
 SendInput, {d Down}
 Sleep, Vm
-SendInput, {f2 Down}
-Sleep, V800
-Sendinput {Click down}{Click up}
-Sleep, V500
+Sleep, V400
+Send, {f2 Down}
+Sleep, V900
+SendInput {Click down}{Click up}
 SendInput, {d Up}
+Sleep, 300
 Sleep, V4 
 SendInput, {f2 Up}
 return
