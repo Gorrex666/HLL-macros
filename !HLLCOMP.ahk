@@ -312,7 +312,7 @@ SendInput, {f2 Down}
 Sleep, 1300
 SendInput, {f2 Up}
 SendInput {r Down}{r Up}
-Sleep, 3500
+Sleep, 3600
 SendInput, {f1 Down}
 Sleep, 1300
 SendInput, {f1 Up}
