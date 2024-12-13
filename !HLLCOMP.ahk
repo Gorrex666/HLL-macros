@@ -237,7 +237,6 @@ HandleShots(dispersion) {
     Vm := (Time > 1300) ? (Time - 1300) : 0
     TotalTime := V500 + V800 + Vm
     V4 := (TotalTime < 1300) ? (1300 - TotalTime) : 0
-
     Gosub DELAY
     Gosub AMMO
     SendInput, {a Down}
@@ -311,9 +310,7 @@ Return
 
 DELAY:
 Sleep, 200
-SendInput {Click down}
-Sleep, 50
-Send {Click down}{Click up}
+SendInput {Click down}{Click up}
 return
 
 AMMO:
