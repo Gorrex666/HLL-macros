@@ -311,7 +311,7 @@ AMMO:
 SendInput, {f2 Down}
 Sleep, 1300
 SendInput, {f2 Up}
-SendInput {r Down}{r Up}
+SendInput {r Down}{r Up}{r Down}{r Up}
 Sleep, 3600
 SendInput, {f1 Down}
 Sleep, 1300
@@ -324,7 +324,9 @@ return
 
 AMMODYN:
 SendInput {r down}{r up}
-Sleep, 3500
+Sleep, 100
+SendInput {r Down}{r Up}
+Sleep, 3600
 SendInput, {f1 Down}
 Sleep, 1300
 SendInput, {f1 Up}
