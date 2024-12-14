@@ -265,7 +265,6 @@ HandleShots(dispersion) {
     TotalTime := V500 + V800 + Vm
     V4 := (TotalTime < 1300) ? (1300 - TotalTime) : 0
     Gosub DELAY
-Sleep, AddSleepTime	
     Gosub AMMO
 	Sleep, AddSleepTime	
     SendInput, {a Down}
@@ -308,7 +307,6 @@ HandleShotLoop(dispersion) {
     TotalTime := V500 + V800 + Vm
     V4 := (TotalTime < 1300) ? (1300 - TotalTime) : 0
 Gosub DELAY
-Sleep, AddSleepTime	
 Gosub AMMO
 Sleep, AddSleepTime	
 SendInput, {a Down}
@@ -357,9 +355,11 @@ AMMO:
 SendInput, {f2 Down}
 Sleep, 1300
 SendInput, {f2 Up}
+Sleep, AddSleepTime
 SendInput {r Down}{r Up}
 Sleep, 100
 SendInput {r Down}{r Up}
+Sleep, AddSleepTime
 Sleep, 3400
 SendInput, {f1 Down}
 Sleep, 1300
@@ -371,9 +371,11 @@ Send {Click down}{Click up}
 return
 
 AMMODYN:
+Sleep, AddSleepTime
 SendInput {r Down}{r Up}
 Sleep, 100
 SendInput {r Down}{r Up}
+Sleep, AddSleepTime
 Sleep, 3400
 SendInput, {f2 Up}
 SendInput, {f1 Down}
