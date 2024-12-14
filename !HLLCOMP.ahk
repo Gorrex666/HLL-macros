@@ -82,9 +82,9 @@ updateHistoryDisplay() {
         Gui, Font, s11, Bold
         Gui, Add, Text, x0 y0 w80 h110 vHistoryList center
         ; Add small buttons in the history GUI for adding sleep times
-        Gui, Add, Button, x50 y101 w10 h10 gAddSleep0, _
-        Gui, Add, Button, x60 y101 w10 h10 gAddSleep200, -
-        Gui, Add, Button, x70 y101 w10 h10 gAddSleep400, =
+        Gui, Add, Button, x57 y104 w7 h7 gAddSleep0, _
+        Gui, Add, Button, x65 y104 w7 h7 gAddSleep200, -
+        Gui, Add, Button, x73 y104 w7 h7 gAddSleep400, =
         Gui, Show, x1839 y968 w80 h140
         WinSet, AlwaysOnTop, On, History
         historyWindowVisible := true
