@@ -240,8 +240,7 @@ HandleShots(dispersion) {
     Sleep, V800
     SendInput, {a Up}
 	SendInput {Click down}{Click up}
-    Sleep, V4
-    SendInput, {f2 Up}
+    Sleep, V4   
     Gosub AMMODYN
     Gosub SRCONTDYN
     Gosub AMMODYN
@@ -329,6 +328,7 @@ SendInput {r Down}{r Up}
 Sleep, 100
 SendInput {r Down}{r Up}
 Sleep, 3500
+SendInput, {f2 Up}
 SendInput, {f1 Down}
 Sleep, 1300
 SendInput, {f1 Up}
@@ -343,7 +343,6 @@ Sleep, V800
 SendInput, {d Up}
 SendInput {Click down}{Click up}
 Sleep, V4 
-SendInput, {f2 Up}
 return
 
 CHATY:
