@@ -223,7 +223,7 @@ HandleShots(dispersion) {
     global
     Gui, Submit, NoHide ; Ensure the distance is updated from GUI
     distance := DistanceInput ; Get the distance input
-    Time := Round(((200 * 29854) / distance) / 105 * dispersion) ; Calculate the press time
+    Time := Round(((200 * 29982) / distance) / 105 * dispersion) ; Calculate the press time
     V900 := (Time > 900) ? 900 : Time
     V400 := (Time > 900) ? ((Time - 900 > 400) ? 400 : Time - 900) : 0
     Vm := (Time > 1300) ? (Time - 1300) : 0
@@ -262,7 +262,7 @@ HandleShotLoop(dispersion) {
 			    
  Gui, Submit, NoHide ; Ensure the distance is updated from GUI
     distance := DistanceInput ; Get the distance input
-    Time := Round(((200 * 29854) / distance) / 105 * dispersion) ; Calculate the press time
+    Time := Round(((200 * 29982) / distance) / 105 * dispersion) ; Calculate the press time
     V900 := (Time > 900) ? 900 : Time
     V400 := (Time > 900) ? ((Time - 900 > 400) ? 400 : Time - 900) : 0
     Vm := (Time > 1300) ? (Time - 1300) : 0
@@ -312,7 +312,7 @@ SendInput, {f2 Down}
 Sleep, 1300
 SendInput, {f2 Up}
 SendInput {r Down}{r Up}{r Down}{r Up}
-Sleep, 3600
+Sleep, 3500
 SendInput, {f1 Down}
 Sleep, 1300
 SendInput, {f1 Up}
@@ -324,9 +324,8 @@ return
 
 AMMODYN:
 SendInput {r down}{r up}
-Sleep, 100
 SendInput {r Down}{r Up}
-Sleep, 3600
+Sleep, 3500
 SendInput, {f1 Down}
 Sleep, 1300
 SendInput, {f1 Up}
