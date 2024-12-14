@@ -111,6 +111,19 @@ AddSleepTime(ms) {
 }
 
 ; Hotkeys
+
+~f9:: 
+    Gosub AddSleep0
+Return
+
+~f10::
+    Gosub AddSleep200
+Return
+
+~]::
+    Gosub AddSleep400
+Return
+
 ~`::
 WinActivate, Comp
 Send ^a{Backspace}
@@ -190,7 +203,6 @@ Return
 ~.:: ;RELOAD AND SHOOT
 {
 Gosub DELAY
-Sleep, AddSleepTime
 Gosub AMMO
 Sleep, AddSleepTime
 Gosub SHOOT
@@ -200,15 +212,12 @@ Return
 ~,:: ;3 SHOTS (fire mission)
 {
 Gosub DELAY
-Sleep, AddSleepTime
 Gosub AMMO
 Sleep, AddSleepTime
 Gosub SHOOT
-Sleep, AddSleepTime
 Gosub AMMO
 Sleep, AddSleepTime
 Gosub SHOOT
-Sleep, AddSleepTime
 Gosub AMMO
 Sleep, AddSleepTime
 Gosub SHOOT
@@ -234,7 +243,6 @@ Loop
 If (!Toggle)
 Break
 Gosub DELAY
-Sleep, AddSleepTime
 Gosub AMMO
 Sleep, AddSleepTime
 Gosub SHOOT
@@ -275,13 +283,11 @@ HandleShots(dispersion) {
     SendInput, {a Up}
 	SendInput {Click down}{Click up}
     Sleep, V4
-Sleep, AddSleepTime	
     Gosub AMMODYN
-Sleep, AddSleepTime
+	Sleep, AddSleepTime
     Gosub SRCONTDYN
-Sleep, AddSleepTime
     Gosub AMMODYN
-Sleep, AddSleepTime
+	Sleep, AddSleepTime
     SendInput, {d Down}
     Sleep, Vm
     Sleep, V500
@@ -318,15 +324,12 @@ SendInput, {a Up}
 SendInput {Click down}{Click up}
 Sleep, V4 
 SendInput, {f2 Up}
-Sleep, AddSleepTime
 Gosub AMMODYN
 Sleep, AddSleepTime
 Gosub SRCONTDYN
-Sleep, AddSleepTime
 Gosub AMMODYN
 Sleep, AddSleepTime
 Gosub SRCONTDYN
-Sleep, AddSleepTime
 Gosub AMMODYN
 Sleep, AddSleepTime
 SendInput, {a Down}
@@ -351,6 +354,10 @@ Sleep, 200
 SendInput {Click down}{Click up}
 return
 
+SHOOT:
+Send {Click down}{Click up}
+return
+
 AMMO:
 SendInput, {f2 Down}
 Sleep, 1300
@@ -365,10 +372,6 @@ Sleep, 3400
 SendInput, {f1 Down}
 Sleep, 1300
 SendInput, {f1 Up}
-return
-
-SHOOT:
-Send {Click down}{Click up}
 return
 
 AMMODYN:
