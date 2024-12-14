@@ -266,7 +266,7 @@ HandleShots(dispersion) {
     global
     Gui, Submit, NoHide ; Ensure the distance is updated from GUI
     distance := DistanceInput ; Get the distance input
-    Time := Round(((200 * 29982) / distance) / 105 * dispersion) ; Calculate the press time
+    Time := Round(((200 * 29640) / distance) / 100.348 * dispersion) ; Calculate the press time
     V800 := (Time > 800) ? 800 : Time
     V500 := (Time > 500) ? ((Time - 800 > 500) ? 400 : Time - 900) : 0
     Vm := (Time > 1300) ? (Time - 1300) : 0
@@ -306,7 +306,7 @@ HandleShotLoop(dispersion) {
 			    
  Gui, Submit, NoHide ; Ensure the distance is updated from GUI
     distance := DistanceInput ; Get the distance input
-    Time := Round(((200 * 29982) / distance) / 105 * dispersion) ; Calculate the press time
+    Time := Round(((200 * 29640) / distance) / 100.348 * dispersion) ; Calculate the press time
     V800 := (Time > 800) ? 800 : Time
     V500 := (Time > 500) ? ((Time - 800 > 500) ? 400 : Time - 900) : 0
     Vm := (Time > 1300) ? (Time - 1300) : 0
