@@ -120,9 +120,9 @@ Return
     Gosub AddSleep200
 Return
 
-~]::
-    Gosub AddSleep400
-Return
+;~]::
+;    Gosub AddSleep400
+;Return
 
 ~`::
 WinActivate, Comp
