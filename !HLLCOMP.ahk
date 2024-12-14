@@ -374,7 +374,7 @@ return
 
 AMMODYN:
 Sleep, AddSleepTime
-Sleep, 100
+Sleep, 200
 SendInput {r Down}{r Up}
 Sleep, 100
 SendInput {r Down}{r Up}
