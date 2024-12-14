@@ -1,4 +1,5 @@
 ;// CALCULATOR //
+
 Process, Priority,, A
 
 ; Options for different nations
@@ -155,6 +156,7 @@ SendInput {Click up}
 Return
 
 ;//ARTILLERY SCRIPTS//
+
 ~/:: ;RELOAD
 {
 Gosub DELAY
@@ -309,7 +311,9 @@ AMMO:
 SendInput, {f2 Down}
 Sleep, 1300
 SendInput, {f2 Up}
-SendInput {r Down}{r Up}{r Down}{r Up}
+SendInput {r Down}{r Up}
+Sleep, 100
+SendInput {r Down}{r Up}
 Sleep, 3500
 SendInput, {f1 Down}
 Sleep, 1300
@@ -321,7 +325,8 @@ Send {Click down}{Click up}
 return
 
 AMMODYN:
-SendInput {r down}{r up}
+SendInput {r Down}{r Up}
+Sleep, 100
 SendInput {r Down}{r Up}
 Sleep, 3500
 SendInput, {f1 Down}
