@@ -323,7 +323,6 @@ Sleep, V800
 SendInput, {a Up}
 SendInput {Click down}{Click up}
 Sleep, V4 
-SendInput, {f2 Up}
 Gosub AMMODYN
 Sleep, AddSleepTime
 Gosub SRCONTDYN
