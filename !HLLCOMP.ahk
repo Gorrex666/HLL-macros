@@ -11,7 +11,7 @@ options["uk"] := { "m": -0.177, "b": 550.69 }
 
 ; History data
 lastInputs := [], lastResults := []
-
+global AddSleepTime := 0
 ; Main GUI
 Gui, Color, afaca9
 Gui, Font, s11, Bold
@@ -63,6 +63,7 @@ updateHistory(input, result) {
 ; Format and Update History Display
 updateHistoryDisplay() {
     global lastInputs, lastResults, historyWindowVisible
+    text := "" ; Initialize text for the history
     Loop % lastInputs.Length() {
         idx := lastInputs.Length() - A_Index + 1
         text .= lastInputs[idx] "m | " lastResults[idx] "`n"
@@ -79,14 +80,36 @@ updateHistoryDisplay() {
         Gui, 2:New, , History
         Gui, Color, afaca9
         Gui -sysmenu -caption
-		Gui, Font, s11, Bold
+        Gui, Font, s11, Bold
         Gui, Add, Text, x0 y0 w80 h110 vHistoryList center
-        Gui, Show, x1839 y968 w80 h110
+        ; Add small buttons in the history GUI for adding sleep times
+        Gui, Add, Button, x50 y101 w10 h10 gAddSleep0, 0
+        Gui, Add, Button, x60 y101 w10 h10 gAddSleep200, 2
+        Gui, Add, Button, x70 y101 w10 h10 gAddSleep400, 4
+        Gui, Show, x1839 y968 w80 h140
         WinSet, AlwaysOnTop, On, History
         historyWindowVisible := true
         updateHistoryDisplay()
     }
 Return
+
+; Handlers for adding sleep times
+AddSleep0:
+    AddSleepTime(0)
+Return
+
+AddSleep200:
+    AddSleepTime(200)
+Return
+
+AddSleep400:
+    AddSleepTime(400)
+Return
+
+AddSleepTime(ms) {
+    global AddSleepTime
+    AddSleepTime := ms ; Update the global AddSleepTime variable
+}
 
 ; Hotkeys
 ~`::
@@ -94,7 +117,7 @@ WinActivate, Comp
 Send ^a{Backspace}
 Return
 
-up:: WinSet, AlwaysOnTop, Toggle, Comp
+~up:: WinSet, AlwaysOnTop, Toggle, Comp
 
 ; Helper
 IsNumber(value) {
@@ -160,6 +183,7 @@ Return
 ~/:: ;RELOAD
 {
 Gosub DELAY
+Sleep, AddSleepTime
 Gosub AMMO
 }
 Return
@@ -167,7 +191,9 @@ Return
 ~.:: ;RELOAD AND SHOOT
 {
 Gosub DELAY
+Sleep, AddSleepTime
 Gosub AMMO
+Sleep, AddSleepTime
 Gosub SHOOT
 }
 Return
@@ -175,11 +201,17 @@ Return
 ~,:: ;3 SHOTS (fire mission)
 {
 Gosub DELAY
+Sleep, AddSleepTime
 Gosub AMMO
+Sleep, AddSleepTime
 Gosub SHOOT
+Sleep, AddSleepTime
 Gosub AMMO
+Sleep, AddSleepTime
 Gosub SHOOT
+Sleep, AddSleepTime
 Gosub AMMO
+Sleep, AddSleepTime
 Gosub SHOOT
 }
 Return
@@ -203,7 +235,9 @@ Loop
 If (!Toggle)
 Break
 Gosub DELAY
+Sleep, AddSleepTime
 Gosub AMMO
+Sleep, AddSleepTime
 Gosub SHOOT
 }
 Return
@@ -232,7 +266,9 @@ HandleShots(dispersion) {
     TotalTime := V500 + V800 + Vm
     V4 := (TotalTime < 1300) ? (1300 - TotalTime) : 0
     Gosub DELAY
+Sleep, AddSleepTime	
     Gosub AMMO
+	Sleep, AddSleepTime	
     SendInput, {a Down}
     Sleep, Vm
 	Sleep, V500
@@ -240,10 +276,14 @@ HandleShots(dispersion) {
     Sleep, V800
     SendInput, {a Up}
 	SendInput {Click down}{Click up}
-    Sleep, V4   
+    Sleep, V4
+Sleep, AddSleepTime	
     Gosub AMMODYN
+Sleep, AddSleepTime
     Gosub SRCONTDYN
+Sleep, AddSleepTime
     Gosub AMMODYN
+Sleep, AddSleepTime
     SendInput, {d Down}
     Sleep, Vm
     Sleep, V500
@@ -269,7 +309,9 @@ HandleShotLoop(dispersion) {
     TotalTime := V500 + V800 + Vm
     V4 := (TotalTime < 1300) ? (1300 - TotalTime) : 0
 Gosub DELAY
+Sleep, AddSleepTime	
 Gosub AMMO
+Sleep, AddSleepTime	
 SendInput, {a Down}
 Sleep, Vm
 Sleep, V500
@@ -279,11 +321,17 @@ SendInput, {a Up}
 SendInput {Click down}{Click up}
 Sleep, V4 
 SendInput, {f2 Up}
+Sleep, AddSleepTime
 Gosub AMMODYN
+Sleep, AddSleepTime
 Gosub SRCONTDYN
+Sleep, AddSleepTime
 Gosub AMMODYN
+Sleep, AddSleepTime
 Gosub SRCONTDYN
+Sleep, AddSleepTime
 Gosub AMMODYN
+Sleep, AddSleepTime
 SendInput, {a Down}
 Sleep, Vm
 Sleep, V500
