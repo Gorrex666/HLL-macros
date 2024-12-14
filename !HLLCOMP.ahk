@@ -63,7 +63,6 @@ updateHistory(input, result) {
 ; Format and Update History Display
 updateHistoryDisplay() {
     global lastInputs, lastResults, historyWindowVisible
-    text := "" ; Initialize text for the history
     Loop % lastInputs.Length() {
         idx := lastInputs.Length() - A_Index + 1
         text .= lastInputs[idx] "m | " lastResults[idx] "`n"
