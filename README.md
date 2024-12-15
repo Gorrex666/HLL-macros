@@ -6,7 +6,6 @@
 
 "`"(console key) = focus on window (input distance)
 
-3 buttons " _ , -, =" in the history list to add sleep time of "0, 200, 400" to actions for laggy servers, " _ " (default one) should work at arround 100 ms latency, you can try the other options if the macros arent executing properly. 
 
 //MISC
 
