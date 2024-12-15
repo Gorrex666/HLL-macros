@@ -97,8 +97,8 @@ AddTime200:
     AddTime(200)
 Return
 
-AddTime300:
-    AddTime(300)
+AddTime400:
+    AddTime(400)
 Return
 
 AddTime(ms) {
@@ -214,7 +214,7 @@ HandleShots(30)
 Return
 
 ~\:: ; 4 shots (40 MTS dispersion) Dynamic
-Gosub AddTime300
+Gosub AddTime400
 HandleShots(40)
 Return
 
@@ -241,7 +241,7 @@ HandleShotLoop(30)
 Return
 
 ~F8:: ; Loop 4 shots (40 MTS dispersion)
-Gosub AddTime300
+Gosub AddTime400
 HandleShotLoop(40)
 Return
 
