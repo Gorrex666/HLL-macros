@@ -363,7 +363,6 @@ Sleep, 1300
 SendInput, {f2 Up}
 Sleep, AddSleepTime
 SendInput {r Down}{r Up}
-Sleep, 100
 SendInput {r Down}{r Up}
 Sleep, AddSleepTime
 Sleep, 3500
@@ -376,9 +375,9 @@ AMMODYN:
 Sleep, AddSleepTime
 Sleep, 200
 SendInput {r Down}{r Up}
-Sleep, 100
-SendInput {r Down}{r Up}
 Sleep, 200
+SendInput {r Down}{r Up}
+Sleep, 100
 Sleep, AddSleepTime
 Sleep, 3500
 SendInput, {f2 Up}
