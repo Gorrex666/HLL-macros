@@ -351,7 +351,7 @@ Sleep, 100
 Sleep, AddTime
 SendInput {r Down}{r Up}
 SendInput {r Down}{r Up}
-Sleep, 3400
+Sleep, 3500
 SendInput, {f2 Up}
 SendInput, {f1 Down}
 Sleep, 1300
