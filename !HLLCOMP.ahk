@@ -1,5 +1,5 @@
 ;// CALCULATOR //
-
+;replace direct subroutine calls (Gosub) with a queued approach in dispersion shots to ensure ammodyn dont unsync
 Process, Priority,, A
 
 ; Options for different nations
@@ -379,7 +379,7 @@ Sleep, 200
 SendInput {r Down}{r Up}
 Sleep, 100
 Sleep, AddSleepTime
-Sleep, 3500
+Sleep, 3300
 SendInput, {f2 Up}
 SendInput, {f1 Down}
 Sleep, 1300
