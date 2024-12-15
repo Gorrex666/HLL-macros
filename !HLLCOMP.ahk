@@ -112,13 +112,13 @@ AddSleepTime(ms) {
 
 ; Hotkeys
 
-~f9:: 
-    Gosub AddSleep0
-Return
+;~f9:: 
+;    Gosub AddSleep0
+;Return
 
-~f10::
-    Gosub AddSleep200
-Return
+;~f10::
+;    Gosub AddSleep200
+;Return
 
 ;~]::
 ;    Gosub AddSleep400
