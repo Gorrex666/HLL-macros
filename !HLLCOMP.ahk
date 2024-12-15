@@ -1,5 +1,5 @@
 ;// CALCULATOR //
-;replace direct subroutine calls (Gosub) with a queued approach in dispersion shots to ensure ammodyn dont unsync
+;NOTE: TIMING IS WRONG WHEN USING DIFFERENT DISPERSIONS AND RANGES, kind of maked it work adding wait times but its a wrong solution, it should work without adding custom wait times, may have to remade that section
 Process, Priority,, A
 
 ; Options for different nations
@@ -342,18 +342,18 @@ SendInput, {f2 Up}
 Sleep, 100
 SendInput {r Down}{r Up}
 SendInput {r Down}{r Up}
-Sleep, 3600
+Sleep, 3500
 SendInput, {f1 Down}
 Sleep, 1300
 SendInput, {f1 Up}
 return
 
 AMMODYN:
-Sleep, 100
+Sleep, 200
 sleep, addtime
 SendInput {r Down}{r Up}
 SendInput {r Down}{r Up}
-Sleep, 3600
+Sleep, 3500
 SendInput, {f2 Up}
 SendInput, {f1 Down}
 Sleep, 1300
