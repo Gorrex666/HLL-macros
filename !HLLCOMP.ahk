@@ -250,7 +250,7 @@ HandleShots(dispersion) {
     global
     Gui, Submit, NoHide ; Ensure the distance is updated from GUI
     distance := DistanceInput ; Get the distance input
-    Time := Max(0, Round(((200 * 29640) / distance) / 100.348 * dispersion)) ; Ensure Time is non-negative
+    Time := Round(((200 * 29640) / distance) / 100.348 * dispersion) ; Calculate the press time
 V800 := (Time > 800) ? 800 : Time
 V500 := (Time > 500) ? Max(0, Min(500, Time - 800)) : 0 ; Clamp V500 to [0, 500]
 Vm := (Time > 1300) ? (Time - 1300) : 0
