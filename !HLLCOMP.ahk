@@ -89,12 +89,12 @@ updateHistoryDisplay() {
 Return
 
 ; Handlers for adding sleep times
-AddTime0:
-    AddTime(0)
-Return
-
 AddTime200:
     AddTime(200)
+Return
+
+AddTime300:
+    AddTime(300)
 Return
 
 AddTime400:
@@ -204,12 +204,12 @@ Gosub SHOOT
 Return
 
 ~;:: ; 4 shots (20 MTS dispersion) Dynamic
-Gosub AddTime0
+Gosub AddTime200
 HandleShots(20)
 Return
 
 ~':: ; 4 shots (30 MTS dispersion) Dynamic
-Gosub AddTime200
+Gosub AddTime300
 HandleShots(30)
 Return
 
@@ -231,12 +231,12 @@ Gosub SHOOT
 Return
 
 ~F6:: ; Loop 4 shots (20 MTS dispersion)
-Gosub AddTime0
+Gosub AddTime200
 HandleShotLoop(20)
 Return
 
 ~F7:: ; Loop 4 shots (30 MTS dispersion)
-Gosub AddTime200
+Gosub AddTime300
 HandleShotLoop(30)
 Return
 
@@ -250,12 +250,13 @@ HandleShots(dispersion) {
     global
     Gui, Submit, NoHide ; Ensure the distance is updated from GUI
     distance := DistanceInput ; Get the distance input
-    Time := Round(((200 * 29640) / distance) / 100.348 * dispersion) ; Calculate the press time
-    V800 := (Time > 800) ? 800 : Time
-    V500 := (Time > 500) ? ((Time - 800 > 500) ? 400 : Time - 900) : 0
-    Vm := (Time > 1300) ? (Time - 1300) : 0
-    TotalTime := V500 + V800 + Vm
-    V4 := (TotalTime < 1300) ? (1300 - TotalTime) : 0
+    Time := Max(0, Round(((200 * 29640) / distance) / 100.348 * dispersion)) ; Ensure Time is non-negative
+V800 := (Time > 800) ? 800 : Time
+V500 := (Time > 500) ? Max(0, Min(500, Time - 800)) : 0 ; Clamp V500 to [0, 500]
+Vm := (Time > 1300) ? (Time - 1300) : 0
+TotalTime := V500 + V800 + Vm
+V4 := (TotalTime < 1300) ? (1300 - TotalTime) : 0
+
     Gosub DELAY
     Gosub AMMO
     SendInput, {a Down}
@@ -289,7 +290,7 @@ HandleShotLoop(dispersion) {
     distance := DistanceInput ; Get the distance input
     Time := Round(((200 * 29640) / distance) / 100.348 * dispersion) ; Calculate the press time
     V800 := (Time > 800) ? 800 : Time
-    V500 := (Time > 500) ? ((Time - 800 > 500) ? 400 : Time - 900) : 0
+V500 := (Time > 500) ? Max(0, Min(500, Time - 800)) : 0 ; Clamp V500 to [0, 500]
     Vm := (Time > 1300) ? (Time - 1300) : 0
     TotalTime := V500 + V800 + Vm
     V4 := (TotalTime < 1300) ? (1300 - TotalTime) : 0
@@ -338,9 +339,10 @@ AMMO:
 SendInput, {f2 Down}
 Sleep, 1300
 SendInput, {f2 Up}
+Sleep, 100
 SendInput {r Down}{r Up}
 SendInput {r Down}{r Up}
-Sleep, 3500
+Sleep, 3600
 SendInput, {f1 Down}
 Sleep, 1300
 SendInput, {f1 Up}
@@ -348,10 +350,10 @@ return
 
 AMMODYN:
 Sleep, 100
-Sleep, AddTime
+sleep, addtime
 SendInput {r Down}{r Up}
 SendInput {r Down}{r Up}
-Sleep, 3500
+Sleep, 3600
 SendInput, {f2 Up}
 SendInput, {f1 Down}
 Sleep, 1300
