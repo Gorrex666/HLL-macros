@@ -1,5 +1,5 @@
 ;// CALCULATOR //
-;NOTE: TIMING IS WRONG WHEN USING DIFFERENT DISPERSIONS AND RANGES, kind of made it work adding wait times but its a wrong solution, it should work without adding custom wait times, may have to remade that section
+;NOTE: TIMING IS WRONG WHEN USING DIFFERENT DISPERSIONS AND RANGES, kind of maked it work adding wait times but its a wrong solution, it should work without adding custom wait times, may have to remade that section
 Process, Priority,, A
 
 ; Options for different nations
@@ -250,13 +250,12 @@ HandleShots(dispersion) {
     global
     Gui, Submit, NoHide ; Ensure the distance is updated from GUI
     distance := DistanceInput ; Get the distance input
-    Time := Round(((200 * 29640) / distance) / 100.348 * dispersion) ; Calculate the press time
-V800 := (Time > 800) ? 800 : Time
-V500 := (Time > 500) ? Max(0, Min(500, Time - 800)) : 0 ; Clamp V500 to [0, 500]
-Vm := (Time > 1300) ? (Time - 1300) : 0
-TotalTime := V500 + V800 + Vm
-V4 := (TotalTime < 1300) ? (1300 - TotalTime) : 0
-
+    Time := Round(((101 * 28436) / distance) / 49.48 * dispersion) ; Calculate the press time
+    V800 := (Time > 800) ? 800 : Time
+    V500 := (Time > 500) ? Max(0, Min(500, Time - 800)) : 0 ; Clamp V500 to [0, 500]
+    Vm := (Time > 1300) ? (Time - 1300) : 0
+    TotalTime := V500 + V800 + Vm
+    V4 := (TotalTime < 1300) ? (1300 - TotalTime) : 0
     Gosub DELAY
     Gosub AMMO
     SendInput, {a Down}
@@ -285,12 +284,11 @@ HandleShotLoop(dispersion) {
     {
         If (!Toggle)
             Break
-			    
- Gui, Submit, NoHide ; Ensure the distance is updated from GUI
+	Gui, Submit, NoHide ; Ensure the distance is updated from GUI
     distance := DistanceInput ; Get the distance input
-    Time := Round(((200 * 29640) / distance) / 100.348 * dispersion) ; Calculate the press time
+    Time := Round(((101 * 28436) / distance) / 49.48 * dispersion) ; Calculate the press time
     V800 := (Time > 800) ? 800 : Time
-V500 := (Time > 500) ? Max(0, Min(500, Time - 800)) : 0 ; Clamp V500 to [0, 500]
+    V500 := (Time > 500) ? Max(0, Min(500, Time - 800)) : 0 ; Clamp V500 to [0, 500]
     Vm := (Time > 1300) ? (Time - 1300) : 0
     TotalTime := V500 + V800 + Vm
     V4 := (TotalTime < 1300) ? (1300 - TotalTime) : 0
