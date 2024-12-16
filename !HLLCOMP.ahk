@@ -1,4 +1,5 @@
 ;;;// CALCULATOR // ;;;dispersion is wrong at long ranges series of shots with low dispersion (at shots with lower dispersion of 1.2 degrees it will always turn 1.2 degrees as a minimum "error start at 1000 mts and scales to limit dispersion to 30 mts between shooting points at 1600 mts"), it surely can be fixed but the firing rate will be the same
+
 Process, Priority,, A
 
 ; Options for different nations
@@ -283,7 +284,9 @@ Gosub AMMODYN
 SendInput, {d Down}
 Sleep, Part3
 Sleep, Part1N
+Sleep, Part1A
 Sleep, Part2N
+Sleep, Part2A
 SendInput, {d Up} 
 SendInput {Click down}{Click up}
 	}
@@ -358,7 +361,9 @@ Gosub AMMODYN
 SendInput, {a Down}
 Sleep, Part3
 Sleep, Part1N
+Sleep, Part1A
 Sleep, Part2N
+Sleep, Part2A
 SendInput, {a Up}
     }
 }
