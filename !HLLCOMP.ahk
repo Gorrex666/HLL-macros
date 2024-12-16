@@ -1,5 +1,4 @@
-;// CALCULATOR //   ;;;dispersion is wrong at long ranges series of shots with low dispersion, compromise favouring firing rate over precition was made, if you want extreme precision compromising firing rate you can adjust to add a sleep time after dispersion adjustments and delete all the artifitial timing garabage
-Process, Priority,, A
+;// CALCULATOR //   ;;;dispersion is wrong at long ranges series of shots with low dispersion (at shots with lower dispersion of 1.3 degrees it will always turn 1.3 degrees as a minimum), it surely can be fixed but the firing rate will be the same
 
 ; Options for different nations
 xMin := 100, xMax := 1600
