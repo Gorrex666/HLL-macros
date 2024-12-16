@@ -250,7 +250,6 @@ HandleShots(dispersion) {
     }
     ; Calculate Part3 (remainder after 1200 is allocated)
         Part3 := Time - (Part1N + Part1A + Part2N + Part2A)
-    }
     ; Ensure all values are positive
     Part1N := Max(Part1N, 0)
     Part1A := Max(Part1A, 0)
@@ -318,7 +317,6 @@ HandleShotLoop(dispersion) {
     }
     ; Calculate Part3 (remainder after 1200 is allocated)
         Part3 := Time - (Part1N + Part1A + Part2N + Part2A)
-    }
     ; Ensure all values are positive
     Part1N := Max(Part1N, 0)
     Part1A := Max(Part1A, 0)
