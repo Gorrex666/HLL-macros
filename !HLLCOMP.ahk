@@ -1,7 +1,6 @@
-;;;// CALCULATOR // ;;;dispersion automatic control is limited at long distances series of shots with low dispersion (when shooting with lower dispersion than 0.8 degrees it will always turn 0.8 degrees as a minimum "error start at 1000 mts and scales to limit dispersion to 30 mts between shooting points at 1600 mts"), it surely can be fixed but the firing rate will be the same
-
-Process, Priority,, A
+;;;// CALCULATOR // ;;;;;;dispersion automatic control is limited at long distances series of shots with low dispersion (when shooting with lower dispersion than 0.8 degrees it will always turn 0.8 degrees as a minimum "error start at 1000 mts and scales to limit dispersion to 30 mts between shooting points at 1600 mts"), it surely can be fixed but the firing rate will be the same
 #MaxThreadsPerHotkey 2
+Process, Priority,, A
 ; Options for different nations
 xMin := 100, xMax := 1600
 options := {}
@@ -109,18 +108,6 @@ IsNumber(value) {
 
 #IfWinActive ahk_exe HLL-Win64-Shipping.exe
 
-~f4:: ;LOOP r
-Toggle := !Toggle
-Loop
-{
-If (!Toggle)
-Break
-Sendinput {r Down}
-Sleep, 200
-Sendinput {r Up}
-}
-Return
-
 ~CapsLock:: ;HOLDS "W" capslock, "S"  alt+capslock (on/off)
 KeyDown := !KeyDown
 If KeyDown
@@ -182,28 +169,18 @@ Gosub SHOOT
 }
 Return
 
-~;:: ; 4 shots (20 MTS dispersion) Dynamic
+;//FUNCTIONS//
+
+~;:: ; 4 shots (20 MTS dispersion)
 HandleShots(20)
 Return
 
-~':: ; 4 shots (30 MTS dispersion) Dynamic
+~':: ; 4 shots (30 MTS dispersion)
 HandleShots(30)
 Return
 
-~\:: ; 4 shots (40 MTS dispersion) Dynamic
+~\:: ; 4 shots (40 MTS dispersion)
 HandleShots(40)
-Return
-
-~F5:: ; Loop reload and shoot
-Toggle := !Toggle
-Loop
-{
-If (!Toggle)
-Break
-Gosub DELAY
-Gosub AMMO
-Gosub SHOOT
-}
 Return
 
 ~F6:: ; Loop 4 shots (20 MTS dispersion)
@@ -218,9 +195,9 @@ Return
 HandleShotLoop(40)
 Return
 
-; Functions
-HandleShots(dispersion) {
-    global
+; Calculation Function
+CalculateParts(dispersion) {
+    global Part1N, Part1A, Part2N, Part2A, Part3, DistanceInput
     Gui, Submit, NoHide ; Ensure the distance is updated from GUI
     distance := DistanceInput ; Get the distance input
     Time := Round(((101 * 28436) / distance) / 49.48 * dispersion) ; Calculate the press time
@@ -230,7 +207,7 @@ HandleShots(dispersion) {
     Part2N := 0 ; The natural state of Part2
     Part2A := 0 ; Artificial filling for Part2
     Part3 := 0  ; Remaining time
-    ; Calculate Part1 Natural and Artificial
+        ; Calculate Part1 Natural and Artificial
     if (Time >= 800) {
         Part1N := 800
         Part1A := 0
@@ -238,9 +215,9 @@ HandleShots(dispersion) {
         Part1N := Time
         Part1A := 800 - Time
     }
-    ; Calculate remaining time after Part1
+        ; Calculate remaining time after Part1
     RemainingTime := Max(Time - 800, 0)
-    ; Calculate Part2 Natural and Artificial
+        ; Calculate Part2 Natural and Artificial
     if (RemainingTime >= 400) {
         Part2N := 400
         Part2A := 0
@@ -248,15 +225,23 @@ HandleShots(dispersion) {
         Part2N := RemainingTime
         Part2A := 400 - RemainingTime
     }
-    ; Calculate Part3 (remainder after 1200 is allocated)
-        Part3 := Time - (Part1N + Part1A + Part2N + Part2A)
-    ; Ensure all values are positive
+        ; Calculate Part3 (remainder after 1200 is allocated)
+    Part3 := Time - (Part1N + Part1A + Part2N + Part2A)
+        ; Ensure all values are positive
     Part1N := Max(Part1N, 0)
     Part1A := Max(Part1A, 0)
     Part2N := Max(Part2N, 0)
     Part2A := Max(Part2A, 0)
     Part3 := Max(Part3, 0)
-Gosub DELAY
+    ; Return the parts as an object (without it the caller would not get any value)
+    return {Part1N: Part1N, Part1A: Part1A, Part2N: Part2N, Part2A: Part2A, Part3: Part3}
+}
+
+HandleShots(dispersion) {
+global Part1N, Part1A, Part2N, Part2A, Part3
+Sleep, 200
+parts := CalculateParts(dispersion)
+Gosub SHOOT
 Gosub AMMO
 SendInput, {a Down}
 Sleep, Part3
@@ -281,49 +266,21 @@ SendInput, {d Up}
 SendInput {Click down}{Click up}
 	}
 
+;//LOOPS//
+global Loop1Active := false
+global Loop2Active := false
+global Loop3Active := false
+
 HandleShotLoop(dispersion) {
-    global
-    Toggle := !Toggle
+    global Part1N, Part1A, Part2N, Part2A, Part3, Loop1Active
+    Sleep, 200
+    Loop1Active := !Loop1Active
     Loop
     {
-        If (!Toggle)
-            Break	
-    Gui, Submit, NoHide ; Ensure the distance is updated from GUI
-    distance := DistanceInput ; Get the distance input
-    Time := Round(((101 * 28436) / distance) / 49.48 * dispersion) ; Calculate the press time
-    ; Initialize all parts
-    Part1N := 0 ; The natural state of Part1
-    Part1A := 0 ; Artificial filling for Part1
-    Part2N := 0 ; The natural state of Part2
-    Part2A := 0 ; Artificial filling for Part2
-    Part3 := 0  ; Remaining time
-    ; Calculate Part1 Natural and Artificial
-    if (Time >= 800) {
-        Part1N := 800
-        Part1A := 0
-    } else {
-        Part1N := Time
-        Part1A := 800 - Time
-    }
-    ; Calculate remaining time after Part1
-    RemainingTime := Max(Time - 800, 0)
-    ; Calculate Part2 Natural and Artificial
-    if (RemainingTime >= 400) {
-        Part2N := 400
-        Part2A := 0
-    } else {
-        Part2N := RemainingTime
-        Part2A := 400 - RemainingTime
-    }
-    ; Calculate Part3 (remainder after 1200 is allocated)
-        Part3 := Time - (Part1N + Part1A + Part2N + Part2A)
-    ; Ensure all values are positive
-    Part1N := Max(Part1N, 0)
-    Part1A := Max(Part1A, 0)
-    Part2N := Max(Part2N, 0)
-    Part2A := Max(Part2A, 0)
-    Part3 := Max(Part3, 0)
-Gosub DELAY
+        If (!Loop1Active)
+            Break
+parts := CalculateParts(dispersion)
+Gosub SHOOT
 Gosub AMMO
 SendInput, {a Down}
 Sleep, Part3
@@ -349,6 +306,31 @@ Sleep, Part2A
 SendInput, {a Up}
     }
 }
+
+~f4:: ;LOOP r
+    global Loop2Active
+    Loop2Active := !Loop2Active
+    Loop
+    {
+        If (!Loop2Active)
+            Break
+Sendinput {r Down}
+Sleep, 200
+Sendinput {r Up}
+}
+Return
+
+~F5:: ; Loop reload and shoot
+    Loop3Active := !Loop3Active
+    Loop
+    {
+        If (!Loop3Active)
+            Break
+        Gosub DELAY
+        Gosub AMMO
+        Gosub SHOOT
+    }
+Return
 
 ;//LABELS//
 
