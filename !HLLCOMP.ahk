@@ -339,9 +339,10 @@ SendInput, {f1 Up}
 return
 
 AMMODYN:
-Sleep, 200
-sleep, addtime
+Sleep, 100
+Sleep, Addtime
 SendInput {r Down}{r Up}
+Sleep, 100
 SendInput {r Down}{r Up}
 Sleep, 3500
 SendInput, {f2 Up}
