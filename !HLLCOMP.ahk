@@ -1,5 +1,5 @@
 ;// CALCULATOR //
-;NOTE: TIMING IS WRONG WHEN USING DIFFERENT DISPERSIONS AND RANGES, kind of maked it work adding wait times but its a wrong solution, it should work without adding custom wait times, may have to remade that section
+;NOTE: TIMING IS WRONG WHEN USING DIFFERENT DISPERSIONS AND RANGES, kind of made it work adding wait times (AddTime...) but its a wrong solution, it should work without adding custom wait times, may have to remade that section
 Process, Priority,, A
 
 ; Options for different nations
