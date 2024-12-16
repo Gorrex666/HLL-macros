@@ -91,7 +91,7 @@ Return
 
 ~`::
 WinActivate, Comp
-Send ^a{Backspace}
+SendInput ^a{Backspace}
 Return
 
 ~up:: WinSet, AlwaysOnTop, Toggle, Comp
@@ -292,7 +292,7 @@ HandleShotLoop(dispersion) {
     Loop
     {
         If (!Toggle)
-            Break
+            Break	
     Gui, Submit, NoHide ; Ensure the distance is updated from GUI
     distance := DistanceInput ; Get the distance input
     Time := Round(((101 * 28436) / distance) / 49.48 * dispersion) ; Calculate the press time
@@ -330,19 +330,19 @@ HandleShotLoop(dispersion) {
     Part1A := Max(Part1A, 0)
     Part2N := Max(Part2N, 0)
     Part2A := Max(Part2A, 0)
-    Part3 := Max(Part3, 0)		
+    Part3 := Max(Part3, 0)
 Gosub DELAY
 Gosub AMMO
 SendInput, {a Down}
 Sleep, Part3
-SendInput, {f2 Down}
+SendInput, {F2 Down}
 Sleep, Part1N
 Sleep, Part1A
 SendInput, {a Up}
 SendInput {Click down}{Click up}
 Sleep, Part2N
 Sleep, Part2A
-SendInput, {f2 Up}
+SendInput, {F2 Up}
 Gosub AMMODYN
 Gosub SRDYN 
 Gosub AMMODYN
@@ -350,8 +350,8 @@ Gosub SRDYN
 Gosub AMMODYN
 SendInput, {a Down}
 Sleep, Part3
-Sleep, Part1N
-Sleep, Part1A
+Sleep, Part2N
+Sleep, Part2A
 Sleep, Part2N
 Sleep, Part2A
 SendInput, {a Up}
@@ -366,7 +366,7 @@ SendInput {Click down}{Click up}
 return
 
 SHOOT:
-Send {Click down}{Click up}
+SendInput {Click down}{Click up}
 return
 
 AMMO:
@@ -393,11 +393,12 @@ return
 SRDYN:
 SendInput, {d Down}
 Sleep, Part3
-Send, {f2 Down}
+SendInput, {f2 Down}
 Sleep, Part1N
 Sleep, Part1A
 SendInput, {d Up}
 SendInput {Click down}{Click up}
 Sleep, Part2N
 Sleep, Part2A
+SendInput, {f2 Up}
 return
