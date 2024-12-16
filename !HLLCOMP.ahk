@@ -350,8 +350,8 @@ Gosub SRDYN
 Gosub AMMODYN
 SendInput, {a Down}
 Sleep, Part3
-Sleep, Part2N
-Sleep, Part2A
+Sleep, Part1N
+Sleep, Part1A
 Sleep, Part2N
 Sleep, Part2A
 SendInput, {a Up}
