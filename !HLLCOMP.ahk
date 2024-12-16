@@ -1,5 +1,4 @@
-;// CALCULATOR //
-;NOTE: TIMING IS WRONG WHEN USING DIFFERENT DISPERSIONS AND RANGES, kind of made it work adding wait times (AddTime...) but its a wrong solution, it should work without adding custom wait times, may have to remade that section
+;// CALCULATOR //   ;;;dispersion is wrong at long ranges, compromise between firing rate and precition, if you want extreme precision compromising firing rate you can adjust to add a sleep time after dispersion adjustments and delete all the artifitial timing garabage
 Process, Priority,, A
 
 ; Options for different nations
@@ -11,7 +10,6 @@ options["uk"] := { "m": -0.177, "b": 550.69 }
 
 ; History data
 lastInputs := [], lastResults := []
-global AddTime := 0
 ; Main GUI
 Gui, Color, afaca9
 Gui, Font, s11, Bold
@@ -87,24 +85,6 @@ updateHistoryDisplay() {
         updateHistoryDisplay()
     }
 Return
-
-; Handlers for adding sleep times
-AddTime200:
-    AddTime(200)
-Return
-
-AddTime300:
-    AddTime(300)
-Return
-
-AddTime400:
-    AddTime(400)
-Return
-
-AddTime(ms) {
-    global AddTime
-    AddTime := ms ; Update the global AddTime variable
-}
 
 ; Hotkeys
 
@@ -204,17 +184,14 @@ Gosub SHOOT
 Return
 
 ~;:: ; 4 shots (20 MTS dispersion) Dynamic
-Gosub AddTime200
 HandleShots(20)
 Return
 
 ~':: ; 4 shots (30 MTS dispersion) Dynamic
-Gosub AddTime300
 HandleShots(30)
 Return
 
 ~\:: ; 4 shots (40 MTS dispersion) Dynamic
-Gosub AddTime400
 HandleShots(40)
 Return
 
@@ -231,17 +208,14 @@ Gosub SHOOT
 Return
 
 ~F6:: ; Loop 4 shots (20 MTS dispersion)
-Gosub AddTime200
 HandleShotLoop(20)
 Return
 
 ~F7:: ; Loop 4 shots (30 MTS dispersion)
-Gosub AddTime300
 HandleShotLoop(30)
 Return
 
 ~F8:: ; Loop 4 shots (40 MTS dispersion)
-Gosub AddTime400
 HandleShotLoop(40)
 Return
 
@@ -251,27 +225,72 @@ HandleShots(dispersion) {
     Gui, Submit, NoHide ; Ensure the distance is updated from GUI
     distance := DistanceInput ; Get the distance input
     Time := Round(((101 * 28436) / distance) / 49.48 * dispersion) ; Calculate the press time
-    V800 := Max(0, (Time > 800) ? 800 : Time) ; First 800 ms or less, ensure positive
-    Vm := Max(0, (Time > 800) ? (Time - 800) : 0) ; Remaining time after 800 ms, ensure positive
-    V4 := Max(0, (V800 + Vm < 1300) ? (1300 - (V800 + Vm)) : 0)
-    Gosub DELAY
-    Gosub AMMO
-    SendInput, {a Down}
-    Sleep, Vm
-    Send, {f2 Down}
-    Sleep, V800
-    SendInput, {a Up}
-	SendInput {Click down}{Click up}
-    Sleep, V4
-    Gosub AMMODYN
-    Gosub SRCONTDYN
-    Gosub AMMODYN
-    SendInput, {d Down}
-    Sleep, Vm
-    Sleep, V800
-    SendInput {Click down}{Click up}
-    SendInput, {d Up}
-}
+    ; Initialize all parts
+    Part1N := 0 ; The natural state of Part1
+    Part1A := 0 ; Artificial filling for Part1
+    Part2N := 0 ; The natural state of Part2
+    Part2A := 0 ; Artificial filling for Part2
+    Part3 := 0  ; Remaining time
+    ; Calculate Part1 Natural and Artificial
+    if (Time >= 800) {
+        Part1N := 800
+        Part1A := 0
+    } else {
+        Part1N := Time
+        Part1A := 800 - Time
+    }
+    ; Calculate remaining time after Part1
+    RemainingTime := Max(Time - 800, 0)
+    ; Calculate Part2 Natural and Artificial
+    if (RemainingTime >= 400) {
+        Part2N := 400
+        Part2A := 0
+    } else {
+        Part2N := RemainingTime
+        Part2A := 400 - RemainingTime
+    }
+    ; Calculate Part3 (remainder after 1200 is allocated)
+    AllocatedTime := Part1N + Part1A + Part2N + Part2A
+    if (AllocatedTime < 1200) {
+        Part3 := Time - 1200
+    }
+    ; Ensure all values are positive
+    Part1N := Max(Part1N, 0)
+    Part1A := Max(Part1A, 0)
+    Part2N := Max(Part2N, 0)
+    Part2A := Max(Part2A, 0)
+    Part3 := Max(Part3, 0)
+    ; Force totals to 1200
+    TotalTime := Part1N + Part1A + Part2N + Part2A
+    if (TotalTime < 1200) {
+        Part3 := Max(1200 - TotalTime, 0)
+		}
+Gosub DELAY
+Gosub AMMO
+SendInput, {a Down}
+Sleep, Part3
+SendInput, {F2 Down}
+Sleep, Part1N
+
+SendInput, {a Up}
+Sleep, Part2N
+SendInput {Click down}{Click up}
+
+Sleep, Part1A
+
+
+Sleep, Part2A
+SendInput, {F2 Up}
+Gosub AMMODYN
+Gosub SRDYN 
+Gosub AMMODYN
+SendInput, {d Down}
+Sleep, Part3
+Sleep, Part1N
+Sleep, Part2N
+SendInput, {d Up} 
+SendInput {Click down}{Click up}
+	}
 
 HandleShotLoop(dispersion) {
     global
@@ -280,39 +299,73 @@ HandleShotLoop(dispersion) {
     {
         If (!Toggle)
             Break
-	Gui, Submit, NoHide ; Ensure the distance is updated from GUI
+    Gui, Submit, NoHide ; Ensure the distance is updated from GUI
     distance := DistanceInput ; Get the distance input
     Time := Round(((101 * 28436) / distance) / 49.48 * dispersion) ; Calculate the press time
-    V800 := Max(0, (Time > 800) ? 800 : Time) ; First 800 ms or less, ensure positive
-    Vm := Max(0, (Time > 800) ? (Time - 800) : 0) ; Remaining time after 800 ms, ensure positive
-    V4 := Max(0, (V800 + Vm < 1300) ? (1300 - (V800 + Vm)) : 0)
+    ; Initialize all parts
+    Part1N := 0 ; The natural state of Part1
+    Part1A := 0 ; Artificial filling for Part1
+    Part2N := 0 ; The natural state of Part2
+    Part2A := 0 ; Artificial filling for Part2
+    Part3 := 0  ; Remaining time
+    ; Calculate Part1 Natural and Artificial
+    if (Time >= 800) {
+        Part1N := 800
+        Part1A := 0
+    } else {
+        Part1N := Time
+        Part1A := 800 - Time
+    }
+    ; Calculate remaining time after Part1
+    RemainingTime := Max(Time - 800, 0)
+    ; Calculate Part2 Natural and Artificial
+    if (RemainingTime >= 400) {
+        Part2N := 400
+        Part2A := 0
+    } else {
+        Part2N := RemainingTime
+        Part2A := 400 - RemainingTime
+    }
+    ; Calculate Part3 (remainder after 1200 is allocated)
+    AllocatedTime := Part1N + Part1A + Part2N + Part2A
+    if (AllocatedTime < 1200) {
+        Part3 := Time - 1200
+    }
+    ; Ensure all values are positive
+    Part1N := Max(Part1N, 0)
+    Part1A := Max(Part1A, 0)
+    Part2N := Max(Part2N, 0)
+    Part2A := Max(Part2A, 0)
+    Part3 := Max(Part3, 0)
+    ; Force totals to 1200
+    TotalTime := Part1N + Part1A + Part2N + Part2A
+    if (TotalTime < 1200) {
+        Part3 := Max(1200 - TotalTime, 0)
+		}			
 Gosub DELAY
 Gosub AMMO
 SendInput, {a Down}
-Sleep, Vm
-Send, {f2 Down}
-Sleep, V800
+Sleep, Part3
+SendInput, {f2 Down}
+Sleep, Part1N
+Sleep, Part1A
 SendInput, {a Up}
 SendInput {Click down}{Click up}
-Sleep, V4 
+Sleep, Part2N
+Sleep, Part2A
+SendInput, {f2 Up}
 Gosub AMMODYN
-Gosub SRCONTDYN
+Gosub SRDYN 
 Gosub AMMODYN
-Gosub SRCONTDYN
+Gosub SRDYN 
 Gosub AMMODYN
 SendInput, {a Down}
-Sleep, Vm
-Sleep, V800 
+Sleep, Part3
+Sleep, Part1N
+Sleep, Part2N
 SendInput, {a Up}
     }
 }
-
-~f11:: ;"FIRE MISSION OVER" por chat
-{
-Sleep, 200
-Goto CHATY
-}
-Return
 
 ;//LABELS//
 
@@ -327,45 +380,32 @@ return
 
 AMMO:
 SendInput, {f2 Down}
-Sleep, 1300
+Sleep, 1200
 SendInput, {f2 Up}
 Sleep, 100
 SendInput {r Down}{r Up}
-SendInput {r Down}{r Up}
 Sleep, 3500
 SendInput, {f1 Down}
-Sleep, 1300
+Sleep, 1200
 SendInput, {f1 Up}
 return
 
 AMMODYN:
-Sleep, 100
-Sleep, Addtime
-SendInput {r Down}{r Up}
-Sleep, 100
 SendInput {r Down}{r Up}
 Sleep, 3500
-SendInput, {f2 Up}
 SendInput, {f1 Down}
-Sleep, 1300
+Sleep, 1200
 SendInput, {f1 Up}
 return
 
-SRCONTDYN:
+SRDYN:
 SendInput, {d Down}
-Sleep, Vm
+Sleep, Part3
 Send, {f2 Down}
-Sleep, V800
+Sleep, Part1N
+Sleep, Part1A
 SendInput, {d Up}
 SendInput {Click down}{Click up}
-Sleep, V4 
-return
-
-CHATY:
-Random, rand, 21, 23
-SendInput {k Down}{k Up}
-SendInput, >fire stop, approx{space}
-SendInput, %rand%
-SendInput, {space}secs.
-SendInput {enter Down}{enter Up}
+Sleep, Part2N
+Sleep, Part2A
 return
