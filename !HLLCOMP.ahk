@@ -1,4 +1,6 @@
-;// CALCULATOR //   ;;;dispersion is wrong at long ranges series of shots with low dispersion (at shots with lower dispersion of 1.3 degrees it will always turn 1.3 degrees as a minimum "thats 40 mts between shooting points at 1600 mts"), it surely can be fixed but the firing rate will be the same
+;// CALCULATOR //   ;;;// CALCULATOR //   ;;;dispersion is wrong at long ranges series of shots with low dispersion (at shots with lower dispersion of 1.3 degrees it will always turn 1.3 degrees as a minimum "thats 40 mts between shooting points at 1600 mts"), it surely can be fixed but the firing rate will be the same
+
+Process, Priority,, A
 
 ; Options for different nations
 xMin := 100, xMax := 1600
@@ -270,14 +272,10 @@ SendInput, {a Down}
 Sleep, Part3
 SendInput, {F2 Down}
 Sleep, Part1N
-
-SendInput, {a Up}
-Sleep, Part2N
-SendInput {Click down}{Click up}
-
 Sleep, Part1A
-
-
+SendInput, {a Up}
+SendInput {Click down}{Click up}
+Sleep, Part2N
 Sleep, Part2A
 SendInput, {F2 Up}
 Gosub AMMODYN
