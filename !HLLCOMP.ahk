@@ -1,4 +1,4 @@
-;;;// CALCULATOR // ;;;dispersion is wrong at long ranges series of shots with low dispersion (at shots with lower dispersion of 0.8 degrees it will always turn 0.8 degrees as a minimum "error start at 1000 mts and scales to limit dispersion to 30 mts between shooting points at 1600 mts"), it surely can be fixed but the firing rate will be the same
+;;;// CALCULATOR // ;;;dispersion automatic control is wrong at long distances series of shots with low dispersion (when shooting with lower dispersion than 0.8 degrees it will always turn 0.8 degrees as a minimum "error start at 1000 mts and scales to limit dispersion to 30 mts between shooting points at 1600 mts"), it surely can be fixed but the firing rate will be the same
 
 Process, Priority,, A
 #MaxThreadsPerHotkey 2
