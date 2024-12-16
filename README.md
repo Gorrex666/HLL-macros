@@ -44,5 +44,3 @@
 "F7" LOOP 3/4shots(30 MTS spread centered around aiming point)
 
 "F8" LOOP 3/4shots(40 MTS spread centered around aiming point)
-
-"F11" chat message ">fire mission stop, approx 20 sec"
