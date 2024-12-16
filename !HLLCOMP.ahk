@@ -1,4 +1,5 @@
 ;;;// CALCULATOR // ;;;dispersion is wrong at long ranges series of shots with low dispersion (at shots with lower dispersion of 1.2 degrees it will always turn 1.2 degrees as a minimum "error start at 1000 mts and scales to limit dispersion to 30 mts between shooting points at 1600 mts"), it surely can be fixed but the firing rate will be the same
+
 Process, Priority,, A
 
 ; Options for different nations
@@ -260,11 +261,6 @@ HandleShots(dispersion) {
     Part2N := Max(Part2N, 0)
     Part2A := Max(Part2A, 0)
     Part3 := Max(Part3, 0)
-    ; Force totals to 1200
-    TotalTime := Part1N + Part1A + Part2N + Part2A
-    if (TotalTime < 1200) {
-        Part3 := Max(1200 - TotalTime, 0)
-		}
 Gosub DELAY
 Gosub AMMO
 SendInput, {a Down}
@@ -334,12 +330,7 @@ HandleShotLoop(dispersion) {
     Part1A := Max(Part1A, 0)
     Part2N := Max(Part2N, 0)
     Part2A := Max(Part2A, 0)
-    Part3 := Max(Part3, 0)
-    ; Force totals to 1200
-    TotalTime := Part1N + Part1A + Part2N + Part2A
-    if (TotalTime < 1200) {
-        Part3 := Max(1200 - TotalTime, 0)
-		}			
+    Part3 := Max(Part3, 0)		
 Gosub DELAY
 Gosub AMMO
 SendInput, {a Down}
