@@ -1,4 +1,4 @@
-;// CALCULATOR //   ;;;dispersion is wrong at long ranges, compromise between firing rate and precition, if you want extreme precision compromising firing rate you can adjust to add a sleep time after dispersion adjustments and delete all the artifitial timing garabage
+;// CALCULATOR //   ;;;dispersion is wrong at long ranges series of shots with low dispersion, compromise favouring firing rate over precition was made, if you want extreme precision compromising firing rate you can adjust to add a sleep time after dispersion adjustments and delete all the artifitial timing garabage
 Process, Priority,, A
 
 ; Options for different nations
