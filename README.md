@@ -31,9 +31,9 @@
 
 ";" 3/4shots(20 MTS spread At any distance centered around aiming point)
 
-"'" 3/4shots(30 MTS spread centered around aiming point)
+"'" 3/4shots(30 MTS spread)
 
-"\" 3/4shots(40 MTS spread centered around aiming point)
+"\" 3/4shots(40 MTS spread)
 
 "F4" STOP LOOPS
 
@@ -41,8 +41,8 @@
 
 "F6" LOOP 3/4shots(20 MTS spread centered around aiming point) start/stop
 
-"F7" LOOP 3/4shots(30 MTS spread centered around aiming point) start/stop
+"F7" LOOP 3/4shots(30 MTS spread) start/stop
 
-"F8" LOOP 3/4shots(40 MTS spread centered around aiming point) start/stop
+"F8" LOOP 3/4shots(40 MTS spread) start/stop
 
 "F9" LOOP press "R" every 400 ms
