@@ -19,7 +19,7 @@ Gui, Add, DropDownList, vNationSelect gUpdateResult x49 y-10 w39 h110, us/ge|ru|
 Gui, color,, afaca9
 Gui, Add, Edit, vDistanceInput gUpdateResult x7 y-6 w35 h20
 Gui, Font, s20, Bold
-Gui, Add, Text, vResultText x-4 y10 w75 h30 center
+Gui, Add, Text, vResultText x0 y10 w70 h40 center
 
 ; Update Result
 UpdateResult:
