@@ -1,4 +1,4 @@
-;;;// CALCULATOR // ;;;;;;dispersion automatic control is limited at long distances series of shots with low dispersion (when shooting with lower dispersion than 0.8 degrees it will always turn 0.8 degrees as a minimum "error start at 1000 mts and scales to limit dispersion to 30 mts between shooting points at 1600 mts"), it surely can be fixed but the firing rate will be the same
+;;;// CALCULATOR //
 #MaxThreadsPerHotkey 2
 Process, Priority,, A
 ; Options for different nations
@@ -197,7 +197,7 @@ Return
 
 ; Calculation Function
 CalculateParts(dispersion) {
-    global Part1N, Part1A, Part2N, Part2A, Part3, DistanceInput
+    global Part1N, Part1A, Part2N, Part3, DistanceInput, Time
     Gui, Submit, NoHide ; Ensure the distance is updated from GUI
     distance := DistanceInput ; Get the distance input
     Time := Round(((101 * 28436) / distance) / 49.48 * dispersion) ; Calculate the press time
@@ -205,7 +205,6 @@ CalculateParts(dispersion) {
     Part1N := 0 ; The natural state of Part1
     Part1A := 0 ; Artificial filling for Part1
     Part2N := 0 ; The natural state of Part2
-    Part2A := 0 ; Artificial filling for Part2
     Part3 := 0  ; Remaining time
         ; Calculate Part1 Natural and Artificial
     if (Time >= 800) {
@@ -217,41 +216,38 @@ CalculateParts(dispersion) {
     }
         ; Calculate remaining time after Part1
     RemainingTime := Max(Time - 800, 0)
-        ; Calculate Part2 Natural and Artificial
+        ; Calculate Part2 Natural
     if (RemainingTime >= 400) {
         Part2N := 400
-        Part2A := 0
     } else {
         Part2N := RemainingTime
-        Part2A := 400 - RemainingTime
-    }
+    }	
         ; Calculate Part3 (remainder after 1200 is allocated)
-    Part3 := Time - (Part1N + Part1A + Part2N + Part2A)
+    Part3 := Time - 1200
         ; Ensure all values are positive
     Part1N := Max(Part1N, 0)
     Part1A := Max(Part1A, 0)
     Part2N := Max(Part2N, 0)
-    Part2A := Max(Part2A, 0)
     Part3 := Max(Part3, 0)
     ; Return the parts as an object (without it the caller would not get any value)
-    return {Part1N: Part1N, Part1A: Part1A, Part2N: Part2N, Part2A: Part2A, Part3: Part3}
+    return {Part1N: Part1N, Part1A: Part1A, Part2N: Part2N, Part3: Part3,Time: Time}
 }
 
 HandleShots(dispersion) {
-global Part1N, Part1A, Part2N, Part2A, Part3
+global Part1N, Part1A, Part2N, Part3, Time
 Sleep, 200
 parts := CalculateParts(dispersion)
 Gosub SHOOT
 Gosub AMMO
 SendInput, {a Down}
 Sleep, Part3
+Sleep, Part2N
 SendInput, {F2 Down}
 Sleep, Part1N
-Sleep, Part1A
 SendInput, {a Up}
 SendInput {Click down}{Click up}
-Sleep, Part2N
-Sleep, Part2A
+Sleep, Part1A
+Sleep, 400
 SendInput, {F2 Up}
 Gosub AMMODYN
 Gosub SRDYN 
@@ -259,9 +255,7 @@ Gosub AMMODYN
 SendInput, {d Down}
 Sleep, Part3
 Sleep, Part1N
-Sleep, Part1A
 Sleep, Part2N
-Sleep, Part2A
 SendInput, {d Up} 
 SendInput {Click down}{Click up}
 	}
@@ -273,7 +267,7 @@ global Loop3Active := false
 
 ;start/stop with a key press
 HandleShotLoop(dispersion) {
-    global Part1N, Part1A, Part2N, Part2A, Part3, Loop1Active
+    global Part1N, Part1A, Part2N, Part3, Time, Loop1Active
     Sleep, 200
     Loop1Active := !Loop1Active  ; Toggle the loop state (start/stop)
         Loop
@@ -283,27 +277,25 @@ HandleShotLoop(dispersion) {
         parts := CalculateParts(dispersion)
         Gosub SHOOT
         Gosub AMMO
-        SendInput, {a Down}
-        Sleep, Part3
-        SendInput, {F2 Down}
-        Sleep, Part1N
-        Sleep, Part1A
-        SendInput, {a Up}
-        SendInput {Click down}{Click up}
-        Sleep, Part2N
-        Sleep, Part2A
-        SendInput, {F2 Up}
+SendInput, {a Down}
+Sleep, Part3
+Sleep, Part2N
+SendInput, {F2 Down}
+Sleep, Part1N
+SendInput, {a Up}
+SendInput {Click down}{Click up}
+Sleep, Part1A
+Sleep, 400
+SendInput, {F2 Up}
         Gosub AMMODYN
         Gosub SRDYN 
         Gosub AMMODYN
         Gosub SRDYN 
         Gosub AMMODYN
         SendInput, {a Down}
-        Sleep, Part3
-        Sleep, Part1N
-        Sleep, Part1A
-        Sleep, Part2N
-        Sleep, Part2A
+Sleep, Part3
+Sleep, Part1N
+Sleep, Part2N
         SendInput, {a Up}
     }
 }
@@ -334,8 +326,7 @@ Return
     }
 Return
 
-; Global hotkey to stop all loops
-~F4:: ; Press Esc to stop all loops
+~F4:: ; Press to stop all loops
     global Loop1Active, Loop2Active, Loop3Active
 	Sleep, 200
     Loop1Active := false
@@ -378,12 +369,12 @@ return
 SRDYN:
 SendInput, {d Down}
 Sleep, Part3
-SendInput, {f2 Down}
+Sleep, Part2N
+SendInput, {F2 Down}
 Sleep, Part1N
-Sleep, Part1A
 SendInput, {d Up}
 SendInput {Click down}{Click up}
-Sleep, Part2N
-Sleep, Part2A
-SendInput, {f2 Up}
+Sleep, Part1A
+Sleep, 400
+SendInput, {F2 Up}
 return
