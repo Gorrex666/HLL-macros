@@ -14,7 +14,7 @@ lastInputs := [], lastResults := []
 Gui, Color, afaca9
 Gui, Font, s11, Bold
 Gui -sysmenu -caption
-Gui, Show, x1852 y928 w66 h40, Comp
+Gui, Show, x1854 y928 w66 h40, Comp
 Gui, Add, DropDownList, vNationSelect gUpdateResult x47 y-10 w39 h110, us/ge|ru|uk
 Gui, color,, afaca9
 Gui, Add, Edit, vDistanceInput gUpdateResult x6 y-6 w35 h20 center
@@ -78,8 +78,8 @@ updateHistoryDisplay() {
         Gui, Color, afaca9
         Gui -sysmenu -caption
         Gui, Font, s11, Bold
-        Gui, Add, Text, x0 y0 w80 h110 vHistoryList center
-        Gui, Show, x1839 y968 w80 h140
+        Gui, Add, Text, x0 y0 w74 h110 vHistoryList center
+        Gui, Show, x1846 y968 w74 h110
         WinSet, AlwaysOnTop, On, History
         historyWindowVisible := true
         updateHistoryDisplay()
