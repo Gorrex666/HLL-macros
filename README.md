@@ -21,8 +21,6 @@
 
 "Alt + capslock" holds down "s" on/off
 
-"F9" R spam
-
 //ARTY MACROS
 
 "/" reload arty
@@ -39,10 +37,12 @@
 
 "F4" STOP LOOPS
 
-"F5" LOOP reload and soot start/stop
+"F5" LOOP reload and shoot start/stop
 
 "F6" LOOP 3/4shots(20 MTS spread centered around aiming point) start/stop
 
 "F7" LOOP 3/4shots(30 MTS spread centered around aiming point) start/stop
 
 "F8" LOOP 3/4shots(40 MTS spread centered around aiming point) start/stop
+
+"F9" LOOP press "R" every 400 ms
