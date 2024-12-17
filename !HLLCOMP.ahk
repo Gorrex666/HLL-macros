@@ -271,65 +271,76 @@ global Loop1Active := false
 global Loop2Active := false
 global Loop3Active := false
 
+;start/stop with a key press
 HandleShotLoop(dispersion) {
     global Part1N, Part1A, Part2N, Part2A, Part3, Loop1Active
     Sleep, 200
-    Loop1Active := !Loop1Active
-    Loop
+    Loop1Active := !Loop1Active  ; Toggle the loop state (start/stop)
+        Loop
     {
         If (!Loop1Active)
             Break
-parts := CalculateParts(dispersion)
-Gosub SHOOT
-Gosub AMMO
-SendInput, {a Down}
-Sleep, Part3
-SendInput, {F2 Down}
-Sleep, Part1N
-Sleep, Part1A
-SendInput, {a Up}
-SendInput {Click down}{Click up}
-Sleep, Part2N
-Sleep, Part2A
-SendInput, {F2 Up}
-Gosub AMMODYN
-Gosub SRDYN 
-Gosub AMMODYN
-Gosub SRDYN 
-Gosub AMMODYN
-SendInput, {a Down}
-Sleep, Part3
-Sleep, Part1N
-Sleep, Part1A
-Sleep, Part2N
-Sleep, Part2A
-SendInput, {a Up}
+        parts := CalculateParts(dispersion)
+        Gosub SHOOT
+        Gosub AMMO
+        SendInput, {a Down}
+        Sleep, Part3
+        SendInput, {F2 Down}
+        Sleep, Part1N
+        Sleep, Part1A
+        SendInput, {a Up}
+        SendInput {Click down}{Click up}
+        Sleep, Part2N
+        Sleep, Part2A
+        SendInput, {F2 Up}
+        Gosub AMMODYN
+        Gosub SRDYN 
+        Gosub AMMODYN
+        Gosub SRDYN 
+        Gosub AMMODYN
+        SendInput, {a Down}
+        Sleep, Part3
+        Sleep, Part1N
+        Sleep, Part1A
+        Sleep, Part2N
+        Sleep, Part2A
+        SendInput, {a Up}
     }
 }
 
-~f4:: ;LOOP r
+~F9:: 
     global Loop2Active
-    Loop2Active := !Loop2Active
-    Loop
+    Loop2Active := !Loop2Active 
+        Loop
     {
         If (!Loop2Active)
             Break
-Sendinput {r Down}
-Sleep, 200
-Sendinput {r Up}
-}
+            Sendinput {r Down}
+        Sleep, 200
+        Sendinput {r Up}
+    }
 Return
 
-~F5:: ; Loop reload and shoot
-    Loop3Active := !Loop3Active
-    Loop
+~F5:: 
+    global Loop3Active
+    Loop3Active := !Loop3Active  ; Toggle the loop state (start/stop)
+        Loop
     {
         If (!Loop3Active)
             Break
-        Gosub DELAY
+            Gosub DELAY
         Gosub AMMO
         Gosub SHOOT
     }
+Return
+
+; Global hotkey to stop all loops
+~F4:: ; Press Esc to stop all loops
+    global Loop1Active, Loop2Active, Loop3Active
+	Sleep, 200
+    Loop1Active := false
+    Loop2Active := false
+    Loop3Active := false
 Return
 
 ;//LABELS//
