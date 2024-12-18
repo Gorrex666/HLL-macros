@@ -10,13 +10,22 @@ options["uk"] := { "m": -0.177, "b": 550.69 }
 
 ; History data
 lastInputs := [], lastResults := []
+
+; Calculate position for bottom-right corner
+SysGet, ScreenWidth, 78
+SysGet, ScreenHeight, 79
+GuiWidth := 66
+GuiHeight := 40
+GuiX := ScreenWidth - GuiWidth - 0  ; Adjust for padding (10px from edge)
+GuiY := ScreenHeight - GuiHeight - 110
+
 ; Main GUI
 Gui, Color, afaca9
 Gui, Font, s11, Bold
 Gui -sysmenu -caption
-Gui, Show, x1854 y928 w66 h40, Comp
+Gui, Show, x%GuiX% y%GuiY% w%GuiWidth% h%GuiHeight%, Comp
 Gui, Add, DropDownList, vNationSelect gUpdateresult x47 y-10 w39 h110, us/ge|ru|uk
-Gui, color,, afaca9
+Gui, Color,, afaca9
 Gui, Add, Edit, vDistanceInput gUpdateresult x6 y-6 w35 h20 center
 Gui, Font, s20, Bold
 Gui, Add, Text, vResultText x0 y10 w66 h40 center
@@ -70,17 +79,25 @@ updateHistoryDisplay() {
         Gui, 2:Destroy
         historyWindowVisible := false
     } else {
+        ; Calculate position for bottom-right corner
+        SysGet, ScreenWidth, 78
+        SysGet, ScreenHeight, 79
+        GuiWidth := 74
+        GuiHeight := 110
+        GuiX := ScreenWidth - GuiWidth - 0  ; Adjust for padding (10px from edge)
+        GuiY := ScreenHeight - GuiHeight - 0
+        ; Create the GUI
         Gui, 2:New, , History
         Gui, Color, afaca9
         Gui -sysmenu -caption
         Gui, Font, s11, Bold
-        Gui, Add, Text, x0 y0 w74 h110 vHistoryList center
-        Gui, Show, x1846 y968 w74 h110
+        Gui, Add, Text, x0 y0 w%GuiWidth% h%GuiHeight% vHistoryList center
+        Gui, Show, x%GuiX% y%GuiY% w%GuiWidth% h%GuiHeight%
         WinSet, AlwaysOnTop, On, History
         historyWindowVisible := true
         updateHistoryDisplay()
     }
-	WinActivate, Hell Let Loose
+    WinActivate, Hell Let Loose
 Return
 
 ; Hotkeys
@@ -89,7 +106,7 @@ Return
 WinActivate, Comp ; Activate the "Comp" window
 GuiControl, Focus, DistanceInput
 SendInput ^a{Backspace} ; Select all text and delete it
-; Monitor for 4 digits`
+; Monitor for 4 digits
 Input, KeySequence, V L4, {Space}{Enter}{Tab}{Esc} ; Capture up to 4 characters, stop on non-digit keys
 if (StrLen(KeySequence) >= 4 && KeySequence ~= "^\d{4}$") ; Check if 4 digits
 {
@@ -97,7 +114,7 @@ if (StrLen(KeySequence) >= 4 && KeySequence ~= "^\d{4}$") ; Check if 4 digits
 }
 Return
 
-~up:: WinSet, AlwaysOnTop, Toggle, Comp
+~up::WinSet, AlwaysOnTop, Toggle, Comp
 
 ; Helper
 IsNumber(value) {
