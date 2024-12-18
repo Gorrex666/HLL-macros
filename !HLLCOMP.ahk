@@ -15,30 +15,25 @@ Gui, Color, afaca9
 Gui, Font, s11, Bold
 Gui -sysmenu -caption
 Gui, Show, x1854 y928 w66 h40, Comp
-Gui, Add, DropDownList, vNationSelect gUpdateResult x47 y-10 w39 h110, us/ge|ru|uk
+Gui, Add, DropDownList, vNationSelect gUpdateresult x47 y-10 w39 h110, us/ge|ru|uk
 Gui, color,, afaca9
-Gui, Add, Edit, vDistanceInput gUpdateResult x6 y-6 w35 h20 center
+Gui, Add, Edit, vDistanceInput gUpdateresult x6 y-6 w35 h20 center
 Gui, Font, s20, Bold
 Gui, Add, Text, vResultText x0 y10 w66 h40 center
 	WinActivate, Hell Let Loose
 
-; Update Result
-UpdateResult:
-    SetTimer, DelayedUpdate, -50
-Return
-
-DelayedUpdate:
-    Gui, Submit, NoHide
-    if (StrLen(DistanceInput) >= 4 && DistanceInput != lastInputs[lastInputs.Length()]) {
-        result := calculate(DistanceInput, NationSelect)
-        if (!IsNumber(result)) {
-            GuiControl, , ResultText,
-        } else {
-            GuiControl, , ResultText, %result%
-            updateHistory(DistanceInput, result)
-            updateHistoryDisplay()
-        }
+Updateresult:
+Gui, Submit, NoHide
+if (StrLen(DistanceInput) >= 4 && DistanceInput != lastInputs[lastInputs.Length()]) {
+    result := calculate(DistanceInput, NationSelect)
+    if (!IsNumber(result)) {
+        GuiControl, , ResultText,
+    } else {
+        GuiControl, , ResultText, %result%
+        updateHistory(DistanceInput, result)
+        updateHistoryDisplay()
     }
+}
 Return
 
 ; Calculation
@@ -94,7 +89,7 @@ Return
 WinActivate, Comp ; Activate the "Comp" window
 GuiControl, Focus, DistanceInput
 SendInput ^a{Backspace} ; Select all text and delete it
-; Monitor for 4 digits
+; Monitor for 4 digits`
 Input, KeySequence, V L4, {Space}{Enter}{Tab}{Esc} ; Capture up to 4 characters, stop on non-digit keys
 if (StrLen(KeySequence) >= 4 && KeySequence ~= "^\d{4}$") ; Check if 4 digits
 {
