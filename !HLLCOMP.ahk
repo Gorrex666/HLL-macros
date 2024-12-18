@@ -24,7 +24,7 @@ Gui, Add, Text, vResultText x0 y10 w66 h40 center
 
 ; Update Result
 UpdateResult:
-    SetTimer, DelayedUpdate, -400
+    SetTimer, DelayedUpdate, -200
 Return
 
 DelayedUpdate:
