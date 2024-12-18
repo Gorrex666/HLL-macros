@@ -92,6 +92,7 @@ Return
 
 ~`:: ; Trigger on the backtick key
 WinActivate, Comp ; Activate the "Comp" window
+GuiControl, Focus, DistanceInput
 SendInput ^a{Backspace} ; Select all text and delete it
 ; Monitor for 4 digits
 Input, KeySequence, V L4, {Space}{Enter}{Tab}{Esc} ; Capture up to 4 characters, stop on non-digit keys
