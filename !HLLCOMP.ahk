@@ -126,12 +126,10 @@ SendInput {s up}
 Return
 
 ~j:: ;HOLDS F por 5 seCS J.
-{
 Sleep, 200
 SendInput, {f Down}
 Sleep, 7000
 SendInput, {f Up}
-}
 Return
 
 ~=:: ;HOLDS LEFT click (on/off)
@@ -145,22 +143,17 @@ Return
 ;//ARTILLERY SCRIPTS//
 
 ~/:: ;RELOAD
-{
 Gosub DELAY
 Gosub AMMO
-}
 Return
 
 ~.:: ;RELOAD AND SHOOT
-{
 Gosub DELAY
 Gosub AMMO
 Gosub SHOOT
-}
 Return
 
 ~,:: ;3 SHOTS (fire mission)
-{
 Gosub DELAY
 Gosub AMMO
 Gosub SHOOT
@@ -168,7 +161,6 @@ Gosub AMMO
 Gosub SHOOT
 Gosub AMMO
 Gosub SHOOT
-}
 Return
 
 ;//FUNCTIONS//
@@ -261,6 +253,7 @@ Sleep, Part2N
 SendInput, {d Up} 
 SendInput {Click down}{Click up}
 	}
+Return
 
 ;//LOOPS//
 global Loop1Active := false
@@ -301,6 +294,7 @@ Sleep, Part2N
         SendInput, {a Up}
     }
 }
+Return
 
 ~F9:: 
     global Loop2Active
@@ -351,7 +345,7 @@ AMMO:
 SendInput, {f2 Down}
 Sleep, 1200
 SendInput, {f2 Up}
-Sleep, 100
+Sleep, 200
 SendInput {r Down}{r Up}
 Sleep, 3500
 SendInput, {f1 Down}
@@ -360,7 +354,7 @@ SendInput, {f1 Up}
 return
 
 AMMODYN:
-Sleep, 100
+Sleep, 200
 SendInput {r Down}{r Up}
 Sleep, 3500
 SendInput, {f1 Down}
