@@ -24,12 +24,12 @@ Gui, Add, Text, vResultText x0 y10 w66 h40 center
 
 ; Update Result
 UpdateResult:
-    SetTimer, DelayedUpdate, -200
+    SetTimer, DelayedUpdate, -50
 Return
 
 DelayedUpdate:
     Gui, Submit, NoHide
-    if (StrLen(DistanceInput) >= 3 && DistanceInput != lastInputs[lastInputs.Length()]) {
+    if (StrLen(DistanceInput) >= 4 && DistanceInput != lastInputs[lastInputs.Length()]) {
         result := calculate(DistanceInput, NationSelect)
         if (!IsNumber(result)) {
             GuiControl, , ResultText,
