@@ -90,9 +90,15 @@ Return
 
 ; Hotkeys
 
-~`::
-WinActivate, Comp
-SendInput ^a{Backspace}
+~`:: ; Trigger on the backtick key
+WinActivate, Comp ; Activate the "Comp" window
+SendInput ^a{Backspace} ; Select all text and delete it
+; Monitor for 4 digits
+Input, KeySequence, V L4, {Space}{Enter}{Tab}{Esc} ; Capture up to 4 characters, stop on non-digit keys
+if (StrLen(KeySequence) >= 4 && KeySequence ~= "^\d{4}$") ; Check if 4 digits
+{
+    WinActivate, Hell Let Loose ; Activate the "Hell Let Loose" window
+}
 Return
 
 ~up:: WinSet, AlwaysOnTop, Toggle, Comp
