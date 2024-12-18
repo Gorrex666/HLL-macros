@@ -18,7 +18,6 @@ GuiWidth := 66
 GuiHeight := 40
 GuiX := ScreenWidth - GuiWidth - 0  ; Adjust for padding (10px from edge)
 GuiY := ScreenHeight - GuiHeight - 110
-
 ; Main GUI
 Gui, Color, afaca9
 Gui, Font, s11, Bold
@@ -80,11 +79,9 @@ updateHistoryDisplay() {
         historyWindowVisible := false
     } else {
         ; Calculate position for bottom-right corner
-        SysGet, ScreenWidth, 78
-        SysGet, ScreenHeight, 79
         GuiWidth := 74
         GuiHeight := 110
-        GuiX := ScreenWidth - GuiWidth - 0  ; Adjust for padding (10px from edge)
+        GuiX := ScreenWidth - GuiWidth - 0  
         GuiY := ScreenHeight - GuiHeight - 0
         ; Create the GUI
         Gui, 2:New, , History
