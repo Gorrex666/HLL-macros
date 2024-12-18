@@ -25,10 +25,35 @@ Gui -sysmenu -caption
 Gui, Show, x%GuiX% y%GuiY% w%GuiWidth% h%GuiHeight%, Comp
 Gui, Add, DropDownList, vNationSelect gUpdateresult x47 y-10 w39 h110, us/ge|ru|uk
 Gui, Color,, afaca9
-Gui, Add, Edit, vDistanceInput gUpdateresult x6 y-6 w35 h20 center
+Gui, Add, Edit, Number vDistanceInput gUpdateresult x6 y-6 w35 h20 center
 Gui, Font, s20, Bold
-Gui, Add, Text, vResultText x0 y10 w66 h40 center
+Gui, Add, Text, vResultText x0 y10 w66 h26 center
 	WinActivate, Hell Let Loose
+
+; Toggle History Window
+~down::
+    if (historyWindowVisible) {
+        Gui, 2:Destroy
+        historyWindowVisible := false
+    } else {
+        ; Calculate position for bottom-right corner
+        GuiWidth := 74
+        GuiHeight := 110
+        GuiX := ScreenWidth - GuiWidth - 0  
+        GuiY := ScreenHeight - GuiHeight - 0
+        ; Create the GUI
+        Gui, 2:New, , History
+        Gui, Color, afaca9
+        Gui -sysmenu -caption
+        Gui, Font, s11, Bold
+        Gui, Add, Text, x0 y0 w%GuiWidth% h%GuiHeight% vHistoryList center
+        Gui, Show, x%GuiX% y%GuiY% w%GuiWidth% h%GuiHeight%
+        WinSet, AlwaysOnTop, On, History
+        historyWindowVisible := true
+        updateHistoryDisplay()
+    }
+    WinActivate, Hell Let Loose
+Return
 
 Updateresult:
 Gui, Submit, NoHide
@@ -72,31 +97,6 @@ updateHistoryDisplay() {
     GuiControl, 2:, HistoryList, %text%
 }
 
-; Toggle History Window
-~down::
-    if (historyWindowVisible) {
-        Gui, 2:Destroy
-        historyWindowVisible := false
-    } else {
-        ; Calculate position for bottom-right corner
-        GuiWidth := 74
-        GuiHeight := 110
-        GuiX := ScreenWidth - GuiWidth - 0  
-        GuiY := ScreenHeight - GuiHeight - 0
-        ; Create the GUI
-        Gui, 2:New, , History
-        Gui, Color, afaca9
-        Gui -sysmenu -caption
-        Gui, Font, s11, Bold
-        Gui, Add, Text, x0 y0 w%GuiWidth% h%GuiHeight% vHistoryList center
-        Gui, Show, x%GuiX% y%GuiY% w%GuiWidth% h%GuiHeight%
-        WinSet, AlwaysOnTop, On, History
-        historyWindowVisible := true
-        updateHistoryDisplay()
-    }
-    WinActivate, Hell Let Loose
-Return
-
 ; Hotkeys
 
 ~`:: ; Trigger on the backtick key
@@ -104,8 +104,8 @@ WinActivate, Comp ; Activate the "Comp" window
 GuiControl, Focus, DistanceInput
 SendInput ^a{Backspace} ; Select all text and delete it
 ; Monitor for 4 digits
-Input, KeySequence, V L4, {Space}{Enter}{Tab}{Esc} ; Capture up to 4 characters, stop on non-digit keys
-if (StrLen(KeySequence) >= 4 && KeySequence ~= "^\d{4}$") ; Check if 4 digits
+Input, KeySequence, V L4, {Space}{Enter}{Tab}{Esc} ; Capture up to 4 characters,
+if (StrLen(KeySequence)) >= 4 ; Check if 4 digits
 {
     WinActivate, Hell Let Loose ; Activate the "Hell Let Loose" window
 }
@@ -232,7 +232,7 @@ CalculateParts(dispersion) {
     } else {
         Part2N := RemainingTime
     }	
-        ; Calculate Part3 (remainder after 1200 is allocated)
+        ; Calculate Part3 (remainder after 1200 (natural time) allocated)
     Part3 := Time - 1200
         ; Ensure all values are positive
     Part1N := Max(Part1N, 0)
