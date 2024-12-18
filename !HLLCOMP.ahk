@@ -20,6 +20,7 @@ Gui, color,, afaca9
 Gui, Add, Edit, vDistanceInput gUpdateResult x6 y-6 w35 h20 center
 Gui, Font, s20, Bold
 Gui, Add, Text, vResultText x0 y10 w66 h40 center
+	WinActivate, Hell Let Loose
 
 ; Update Result
 UpdateResult:
@@ -350,7 +351,7 @@ AMMO:
 SendInput, {f2 Down}
 Sleep, 1200
 SendInput, {f2 Up}
-Sleep, 250
+Sleep, 100
 SendInput {r Down}{r Up}
 Sleep, 3500
 SendInput, {f1 Down}
@@ -359,7 +360,7 @@ SendInput, {f1 Up}
 return
 
 AMMODYN:
-Sleep, 250
+Sleep, 100
 SendInput {r Down}{r Up}
 Sleep, 3500
 SendInput, {f1 Down}
