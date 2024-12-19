@@ -1,4 +1,4 @@
-;;;// CALCULATOR //   ;;; LINE 103 TAKES TOO MUCH RESOURCES, IT REPRESENTS 90% OF THE SCRIPT CPU USAGE
+;;;// CALCULATOR //  calculation is expensive in cpu resources relatively, dont know if its the gui updating too many times or the loop of line 109
 #MaxThreadsPerHotkey 2
 Process, Priority,, A
 ; Options for different nations
@@ -16,7 +16,7 @@ SysGet, ScreenWidth, 78
 SysGet, ScreenHeight, 79
 GuiWidth := 66
 GuiHeight := 40
-GuiX := ScreenWidth - GuiWidth - 0  ; Adjust for padding (10px from edge)
+GuiX := ScreenWidth - GuiWidth - 0  ; Adjust relative to edge
 GuiY := ScreenHeight - GuiHeight - 110
 ; Main GUI
 Gui, Color, afaca9
@@ -70,7 +70,6 @@ SetTimer, DelayedHistoryUpdate, Off ; Stop the timer after it runs
 Gui, Submit, NoHide ; Ensure latest input is captured
 if (StrLen(DistanceInput) >= 3 && (lastInputs.Length() == 0 || DistanceInput != lastInputs[lastInputs.Length()])) 
 {
-    ; Update history with the final input after the delay
     result := calculate(DistanceInput, NationSelect)
     updateHistory(DistanceInput, result)
     updateHistoryDisplay()
