@@ -4,7 +4,7 @@
 
 "Down" arrow = show history list on/off
 
-"`"(console key) = focus on window (input distance "4 DIGITS, if its 800 mts write 0800")
+"`"(console key) = focus on window (input distance)
 
 
 //MISC
