@@ -1,4 +1,4 @@
-;;;// CALCULATOR //
+;;;// CALCULATOR //   ;;; LINE 103 TAKES TOO MUCH RESOURCES, IT REPRESENTS 90% OF THE SCRIPT CPU USAGE
 #MaxThreadsPerHotkey 2
 Process, Priority,, A
 ; Options for different nations
@@ -28,7 +28,7 @@ Gui, Color,, afaca9
 Gui, Add, Edit, Number vDistanceInput gUpdateresult x6 y-6 w35 h20 center
 Gui, Font, s20, Bold
 Gui, Add, Text, vResultText x0 y10 w66 h26 center
-	WinActivate, Hell Let Loose
+WinActivate, Hell Let Loose
 
 ; Toggle History Window
 ~down::
@@ -55,19 +55,25 @@ Gui, Add, Text, vResultText x0 y10 w66 h26 center
     WinActivate, Hell Let Loose
 Return
 
-Updateresult:
+Updateresult: ; Update history list with a delay to only record after the user made the whole input
 Gui, Submit, NoHide
-if (StrLen(DistanceInput) >= 3 && DistanceInput != lastInputs[lastInputs.Length()]) 
-
+SetTimer, DelayedHistoryUpdate, 600 ; Resets every time input is detected
+if (StrLen(DistanceInput) >= 3) 
 {
     result := calculate(DistanceInput, NationSelect)
-    if (!IsNumber(result)) {
-        GuiControl, , ResultText,
-    } else {
-        GuiControl, , ResultText, %result%
-        updateHistory(DistanceInput, result)
-        updateHistoryDisplay()
-    }
+    GuiControl, , ResultText, %result%
+}
+Return
+
+DelayedHistoryUpdate:
+SetTimer, DelayedHistoryUpdate, Off ; Stop the timer after it runs
+Gui, Submit, NoHide ; Ensure latest input is captured
+if (StrLen(DistanceInput) >= 3 && (lastInputs.Length() == 0 || DistanceInput != lastInputs[lastInputs.Length()])) 
+{
+    ; Update history with the final input after the delay
+    result := calculate(DistanceInput, NationSelect)
+    updateHistory(DistanceInput, result)
+    updateHistoryDisplay()
 }
 Return
 
@@ -105,7 +111,6 @@ updateHistoryDisplay() {
 WinActivate, Comp ; Activate the "Comp" window
 GuiControl, Focus, DistanceInput
 SendInput ^a{Backspace} ; Select all text and delete it
-
 KeySequence := "" 
 Loop {
     Input, SingleKey, V L1
@@ -122,11 +127,6 @@ Loop {
 Return
 
 ~up::WinSet, AlwaysOnTop, Toggle, Comp
-
-; Helper
-IsNumber(value) {
-    return (value is number)
-}
 
 ;//MISC//
 
