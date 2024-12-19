@@ -1,4 +1,4 @@
-;;;// CALCULATOR //  calculation is expensive in cpu resources relatively, dont know if its the gui updating too many times or the loop of line 109
+;;;// CALCULATOR //  calculation is expensive in cpu resources relatively(0.5% CPU peak usage that occurs only when inputting numbers), dont know if its the gui updating too many times or the loop of line 109
 #MaxThreadsPerHotkey 2
 Process, Priority,, A
 ; Options for different nations
