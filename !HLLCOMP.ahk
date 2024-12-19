@@ -57,7 +57,9 @@ Return
 
 Updateresult:
 Gui, Submit, NoHide
-if (StrLen(DistanceInput) >= 4 && DistanceInput != lastInputs[lastInputs.Length()]) {
+if (StrLen(DistanceInput) >= 3 && DistanceInput != lastInputs[lastInputs.Length()]) 
+
+{
     result := calculate(DistanceInput, NationSelect)
     if (!IsNumber(result)) {
         GuiControl, , ResultText,
@@ -103,11 +105,19 @@ updateHistoryDisplay() {
 WinActivate, Comp ; Activate the "Comp" window
 GuiControl, Focus, DistanceInput
 SendInput ^a{Backspace} ; Select all text and delete it
-; Monitor for 4 digits
-Input, KeySequence, V L4, {Space}{Enter}{Tab}{Esc} ; Capture up to 4 characters,
-if (StrLen(KeySequence)) >= 4 ; Check if 4 digits
-{
-    WinActivate, Hell Let Loose ; Activate the "Hell Let Loose" window
+
+KeySequence := "" 
+Loop {
+    Input, SingleKey, V L1
+    KeySequence .= SingleKey
+    if (StrLen(KeySequence) == 3 && SubStr(KeySequence, 1, 1) != "1") {
+        WinActivate, Hell Let Loose
+        Break
+    }
+    else if (StrLen(KeySequence) == 4 && SubStr(KeySequence, 1, 1) == "1") {
+        WinActivate, Hell Let Loose
+        Break
+    }
 }
 Return
 
